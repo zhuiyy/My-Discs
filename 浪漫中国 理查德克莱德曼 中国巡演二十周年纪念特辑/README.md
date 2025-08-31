@@ -2,6 +2,7 @@
 
     可惜的是只剩了一个空壳子, 里面的cd和dvd都不知道哪去了
 
+![_](https://github.com/zhuiyy/My-Discs/blob/main/%E6%B5%AA%E6%BC%AB%E4%B8%AD%E5%9B%BD%20%E7%90%86%E6%9F%A5%E5%BE%B7%E5%85%8B%E8%8E%B1%E5%BE%B7%E6%9B%BC%20%E4%B8%AD%E5%9B%BD%E5%B7%A1%E6%BC%94%E4%BA%8C%E5%8D%81%E5%91%A8%E5%B9%B4%E7%BA%AA%E5%BF%B5%E7%89%B9%E8%BE%91/cover.jpg)
 ### 曲目
 Chariots of Fire-火之战车
 

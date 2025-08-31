@@ -1,5 +1,5 @@
 # THE DARK SIDE OF THE MOON (Experience edition)
-
+![_](https://github.com/zhuiyy/My-Discs/blob/main/THE%20DARK%20SIDE%20OF%20THE%20MOON%20(Experience%20edition)/cover.jpg)
 ### 曲目
 Speak To Me
 

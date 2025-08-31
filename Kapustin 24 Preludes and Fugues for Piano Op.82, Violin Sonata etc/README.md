@@ -1,5 +1,5 @@
 # Kapustin 24 Preludes and Fugues for Piano Op.82, Violin Sonata etc
-
+![_](https://github.com/zhuiyy/My-Discs/blob/main/Kapustin%2024%20Preludes%20and%20Fugues%20for%20Piano%20Op.82%2C%20Violin%20Sonata%20etc/cover.jpg)
 ### 曲目
 24 Preludes and Fufues for Piano Op.82
 

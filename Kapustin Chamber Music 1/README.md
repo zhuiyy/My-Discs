@@ -1,5 +1,5 @@
 # Kapustin Chamber Music 1
-
+![_](https://github.com/zhuiyy/My-Discs/blob/main/Kapustin%20Chamber%20Music%201/cover.jpg)
 ### 曲目
 Sinfonietta, Op.49
 

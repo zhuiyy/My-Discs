@@ -1,5 +1,5 @@
 # ARGERICH PERLMAN BEETHOVEN & FRANCK Sonata
-
+![_](https://github.com/zhuiyy/My-Discs/blob/main/ARGERICH%20PERLMAN%20BEETHOVEN%20%26%20FRANCK%20Sonata/cover.jpg)
 ### 曲目
 Sonata for piano and violin No.9 in A major, Op.47 "Kreutzer" - Beethoven
 

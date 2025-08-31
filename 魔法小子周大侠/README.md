@@ -1,5 +1,5 @@
 # 魔法小子周大侠
-
+![_](https://github.com/zhuiyy/My-Discs/blob/main/%E9%AD%94%E6%B3%95%E5%B0%8F%E5%AD%90%E5%91%A8%E5%A4%A7%E4%BE%A0/cover.jpg)
 ### 曲目
 稻香
 

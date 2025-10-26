@@ -1,5 +1,5 @@
 # Kapustin Piano Works 2
-![_](https://github.com/zhuiyy/My-Discs/blob/main/Kapustin%20Piano%20Works%202/cover.jpg)
+![_](./cover.jpg)
 ### 曲目
 Ten Bagatelles Op.59
 

@@ -1,5 +1,5 @@
 # QUEEN Greatest Hits
-![_](https://github.com/zhuiyy/My-Discs/blob/main/QUEEN%20Greatest%20Hits/cover.jpg)
+![_](./cover.jpg)
 ### 曲目
 We Will Rock You
 

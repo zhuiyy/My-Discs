@@ -1,5 +1,5 @@
 # New Memories
-![_](https://github.com/zhuiyy/My-Discs/blob/main/New%20Memories/cover.webp)
+![_](./cover.webp)
 ### 曲目
 Variations for Piano, Op. 41 - Kapustin
 

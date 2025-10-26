@@ -1,5 +1,5 @@
 # Nikolai KAPUSTIN Eight Concer Etudes & 24 Preludes
-![_](https://github.com/zhuiyy/My-Discs/blob/main/Nikolai%20KAPUSTIN%20Eight%20Concer%20Etudes%20%26%2024%20Preludes/cover.jpg)
+![_](./cover.jpg)
 ### 曲目
 Eight Concert Etudes, Op.40
 

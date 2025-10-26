@@ -1,5 +1,5 @@
 # KAPUSTIN | SCHNITTKE CELLO CONCERTOS
-![_](https://github.com/zhuiyy/My-Discs/blob/main/KAPUSTIN%20%26%20SCHNITTKE%20CELLO%20CONCERTOS/cover.jpg)
+![_](./cover.jpg)
 ### 曲目
 Concerto for cello and orchestra no. 1, Op. 85 - Kapustin
 

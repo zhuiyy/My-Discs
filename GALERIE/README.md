@@ -1,4 +1,4 @@
-# GALERIE
+# Galerie
 ![_](./cover.jpg)
 
 ### 曲目

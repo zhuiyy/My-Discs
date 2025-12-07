@@ -23,7 +23,7 @@ Berliner Philharmoniker-柏林爱乐乐团
 
 Herbert Von Karajan
 ### 作曲家
-Kapustin, Schnittke
+Beethoven
 ### 风格
 classic
 ### 数量

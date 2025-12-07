@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Musical Journey</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <div class="background-animation"></div>
+    
+    <header>
+        <h1>My Discs & Memories</h1>
+        <p class="subtitle">A curated collection of music and moments</p>
+    </header>
+
+    <main>
+        <section class="gallery-section">
+            <h2 class="section-title">CD Collection</h2>
+            <div id="cd-gallery" class="gallery">
+                <!-- CD Items will be injected here -->
+            </div>
+        </section>
+
+        <section class="gallery-section">
+            <h2 class="section-title">Concert Memories</h2>
+            <div id="concert-gallery" class="gallery">
+                <!-- Concert Items will be injected here -->
+            </div>
+        </section>
+    </main>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <div class="modal-body">
+                <div class="modal-image-container">
+                    <img id="modal-image" src="" alt="Detail">
+                </div>
+                <div class="modal-info">
+                    <h2 id="modal-title"></h2>
+                    <div id="modal-description" class="markdown-body"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -2,7 +2,7 @@
 #### 11.26.2025
 - **Symphony No.5 in B-flat major (Anton Bruckner)**
 - *Christian Thielemann & Vienna Philharmonic Orchestra*
-- 国家大剧院
+- 国家大剧院, 音乐厅
 ![SC国](./pics/11_26_2025.jpg)
 
 #### 06.22.2025

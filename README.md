@@ -1,1 +1,1 @@
-# 关于音乐的记录
+### [关于音乐的记录](https://zhuiyy.github.io/My-Discs/web/index.html)

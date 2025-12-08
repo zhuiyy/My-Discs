@@ -111,7 +111,7 @@
 ![yPb](./pics/10_15_2024.jpg)
 
 #### 09.28.2024
-- **“完全柴可夫斯基”2024爱乐汇交响乐团音乐季(09.28)**
+- **“完全柴可夫斯基”2024爱乐汇交响乐团音乐季**
   - Tchaikovsky: Piano Concerto No. 1 in B-flat Minor, Op. 23
   - Tchaikovsky: Symphony No. 3 in D Major, Op. 29 "Polish"
 - *Konstantin Scherbakov & 刘炬 & 北京爱乐汇交响乐团*

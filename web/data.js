@@ -150,7 +150,7 @@ const siteData = [
     "title": "09.28.2024",
     "subtitle": "09/28/2024",
     "image": "../concerts/pics/09_28_2024.jpg",
-    "description": "- **“完全柴可夫斯基”2024爱乐汇交响乐团音乐季(09.28)**\n  - Tchaikovsky: Piano Concerto No. 1 in B-flat Minor, Op. 23\n  - Tchaikovsky: Symphony No. 3 in D Major, Op. 29 \"Polish\"\n- *Konstantin Scherbakov & 刘炬 & 北京爱乐汇交响乐团*\n- 北京音乐厅"
+    "description": "- **“完全柴可夫斯基”2024爱乐汇交响乐团音乐季**\n  - Tchaikovsky: Piano Concerto No. 1 in B-flat Minor, Op. 23\n  - Tchaikovsky: Symphony No. 3 in D Major, Op. 29 \"Polish\"\n- *Konstantin Scherbakov & 刘炬 & 北京爱乐汇交响乐团*\n- 北京音乐厅"
   },
   {
     "type": "concert",

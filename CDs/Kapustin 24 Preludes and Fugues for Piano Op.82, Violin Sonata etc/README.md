@@ -1,15 +1,15 @@
 # Kapustin 24 Preludes and Fugues for Piano Op.82, Violin Sonata etc
 ![_](./cover.jpg)
 ### 曲目
-24 Preludes and Fufues for Piano Op.82
+24 Preludes and Fufues for Piano Op. 82
 
-Elegy for Cello and Piano Op.96
+Elegy for Cello and Piano Op. 96
 
-Burlesque for Cello and Piano Op.97
+Burlesque for Cello and Piano Op. 97
 
-Nearly Waltz for Cello and Piano Op.98
+Nearly Waltz for Cello and Piano Op. 98
 
-Violin Sonata Op.70
+Violin Sonata Op. 70
 ### 演奏家
 Nikolai Kapustin(piano) 领衔
 

@@ -9,13 +9,13 @@ const siteData = [
     "type": "cd",
     "title": "Kapustin Piano Works 2",
     "image": "../CDs/Kapustin Piano Works 2/cover.jpg",
-    "description": "### 曲目\nTen Bagatelles Op.59\n\nBerceuse Op.65\n\nHumoresque Op.75\n\nSonatina Op.100\n\nParaphrase on \"Aquarela do Brasil\" by Ary Barroso Op.188\n### 演奏家\nMasahiro Kawakami-川上 昌裕\n### 作曲家\nKapustin\n### 风格\nclassic(jazz)\n### 数量\n1\n### 来源\nTower Records 涩谷 东京\n### 附\n中古品.\n\n付钱的时候有填信息享优惠环节, 我跟店员说我得编一个日本名字和地址, 他说'はいはいOKOK', 最后优惠了5%."
+    "description": "### 曲目\nTen Bagatelles Op. 59\n\nBerceuse Op. 65\n\nHumoresque Op. 75\n\nSonatina Op. 100\n\nParaphrase on \"Aquarela do Brasil\" by Ary Barroso Op. 188\n### 演奏家\nMasahiro Kawakami-川上 昌裕\n### 作曲家\nKapustin\n### 风格\nclassic(jazz)\n### 数量\n1\n### 来源\nTower Records 涩谷 东京\n### 附\n中古品.\n\n付钱的时候有填信息享优惠环节, 我跟店员说我得编一个日本名字和地址, 他说'はいはいOKOK', 最后优惠了5%."
   },
   {
     "type": "cd",
     "title": "ARGERICH PERLMAN BEETHOVEN & FRANCK Sonata",
     "image": "../CDs/ARGERICH PERLMAN BEETHOVEN & FRANCK Sonata/cover.jpg",
-    "description": "### 曲目\nSonata for piano and violin No.9 in A major, Op.47 \"Kreutzer\" - Beethoven\n\nViolin Sonata in A major - Franck\n### 演奏家\nArgerich-阿格里奇(piano)\n\nPerlamn-帕尔曼(violin)\n### 作曲家\nBeethoven, Franck\n### 风格\nclassic\n### 数量\n1\n### 来源\nMusic Store 北京王府井\n### 附\n带签名.\n\n这是第一次在北京找到Franck的作品, 第二次是在芳草地的Echo Records.\n\ncd介绍上贴着店员小哥写的介绍, 只有'阿格里奇'四个字是粗黑色油墨字迹, 其余用蓝色签字笔书写. 我找Franck, 他评价我比较少见; 找Cory Wong的专辑, 评价为听得好, 可惜店内没货. 走之前他推荐我<蓦然回首>的OST并在店内播放, 我表示没看过不会买, 他说'谁他妈让你买了, 我是让你听', 纯正的北京口音. \n\n这个店挺贵的."
+    "description": "### 曲目\nSonata for piano and violin No. 9 in A major, Op. 47 \"Kreutzer\" - Beethoven\n\nViolin Sonata in A major - Franck\n### 演奏家\nArgerich-阿格里奇(piano)\n\nPerlamn-帕尔曼(violin)\n### 作曲家\nBeethoven, Franck\n### 风格\nclassic\n### 数量\n1\n### 来源\nMusic Store 北京王府井\n### 附\n带签名.\n\n这是第一次在北京找到Franck的作品, 第二次是在芳草地的Echo Records.\n\ncd介绍上贴着店员小哥写的介绍, 只有'阿格里奇'四个字是粗黑色油墨字迹, 其余用蓝色签字笔书写. 我找Franck, 他评价我比较少见; 找Cory Wong的专辑, 评价为听得好, 可惜店内没货. 走之前他推荐我<蓦然回首>的OST并在店内播放, 我表示没看过不会买, 他说'谁他妈让你买了, 我是让你听', 纯正的北京口音. \n\n这个店挺贵的."
   },
   {
     "type": "cd",
@@ -39,7 +39,7 @@ const siteData = [
     "type": "cd",
     "title": "Nikolai KAPUSTIN Eight Concer Etudes & 24 Preludes",
     "image": "../CDs/Nikolai KAPUSTIN Eight Concer Etudes & 24 Preludes/cover.jpg",
-    "description": "### 曲目\nEight Concert Etudes, Op.40\n\n\n24 Preludes in Jazz Style, Op.53\n### 演奏家\nCatherin Gordeladze(piano)\n### 作曲家\nKapustin\n### 风格\nclassic(jazz)\n### 数量\n1\n### 来源\nTower Records 涩谷 东京\n### 附\n中古品.\n\n这张太有名了.\n\n付钱的时候有填信息享优惠环节, 我跟店员说我得编一个日本名字和地址, 他说'はいはいOKOK', 最后优惠了5%."
+    "description": "### 曲目\nEight Concert Etudes, Op. 40\n\n\n24 Preludes in Jazz Style, Op. 53\n### 演奏家\nCatherin Gordeladze(piano)\n### 作曲家\nKapustin\n### 风格\nclassic(jazz)\n### 数量\n1\n### 来源\nTower Records 涩谷 东京\n### 附\n中古品.\n\n这张太有名了.\n\n付钱的时候有填信息享优惠环节, 我跟店员说我得编一个日本名字和地址, 他说'はいはいOKOK', 最后优惠了5%."
   },
   {
     "type": "cd",
@@ -57,19 +57,19 @@ const siteData = [
     "type": "cd",
     "title": "Kapustin 24 Preludes and Fugues for Piano Op.82, Violin Sonata etc",
     "image": "../CDs/Kapustin 24 Preludes and Fugues for Piano Op.82, Violin Sonata etc/cover.jpg",
-    "description": "### 曲目\n24 Preludes and Fufues for Piano Op.82\n\nElegy for Cello and Piano Op.96\n\nBurlesque for Cello and Piano Op.97\n\nNearly Waltz for Cello and Piano Op.98\n\nViolin Sonata Op.70\n### 演奏家\nNikolai Kapustin(piano) 领衔\n\nAlexander Zagorinsky(cello)\n\nAlexander Chernov(violin)\n### 作曲家\nKapustin\n### 风格\nclassic(jazz)\n### 数量\n1\n### 来源\nTower Records 涩谷 东京\n### 附\n中古品.\n\nKapustin本人演奏.\n\n这张cd的介绍书特别容易拿出来.\n\n付钱的时候有填信息享优惠环节, 我跟店员说我得编一个日本名字和地址, 他说'はいはいOKOK', 最后优惠了5%."
+    "description": "### 曲目\n24 Preludes and Fufues for Piano Op. 82\n\nElegy for Cello and Piano Op. 96\n\nBurlesque for Cello and Piano Op. 97\n\nNearly Waltz for Cello and Piano Op. 98\n\nViolin Sonata Op. 70\n### 演奏家\nNikolai Kapustin(piano) 领衔\n\nAlexander Zagorinsky(cello)\n\nAlexander Chernov(violin)\n### 作曲家\nKapustin\n### 风格\nclassic(jazz)\n### 数量\n1\n### 来源\nTower Records 涩谷 东京\n### 附\n中古品.\n\nKapustin本人演奏.\n\n这张cd的介绍书特别容易拿出来.\n\n付钱的时候有填信息享优惠环节, 我跟店员说我得编一个日本名字和地址, 他说'はいはいOKOK', 最后优惠了5%."
   },
   {
     "type": "cd",
     "title": "Rachmaninov Piano Concerto No.2 & Tchaikovsky Piano Concerto No.1",
     "image": "../CDs/Rachmaninov Piano Concerto No.2 & Tchaikovsky Piano Concerto No.1/cover.jpg",
-    "description": "### 曲目\nConcerto for Piano and Orchestra no.2 in C minor - Rachmaninov\n\nConcerto for Piano and Orchestra no.1 in B flat minor - Tchaikovsky\n### 演奏家\nSviatoslav Richter\n\nWarsaw National Philharmonic Orchestra-华沙爱乐乐团\n\nStanislaw Wislocki\n\nWiener Symphoniker-维也纳爱乐乐团\n\nHerbert Von Karajan\n### 作曲家\nRachmaninov, Tchaikovsky\n### 风格\nclassic\n### 数量\n1\n### 来源\n伊青唱片 天津河西\n### 附\n老板热情展示cd机."
+    "description": "### 曲目\nConcerto for Piano and Orchestra no. 2 in C minor - Rachmaninov\n\nConcerto for Piano and Orchestra no. 1 in B flat minor - Tchaikovsky\n### 演奏家\nSviatoslav Richter\n\nWarsaw National Philharmonic Orchestra-华沙爱乐乐团\n\nStanislaw Wislocki\n\nWiener Symphoniker-维也纳爱乐乐团\n\nHerbert Von Karajan\n### 作曲家\nRachmaninov, Tchaikovsky\n### 风格\nclassic\n### 数量\n1\n### 来源\n伊青唱片 天津河西\n### 附\n老板热情展示cd机."
   },
   {
     "type": "cd",
     "title": "Kapustin Chamber Music 1",
     "image": "../CDs/Kapustin Chamber Music 1/cover.jpg",
-    "description": "### 曲目\nSinfonietta, Op.49\n\nSonata for Flute & Piano, Op.125\n\nSonata for Violin & Piano, Op.70\n\nParaphrase on Dizzy Gillespie's MANTECA for Two Pianos, Op.129\n### 演奏家\nMasahiro Kawakami-川上 昌裕(piano) 领衔\n\nYukari Kawakami-川上 ゆかり(piano)\n\nAkane Otsuka-大塚 茜(flute)\n\nHayato Takenaka-竹中 勇人(violin)\n### 作曲家\nKapustin\n### 风格\nclassic(jazz)\n### 数量\n1\n### 来源\nTower Records 涩谷 东京\n### 附\n中古品.\n\nOp.49连续演奏.\n\n付钱的时候有填信息享优惠环节, 我跟店员说我得编一个日本名字和地址, 他说'はいはいOKOK', 最后优惠了5%."
+    "description": "### 曲目\nSinfonietta, Op. 49\n\nSonata for Flute & Piano, Op. 125\n\nSonata for Violin & Piano, Op. 70\n\nParaphrase on Dizzy Gillespie's MANTECA for Two Pianos, Op. 129\n### 演奏家\nMasahiro Kawakami-川上 昌裕(piano) 领衔\n\nYukari Kawakami-川上 ゆかり(piano)\n\nAkane Otsuka-大塚 茜(flute)\n\nHayato Takenaka-竹中 勇人(violin)\n### 作曲家\nKapustin\n### 风格\nclassic(jazz)\n### 数量\n1\n### 来源\nTower Records 涩谷 东京\n### 附\n中古品.\n\nOp. 49连续演奏.\n\n付钱的时候有填信息享优惠环节, 我跟店员说我得编一个日本名字和地址, 他说'はいはいOKOK', 最后优惠了5%."
   },
   {
     "type": "cd",

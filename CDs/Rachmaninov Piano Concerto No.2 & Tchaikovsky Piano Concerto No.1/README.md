@@ -1,9 +1,9 @@
 # Rachmaninov Piano Concerto No.2 & Tchaikovsky Piano Concerto No.1
 ![_](./cover.jpg)
 ### 曲目
-Concerto for Piano and Orchestra no.2 in C minor - Rachmaninov
+Concerto for Piano and Orchestra no. 2 in C minor - Rachmaninov
 
-Concerto for Piano and Orchestra no.1 in B flat minor - Tchaikovsky
+Concerto for Piano and Orchestra no. 1 in B flat minor - Tchaikovsky
 ### 演奏家
 Sviatoslav Richter
 

@@ -1,10 +1,10 @@
 # Nikolai KAPUSTIN Eight Concer Etudes & 24 Preludes
 ![_](./cover.jpg)
 ### 曲目
-Eight Concert Etudes, Op.40
+Eight Concert Etudes, Op. 40
 
 
-24 Preludes in Jazz Style, Op.53
+24 Preludes in Jazz Style, Op. 53
 ### 演奏家
 Catherin Gordeladze(piano)
 ### 作曲家

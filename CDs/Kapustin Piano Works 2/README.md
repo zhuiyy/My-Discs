@@ -1,15 +1,15 @@
 # Kapustin Piano Works 2
 ![_](./cover.jpg)
 ### 曲目
-Ten Bagatelles Op.59
+Ten Bagatelles Op. 59
 
-Berceuse Op.65
+Berceuse Op. 65
 
-Humoresque Op.75
+Humoresque Op. 75
 
-Sonatina Op.100
+Sonatina Op. 100
 
-Paraphrase on "Aquarela do Brasil" by Ary Barroso Op.188
+Paraphrase on "Aquarela do Brasil" by Ary Barroso Op. 188
 ### 演奏家
 Masahiro Kawakami-川上 昌裕
 ### 作曲家

@@ -94,7 +94,7 @@ const siteData = [
     "title": "11.26.2025",
     "subtitle": "11/26/2025",
     "image": "../concerts/pics/11_26_2025.jpg",
-    "description": "- **Symphony No.5 in B-flat major (Anton Bruckner)**\n- *Christian Thielemann & Vienna Philharmonic Orchestra*\n- 国家大剧院, 音乐厅"
+    "description": "- **Bruckner: Symphony No. 5 in B-flat major**\n- *Christian Thielemann & Vienna Philharmonic Orchestra*\n- 国家大剧院, 音乐厅"
   },
   {
     "type": "concert",
@@ -108,13 +108,20 @@ const siteData = [
     "title": "05.13.2025",
     "subtitle": "05/13/2025",
     "image": "../concerts/pics/05_13_2025.jpg",
-    "description": "- **Symphony No.9 in D major (Gustav Mahler)**\n- *Adam Fischer & Düsseldorf Symphony Orchestra*\n- 北京大学百周年纪念讲堂, 观众厅"
+    "description": "- **Mahler: Symphony No. 9 in D major**\n- *Adam Fischer & Düsseldorf Symphony Orchestra*\n- 北京大学百周年纪念讲堂, 观众厅"
   },
   {
     "type": "concert",
     "title": "03.09.2025",
     "subtitle": "03/09/2025",
     "image": "../concerts/pics/03_09_2025.jpg",
-    "description": "- **2025“春之声”**\n  - Festive Overture (Dmitriy Dmitriyevich Shostakovich)\n  - The Snowstorm (George Sviridov)\n  - *—INTERMISSION—*\n  - Symphony No.5 in C sharp minor (Gustav Mahler)\n- *李昊冉 & 北京交响乐团*\n- 北京大学百周年纪念讲堂, 观众厅"
+    "description": "- **2025“春之声”**\n  - Shostakovich: Festive Overture, Op. 96\n  - Sviridov: The Snowstorm\n  - *—INTERMISSION—*\n  - Mahler: Symphony No. 5 in C sharp minor\n- *李昊冉 & 北京交响乐团*\n- 北京大学百周年纪念讲堂, 观众厅"
+  },
+  {
+    "type": "concert",
+    "title": "12.15.2024",
+    "subtitle": "12/15/2024",
+    "image": "../concerts/pics/12_15_2024.jpg",
+    "description": "- **刘晓禹钢琴独奏音乐会**\n  - Tchaikovsky: The Seasons, Op. 37a (excerpt)\n  - ~~Mendelssohn & Rachmaninoff: A Midsummer Night‘s Dream: Scherzo(Arr.)~~\n  - Tchaikovsky: Swan Lake: Dance of the Four Swans(Arr. Wild for Piano)\n  - Scriabin: Sonata No. 4 in F-sharp major, Op. 30\n  - *—INTERMISSION—*\n  - Tchaikovsky: The Seasons, Op. 37a (excerpt) \n  - Prokofiev: Piano Sonata No. 7 in B-flat major, Op. 83\n- *刘晓禹(Bruce Liu)*\n- 国家大剧院, 音乐厅"
   }
 ];

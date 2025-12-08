@@ -123,5 +123,40 @@ const siteData = [
     "subtitle": "12/15/2024",
     "image": "../concerts/pics/12_15_2024.jpg",
     "description": "- **刘晓禹钢琴独奏音乐会**\n  - Tchaikovsky: The Seasons, Op. 37a (excerpt)\n  - ~~Mendelssohn & Rachmaninoff: A Midsummer Night‘s Dream: Scherzo(Arr.)~~\n  - Tchaikovsky: Swan Lake: Dance of the Four Swans(Arr. Wild for Piano)\n  - Scriabin: Sonata No. 4 in F-sharp major, Op. 30\n  - *—INTERMISSION—*\n  - Tchaikovsky: The Seasons, Op. 37a (excerpt) \n  - Prokofiev: Piano Sonata No. 7 in B-flat major, Op. 83\n- *刘晓禹(Bruce Liu)*\n- 国家大剧院, 音乐厅"
+  },
+  {
+    "type": "concert",
+    "title": "11.23.2024",
+    "subtitle": "11/23/2024",
+    "image": "../concerts/pics/11_23_2024.jpg",
+    "description": "- **Klavio室内乐音乐会**\n  - Braga: Angel's Serenade\n  - Franck: Violin Sonata in A Major, FWV 8\n  - Clara Schumann: 3 Romances, Op. 22\n  - Smetana: Piano Trio in G Minor, Op. 15\n  - Beethoven: Piano Trio No. 3 in C Minor, Op. 1/3\n  - Chopin: Cello Sonata in G minor, Op. 65\n  - *—INTERMISSION—*\n  - Beethoven: Violin Sonata No. 1 in D Major, Op. 12/1\n  - Grieg: Violin Sonata No. 3 in C Minor, Op. 45\n  - Dvořák: Piano Trio No. 3 in F Minor, Op. 65\n  - Dvořák: Piano Quintet No. 2 in A Major, Op. 81\n  - Debussy: Cello Sonata in D Minor, L. 135\n  - Hindemith: Viola Sonata in F Major, Op. 11/4\n- *PKU 钢琴社 & 提琴社*\n- 北京大学新太阳学生活动中心, B101"
+  },
+  {
+    "type": "concert",
+    "title": "10.20.2024",
+    "subtitle": "10/20/2024",
+    "image": "../concerts/pics/10_20_2024.jpg",
+    "description": "- **自图画深处——罗维钢琴独奏音乐会**\n  - Granados: 12 Spanish Dances, Op. 37, No. 2 \"Oriental\"\n  - Albéniz: Iberia, Book 1\n  - Albéniz: Suite Española No. 1, Op. 47, No. 1 \"Granada\"\n  - Debussy: Suite bergamasque, L. 75, III. Clair de lune\n  - Petitgirard: Journey to the West\n  - *—INTERMISSION—*\n  - Mussorgsky: Pictures at an Exhibition\n- *罗维*\n- 北京大学百周年纪念讲堂, 观众厅"
+  },
+  {
+    "type": "concert",
+    "title": "10.15.2024",
+    "subtitle": "10/15/2024",
+    "image": "../concerts/pics/10_15_2024.jpg",
+    "description": "- **“音画百讲·壶畔新声”秋季音乐会**\n  - Beethoven: Violin Sonata No. 3 in G Major, Op. 30, I. Allegro\n  - Ešenvalds: Only in Sleep\n  - Fauré: Sicilienne, Op. 78\n  - Vlasov: Bossa Nova\n  - J.S. Bach: Violin Sonata No. 1 in G Minor, BWV 1001\n  - Gardel: Por una Cabeza\n  - Giraud: Sous le ciel de Paris\n  - Haydn: String Quartet No. 5 in D Major, Op. 64, \"The Lark\", I. Allegro moderato\n  - McCartney: Yesterday\n  - 黄依伊(Yiyi Huang): Tango de café\n  - Gärtner: Viennese Melody (arr. Kreisler)\n  - Franck: Violin Sonata in A Major, FWV 8, II. Allegro\n- *PKU 提琴社, 钢琴社, 手风琴社, 口琴社, 元声室内合唱团 & BNU 提琴协会*\n- 北京大学百周年纪念讲堂, 咖啡厅"
+  },
+  {
+    "type": "concert",
+    "title": "09.28.2024",
+    "subtitle": "09/28/2024",
+    "image": "../concerts/pics/09_28_2024.jpg",
+    "description": "- **“完全柴可夫斯基”2024爱乐汇交响乐团音乐季(09.28)**\n  - Tchaikovsky: Piano Concerto No. 1 in B-flat Minor, Op. 23\n  - Tchaikovsky: Symphony No. 3 in D Major, Op. 29 \"Polish\"\n- *Konstantin Scherbakov & 刘炬 & 北京爱乐汇交响乐团*\n- 北京音乐厅"
+  },
+  {
+    "type": "concert",
+    "title": "08.18.2022",
+    "subtitle": "08/18/2022",
+    "image": "../concerts/pics/08_18_2022.jpg",
+    "description": "- **自由飞翔——爵士钢琴家阿布独奏音乐会**\n  - Kapustin: 8 Concert Etudes, Op. 40\n  - A Bu: 在梦中睡, Fantasie \"Sleeping in a Dream\", Op. 7\n  - Kapustin: Variations, Op. 41\n  - *—INTERMISSION—*\n  - Garner: Misty (Arr. A Bu)\n  - Corea: Armando's Rhumba\n  - A Bu: *Improvisation*\n  - A Bu: 第一钢琴奏鸣曲“松”, Piano Sonata No. 1 \"Pinus\"\n- *阿布 A Bu*\n- 中山公园音乐堂"
   }
 ];

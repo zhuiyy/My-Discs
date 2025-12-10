@@ -1,7 +1,7 @@
 # 精华
 ![_](./cover.jpg)
 ### 曲目
-- **0~9: 20** 
+- **1~8: 20** 
   - 100,000 Voices - Jacob Collier
     - Fusion
   - 8films - 宇宙コンビニ
@@ -136,7 +136,7 @@
 - **Y: Yearning**
   - Your Move - Tim Gordon, Bad Reputation, Cassidy Mackenzie
     - Future Bounce
-- **阿~做: 星河入梦**
+- **彳~珠: 星河入梦**
   - 彳亍 - 麦浚龙
     - Pop
   - 第一钢琴奏鸣曲“松”：第一乐章 · 活泼地 - Abu

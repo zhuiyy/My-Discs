@@ -170,5 +170,13 @@ const musicData = [
   {
     "title": "City of Tears - Christopher Larkin",
     "path": "music/City of Tears - Christopher Larkin.flac"
+  },
+  {
+    "title": "Hang Glide - Anomalie,Rob Araujo -",
+    "path": "music/Hang Glide - Anomalie,Rob Araujo -.mp3"
+  },
+  {
+    "title": "The Fourth Deuce - George Shearing ",
+    "path": "music/The Fourth Deuce - George Shearing .mp3"
   }
 ];

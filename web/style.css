@@ -37,7 +37,8 @@ body {
 
 /* Ripple / Pulse Effect when Music Playing */
 body.music-playing .background-animation {
-    animation: gradientBG 15s ease infinite, pulseLight 4s ease-in-out infinite;
+    /* Removed pulse animation as requested */
+    animation: gradientBG 15s ease infinite;
 }
 
 @keyframes pulseLight {
@@ -295,220 +296,192 @@ h1 {
     background: var(--accent);
 }
 
-/* Music Player & Gramophone */
+/* Music Player - Flat & Hidden Design */
 #music-player-container {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    bottom: 40px;
+    right: 0;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    z-index: 100;
-    background: rgba(255, 255, 255, 0.8);
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
-    padding: 15px;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    border: 1px solid rgba(255,255,255,0.5);
-    transition: transform 0.3s ease;
+    padding: 10px;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    box-shadow: -5px 5px 20px rgba(0,0,0,0.1);
+    border: 1px solid rgba(0,0,0,0.05);
+    border-right: none;
+    
+    /* Hidden State */
+    transform: translateX(calc(100% - 50px)); /* Show only handle */
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 #music-player-container:hover {
-    transform: translateY(-5px);
+    transform: translateX(0);
 }
 
-.gramophone {
+.player-handle {
+    width: 40px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--accent);
+    font-size: 1.5rem;
+    padding-right: 10px;
+}
+
+.player-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding-right: 15px;
+}
+
+/* Flat Gramophone Icon */
+.flat-gramophone {
     position: relative;
-    width: 120px;
-    height: 100px;
-    margin-bottom: 10px;
-    perspective: 600px;
+    width: 60px;
+    height: 60px;
 }
 
-.record-wrapper {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    width: 80px;
-    height: 80px;
-    transform: rotateX(60deg);
-    transform-style: preserve-3d;
+.flat-record-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
 }
 
-/* Static Shadow under the record */
-.record-shadow {
-    position: absolute;
-    top: 5px;
-    left: 0;
+.flat-record {
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    background: rgba(0,0,0,0.4);
-    filter: blur(4px);
-    transform: translateZ(-1px); /* Behind record */
-}
-
-.record {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    background: #111;
+    background: #1a1a1a;
     position: relative;
+    /* Grooves */
+    background-image: repeating-radial-gradient(
+        #1a1a1a 0, 
+        #1a1a1a 2px, 
+        #2a2a2a 3px, 
+        #2a2a2a 4px
+    );
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     animation: spin 4s linear infinite;
     animation-play-state: paused;
 }
 
-/* Vinyl Grooves Texture */
-.record-grooves {
+/* Shine on record */
+.flat-record::after {
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    background: repeating-radial-gradient(
-        #111 0, 
-        #111 2px, 
-        #222 3px, 
-        #222 4px
-    );
+    background: linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.1) 50%, transparent 60%);
 }
 
-/* Static Shine Overlay */
-.record-shine {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    background: linear-gradient(135deg, 
-        transparent 40%, 
-        rgba(255,255,255,0.15) 50%, 
-        transparent 60%
-    );
-    pointer-events: none;
-    z-index: 5; /* Above record */
-}
-
-/* Spindle (Center Pin) */
-.record-spindle {
+.flat-label {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 6px;
-    height: 6px;
-    background: #ccc; /* Silver */
-    border-radius: 50%;
-    z-index: 10;
-    box-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-}
-
-.record-label {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 30px;
-    height: 30px;
+    width: 30%;
+    height: 30%;
     background: var(--accent);
     border-radius: 50%;
-    z-index: 2;
-    overflow: hidden;
-    border: 1px solid rgba(0,0,0,0.2);
+    border: 2px solid #1a1a1a;
 }
 
-/* Label Detail */
-.record-label::after {
-    content: '';
+.flat-tonearm {
     position: absolute;
-    top: 0;
-    left: 50%;
-    width: 50%;
-    height: 100%;
-    background: rgba(255,255,255,0.2);
-}
-
-.tonearm {
-    position: absolute;
-    top: 5px;
-    right: 10px;
-    width: 60px;
-    height: 5px;
+    top: 5px; /* Lower down */
+    right: 0px; /* Aligned with edge */
+    width: 35px; /* Shorter */
+    height: 4px;
     background: #888;
     transform-origin: right center;
-    transform: rotate(0deg); /* Parked state: Horizontal */
+    transform: rotate(0deg); /* Parked */
     transition: transform 0.5s ease;
-    z-index: 10;
     border-radius: 2px;
+    z-index: 10;
 }
 
-.tonearm::after {
+.flat-tonearm::before {
     content: '';
     position: absolute;
-    left: -5px;
-    top: -2px;
+    right: -3px;
+    top: -3px;
     width: 10px;
     height: 10px;
-    background: #444;
-    border-radius: 2px;
-}
-
-.base {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 20px;
-    background: #5d4037;
-    border-radius: 4px;
-    transform: translateZ(-20px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    background: #555;
+    border-radius: 50%;
 }
 
 /* Playing State */
-.playing .record {
+.playing .flat-record {
     animation-play-state: running;
 }
 
-.playing .tonearm {
-    transform: rotate(-25deg); /* Playing state: Down to record */
+.playing .flat-tonearm {
+    transform: rotate(-25deg); /* Playing: Rotates inwards to center (Counter-Clockwise) */
 }
 
-@keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
+/* Music Info & Scrolling Title */
 .music-info {
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 120px; /* Reduced width */
+}
+
+.music-title-container {
     width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    margin-bottom: 5px;
+    mask-image: linear-gradient(90deg, transparent 0%, black 5%, black 95%, transparent 100%);
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 5%, black 95%, transparent 100%);
 }
 
 .music-title {
+    display: inline-block;
     font-family: 'Lato', sans-serif;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     color: var(--text-main);
-    margin-bottom: 5px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 150px;
+    padding-left: 100%; /* Start off-screen */
+    animation: scroll-text 12s linear infinite;
+}
+
+@keyframes scroll-text {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
+
+.music-controls {
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
 
 .control-btn {
     background: none;
     border: none;
-    font-size: 1.5rem; /* Larger icon */
+    font-size: 1.2rem;
     cursor: pointer;
     color: var(--accent);
+    padding: 5px;
     transition: transform 0.2s;
-    padding: 10px; /* Larger touch area */
-    touch-action: manipulation; /* Optimize for touch */
-    z-index: 101; /* Ensure it's clickable */
 }
 
 .control-btn:hover {
-    transform: scale(1.2);
+    transform: scale(1.1);
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }

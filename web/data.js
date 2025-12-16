@@ -168,7 +168,7 @@ const siteData = [
 ];
 const musicData = [
   {
-    "title": "ChristCity of Tears - Christopher Larkin",
-    "path": "music/ChristCity of Tears - Christopher Larkin.flac"
+    "title": "City of Tears - Christopher Larkin",
+    "path": "music/City of Tears - Christopher Larkin.flac"
   }
 ];

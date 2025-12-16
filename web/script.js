@@ -112,46 +112,52 @@ document.addEventListener('DOMContentLoaded', () => {
         const audioPlayer = document.getElementById('audio-player');
         const playPauseBtn = document.getElementById('play-pause-btn');
         const musicTitle = document.getElementById('music-title');
-        const gramophone = document.querySelector('.gramophone');
+        const gramophone = document.querySelector('.flat-gramophone'); // Updated selector
 
         // Pick random track
         const randomTrack = musicData[Math.floor(Math.random() * musicData.length)];
         
         // Setup Audio
-        audioPlayer.src = randomTrack.path;
-        audioPlayer.preload = 'auto'; // Help with iOS playback
+        // Encode the path to handle spaces and special characters
+        audioPlayer.src = encodeURI(randomTrack.path);
+        audioPlayer.preload = 'auto'; 
         musicTitle.textContent = randomTrack.title;
-        musicTitle.title = randomTrack.title; // Tooltip for long titles
+        musicTitle.title = randomTrack.title;
+
+        // Error handling
+        audioPlayer.addEventListener('error', (e) => {
+            console.error("Audio error:", audioPlayer.error);
+            musicTitle.textContent = "Error loading track";
+        });
 
         // Play/Pause Toggle
         const togglePlay = (e) => {
-            // Prevent double firing if both touch and click are handled
-            if (e.type === 'touchstart') {
-                e.preventDefault(); // Prevent mouse emulation
-            }
-
+            // We only use click event now to avoid conflicts
+            // Touch devices will fire click after a short delay, which is fine
+            
             if (audioPlayer.paused) {
                 const playPromise = audioPlayer.play();
                 if (playPromise !== undefined) {
                     playPromise.then(() => {
                         playPauseBtn.textContent = '⏸';
                         gramophone.classList.add('playing');
-                        document.body.classList.add('music-playing'); // Add ripple effect
+                        document.body.classList.add('music-playing');
                     }).catch(error => {
                         console.error("Playback failed:", error);
-                        // UI feedback for failure?
+                        // If autoplay was prevented, we might need user interaction again
+                        // But this IS a user interaction handler, so it should work.
                     });
                 }
             } else {
                 audioPlayer.pause();
                 playPauseBtn.textContent = '▶';
                 gramophone.classList.remove('playing');
-                document.body.classList.remove('music-playing'); // Remove ripple effect
+                document.body.classList.remove('music-playing');
             }
         };
 
         playPauseBtn.addEventListener('click', togglePlay);
-        playPauseBtn.addEventListener('touchstart', togglePlay, { passive: false });
+        // Removed touchstart to prevent double-firing or prevention issues
 
         // Auto-play next (random) when ended
         audioPlayer.addEventListener('ended', () => {

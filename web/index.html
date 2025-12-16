@@ -50,22 +50,25 @@
     </div>
 
     <div id="music-player-container">
-        <div class="gramophone">
-            <div class="record-wrapper">
-                <div class="record-shadow"></div>
-                <div class="record" id="record">
-                    <div class="record-label"></div>
-                </div>
-                <div class="record-shine"></div>
-                <div class="record-spindle"></div>
-            </div>
-            <div class="tonearm" id="tonearm"></div>
-            <div class="base"></div>
+        <div class="player-handle">
+            <span class="icon">♫</span>
         </div>
-        <div class="music-info">
-            <div class="music-title" id="music-title">Select a track...</div>
-            <div class="music-controls">
-                <button id="play-pause-btn" class="control-btn">▶</button>
+        <div class="player-content">
+            <div class="flat-gramophone">
+                <div class="flat-record-wrapper">
+                    <div class="flat-record" id="record">
+                        <div class="flat-label"></div>
+                    </div>
+                    <div class="flat-tonearm" id="tonearm"></div>
+                </div>
+            </div>
+            <div class="music-info">
+                <div class="music-title-container">
+                    <div class="music-title" id="music-title">Select a track...</div>
+                </div>
+                <div class="music-controls">
+                    <button id="play-pause-btn" class="control-btn">▶</button>
+                </div>
             </div>
         </div>
         <audio id="audio-player"></audio>

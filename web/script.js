@@ -99,4 +99,53 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize
     renderGalleries();
+    initMusicPlayer();
+
+    // Music Player Logic
+    function initMusicPlayer() {
+        if (typeof musicData === 'undefined' || musicData.length === 0) {
+            console.log('No music data found');
+            document.getElementById('music-player-container').style.display = 'none';
+            return;
+        }
+
+        const audioPlayer = document.getElementById('audio-player');
+        const playPauseBtn = document.getElementById('play-pause-btn');
+        const musicTitle = document.getElementById('music-title');
+        const gramophone = document.querySelector('.gramophone');
+
+        // Pick random track
+        const randomTrack = musicData[Math.floor(Math.random() * musicData.length)];
+        
+        // Setup Audio
+        audioPlayer.src = randomTrack.path;
+        musicTitle.textContent = randomTrack.title;
+        musicTitle.title = randomTrack.title; // Tooltip for long titles
+
+        // Play/Pause Toggle
+        playPauseBtn.addEventListener('click', () => {
+            if (audioPlayer.paused) {
+                audioPlayer.play().then(() => {
+                    playPauseBtn.textContent = '⏸';
+                    gramophone.classList.add('playing');
+                }).catch(e => console.error("Playback failed:", e));
+            } else {
+                audioPlayer.pause();
+                playPauseBtn.textContent = '▶';
+                gramophone.classList.remove('playing');
+            }
+        });
+
+        // Auto-play next (random) when ended
+        audioPlayer.addEventListener('ended', () => {
+            const nextTrack = musicData[Math.floor(Math.random() * musicData.length)];
+            audioPlayer.src = nextTrack.path;
+            musicTitle.textContent = nextTrack.title;
+            musicTitle.title = nextTrack.title;
+            audioPlayer.play().then(() => {
+                playPauseBtn.textContent = '⏸';
+                gramophone.classList.add('playing');
+            });
+        });
+    }
 });

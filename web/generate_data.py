@@ -47,6 +47,7 @@ def parse_concerts_readme(readme_path):
 
 def generate_data():
     data = []
+    music_data = []
     
     base_dir = os.path.dirname(os.path.abspath(__file__))
     root_dir = os.path.dirname(base_dir)
@@ -109,8 +110,6 @@ def generate_data():
                     entry['sort_date'] = info['title'] # Assuming title is date like 11.26.2025
                 else:
                      entry['description'] = f'Concert photo from {item.split(".")[0].replace("_", "/")}'
-                     # Try to guess date from filename if not in readme
-                     # Filename format: 11_26_2025.jpg -> 11.26.2025
                      try:
                          date_str = item.split('.')[0].replace('_', '.')
                          entry['sort_date'] = date_str
@@ -135,10 +134,23 @@ def generate_data():
     # Combine Data
     data.extend(concert_entries)
 
+    # Process Music
+    music_path = os.path.join(base_dir, 'music')
+    if os.path.exists(music_path):
+        for item in os.listdir(music_path):
+            if item.lower().endswith(('.mp3', '.flac', '.wav', '.ogg', '.m4a')):
+                entry = {
+                    'title': os.path.splitext(item)[0],
+                    'path': f'music/{item}'
+                }
+                music_data.append(entry)
+
     # Write to data.js
     output_path = os.path.join(base_dir, 'data.js')
     with open(output_path, 'w', encoding='utf-8') as f:
-        f.write(f'const siteData = {json.dumps(data, ensure_ascii=False, indent=2)};')
+        # Write both siteData and musicData
+        f.write(f'const siteData = {json.dumps(data, ensure_ascii=False, indent=2)};\n')
+        f.write(f'const musicData = {json.dumps(music_data, ensure_ascii=False, indent=2)};')
 
 if __name__ == '__main__':
     generate_data()

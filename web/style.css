@@ -32,6 +32,18 @@ body {
     background: linear-gradient(45deg, #f9f9f7, #f0f0eb, #fdfdfb);
     background-size: 400% 400%;
     animation: gradientBG 15s ease infinite;
+    transition: filter 1s ease;
+}
+
+/* Ripple / Pulse Effect when Music Playing */
+body.music-playing .background-animation {
+    animation: gradientBG 15s ease infinite, pulseLight 4s ease-in-out infinite;
+}
+
+@keyframes pulseLight {
+    0% { filter: brightness(1); }
+    50% { filter: brightness(1.03) hue-rotate(-5deg); }
+    100% { filter: brightness(1); }
 }
 
 @keyframes gradientBG {
@@ -323,33 +335,74 @@ h1 {
     transform-style: preserve-3d;
 }
 
+/* Static Shadow under the record */
+.record-shadow {
+    position: absolute;
+    top: 5px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.4);
+    filter: blur(4px);
+    transform: translateZ(-1px); /* Behind record */
+}
+
 .record {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: #111;
+    position: relative;
+    animation: spin 4s linear infinite;
+    animation-play-state: paused;
+}
+
+/* Vinyl Grooves Texture */
+.record-grooves {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     border-radius: 50%;
     background: repeating-radial-gradient(
         #111 0, 
         #111 2px, 
-        #333 3px, 
-        #333 4px
+        #222 3px, 
+        #222 4px
     );
-    position: relative;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.5);
-    animation: spin 4s linear infinite;
-    animation-play-state: paused;
 }
 
-.record::before {
-    content: '';
+/* Static Shine Overlay */
+.record-shine {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: linear-gradient(135deg, 
+        transparent 40%, 
+        rgba(255,255,255,0.15) 50%, 
+        transparent 60%
+    );
+    pointer-events: none;
+    z-index: 5; /* Above record */
+}
+
+/* Spindle (Center Pin) */
+.record-spindle {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 15px;
-    height: 15px;
-    background: #000;
+    width: 6px;
+    height: 6px;
+    background: #ccc; /* Silver */
     border-radius: 50%;
-    z-index: 2;
+    z-index: 10;
+    box-shadow: 1px 1px 2px rgba(0,0,0,0.5);
 }
 
 .record-label {
@@ -361,7 +414,20 @@ h1 {
     height: 30px;
     background: var(--accent);
     border-radius: 50%;
-    z-index: 1;
+    z-index: 2;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.2);
+}
+
+/* Label Detail */
+.record-label::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    background: rgba(255,255,255,0.2);
 }
 
 .tonearm {
@@ -372,7 +438,7 @@ h1 {
     height: 5px;
     background: #888;
     transform-origin: right center;
-    transform: rotate(-30deg);
+    transform: rotate(0deg); /* Parked state: Horizontal */
     transition: transform 0.5s ease;
     z-index: 10;
     border-radius: 2px;
@@ -407,7 +473,7 @@ h1 {
 }
 
 .playing .tonearm {
-    transform: rotate(15deg); /* Move arm to record */
+    transform: rotate(-25deg); /* Playing state: Down to record */
 }
 
 @keyframes spin {
@@ -434,10 +500,13 @@ h1 {
 .control-btn {
     background: none;
     border: none;
-    font-size: 1.2rem;
+    font-size: 1.5rem; /* Larger icon */
     cursor: pointer;
     color: var(--accent);
     transition: transform 0.2s;
+    padding: 10px; /* Larger touch area */
+    touch-action: manipulation; /* Optimize for touch */
+    z-index: 101; /* Ensure it's clickable */
 }
 
 .control-btn:hover {

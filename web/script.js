@@ -119,22 +119,39 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Setup Audio
         audioPlayer.src = randomTrack.path;
+        audioPlayer.preload = 'auto'; // Help with iOS playback
         musicTitle.textContent = randomTrack.title;
         musicTitle.title = randomTrack.title; // Tooltip for long titles
 
         // Play/Pause Toggle
-        playPauseBtn.addEventListener('click', () => {
+        const togglePlay = (e) => {
+            // Prevent double firing if both touch and click are handled
+            if (e.type === 'touchstart') {
+                e.preventDefault(); // Prevent mouse emulation
+            }
+
             if (audioPlayer.paused) {
-                audioPlayer.play().then(() => {
-                    playPauseBtn.textContent = '⏸';
-                    gramophone.classList.add('playing');
-                }).catch(e => console.error("Playback failed:", e));
+                const playPromise = audioPlayer.play();
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        playPauseBtn.textContent = '⏸';
+                        gramophone.classList.add('playing');
+                        document.body.classList.add('music-playing'); // Add ripple effect
+                    }).catch(error => {
+                        console.error("Playback failed:", error);
+                        // UI feedback for failure?
+                    });
+                }
             } else {
                 audioPlayer.pause();
                 playPauseBtn.textContent = '▶';
                 gramophone.classList.remove('playing');
+                document.body.classList.remove('music-playing'); // Remove ripple effect
             }
-        });
+        };
+
+        playPauseBtn.addEventListener('click', togglePlay);
+        playPauseBtn.addEventListener('touchstart', togglePlay, { passive: false });
 
         // Auto-play next (random) when ended
         audioPlayer.addEventListener('ended', () => {

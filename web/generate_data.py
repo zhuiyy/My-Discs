@@ -117,15 +117,18 @@ def generate_data():
                          entry['sort_date'] = '01.01.1970'
 
                 concert_entries.append(entry)
+    # Sort Concerts by README order
+    readme_order = list(concert_info.keys())
 
     # Sort Concerts by Date (Newest First)
-    def parse_date(date_str):
-        try:
-            return datetime.strptime(date_str, '%m.%d.%Y')
-        except ValueError:
-            return datetime.min
+    def get_sort_index(entry):
+        # Extract the filename from the image path (e.g., '../concerts/pics/file.jpg' -> 'file.jpg')
+        filename = entry['image'].split('/')[-1]
+        if filename in readme_order:
+            return readme_order.index(filename)
+        return 99999  # Keep unlisted items at the very end
 
-    concert_entries.sort(key=lambda x: parse_date(x['sort_date']), reverse=True)
+    concert_entries.sort(key=get_sort_index)
 
     # Clean up sort_date before saving
     for entry in concert_entries:

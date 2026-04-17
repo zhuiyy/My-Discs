@@ -1,4 +1,26 @@
 ## 关于音乐会的记录
+#### 15.04.2026
+- **埃萨-佩卡·萨洛宁、卡普松与巴黎管弦乐团音乐会II**
+  - Debussy: Rondes de printemps, Images pour orchestre
+  - Mozart: Violin Concerto No.3 in G major, K.216(with Capuçon)
+  - Gluck: Melody, Dance of the Blessed Spirits, Orfeo ed Euridice(Capuçon)
+  - *—INTERMISSION—*
+  - Sibelius: Symphony No. 5 in E-flat major, Op. 82
+  - Stölzel, Bach: Bist du bei mir
+- *Esa-Pekka Salonen & Renaud Capuçon & Orchestre de Paris*
+- 国家大剧院, 音乐厅
+
+![aEg](./pics/15_04_2026.jpg)
+
+#### 29.03.2026
+- **伊万·费舍尔与布达佩斯节日管弦乐团音乐会II**
+  - Sergei Prokofiev: Cinderella Suite No. 1, Op. 107
+  - Brahms: Symphony No.2 in D major, Op. 73
+- *Iván Fischer & Budapest Festival Orchestra*
+- 国家大剧院, 音乐厅
+
+![yIg](./pics/29_03_2026.jpg)
+
 #### 11.26.2025
 - **Bruckner: Symphony No. 5 in B-flat major**
 - *Christian Thielemann & Vienna Philharmonic Orchestra*

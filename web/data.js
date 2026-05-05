@@ -37,6 +37,12 @@ const siteData = [
   },
   {
     "type": "cd",
+    "title": "BRUCE LIU THE SEASONS TCHAIKOVSKY",
+    "image": "../CDs/BRUCE LIU THE SEASONS TCHAIKOVSKY/cover.jpg",
+    "description": "### 曲目\nThe Seasons Op. 37bis(37a)\n### 演奏家\nBruce Liu(刘晓禹)\n### 作曲家\nTchaikovsky\n### 风格\nclassic\n### 数量\n1\n### 来源\nRaccoon Records 浣熊唱片 上海 徐汇\n### 附\n已进入'浣熊唱片岳阳路店16群'."
+  },
+  {
+    "type": "cd",
     "title": "Holidays",
     "image": "../CDs/Holidays/cover.jpg",
     "description": "### 曲目\n- Deck the Halls\n- OTannenbaum\n- Silent Night\n- Last Christmas\n- The First Noel\n- Dance of the Sugar Plum Fairy\n- Santa Claus is Coming to Town\n- Have Yourself a Merry Little Christmas\n- Sleigh Ride\n\n### 制作人\nAnomalie\n### 风格\nElectronic/Jazz/Pop\n### 数量\n1\n### 来源\nAnomalie官网"

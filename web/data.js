@@ -15,7 +15,7 @@ const siteData = [
     "type": "cd",
     "title": "ARGERICH PERLMAN BEETHOVEN & FRANCK Sonata",
     "image": "../CDs/ARGERICH PERLMAN BEETHOVEN & FRANCK Sonata/cover.jpg",
-    "description": "### 曲目\nSonata for piano and violin No. 9 in A major, Op. 47 \"Kreutzer\" - Beethoven\n\nViolin Sonata in A major - Franck\n### 演奏家\nArgerich-阿格里奇(piano)\n\nPerlamn-帕尔曼(violin)\n### 作曲家\nBeethoven, Franck\n### 风格\nclassic\n### 数量\n1\n### 来源\nMusic Store 北京王府井\n### 附\n带签名.\n\n这是第一次在北京找到Franck的作品, 第二次是在芳草地的Echo Records.\n\ncd介绍上贴着店员小哥写的介绍, 只有'阿格里奇'四个字是粗黑色油墨字迹, 其余用蓝色签字笔书写. 我找Franck, 他评价我比较少见; 找Cory Wong的专辑, 评价为听得好, 可惜店内没货. 走之前他推荐我<蓦然回首>的OST并在店内播放, 我表示没看过不会买, 他说'谁他妈让你买了, 我是让你听', 纯正的北京口音. \n\n这个店挺贵的."
+    "description": "### 曲目\nSonata for piano and violin No. 9 in A major, Op. 47 \"Kreutzer\" - Beethoven\n\nViolin Sonata in A major - Franck\n### 演奏家\nArgerich-阿格里奇(piano)\n\nPerlamn-帕尔曼(violin)\n### 作曲家\nBeethoven, Franck\n### 风格\nclassic\n### 数量\n1\n### 来源\nMusic Store 北京王府井\n### 附\n带签名.\n\n这是第一次在北京找到Franck的作品, 第二次是在芳草地的Echo Records.\n\ncd介绍上贴着店员小哥写的介绍, 只有'阿格里奇'四个字是粗黑色油墨字迹, 其余用蓝色签字笔书写. 我告诉他我爱听Cory Wong, 他觉得挺不错, 可惜那张没出过CD. 走之前他推荐我<蓦然回首>的OST, 还在店内播放, 我表示没看过不会买, 他说'谁他妈让你买了, 我是让你听!'... \n\n这个店挺贵的.\n\n26年初又仔细看了一下常听的Franck Violin Sonata版本, 才发现钢琴也是阿格里奇弹的."
   },
   {
     "type": "cd",
@@ -39,7 +39,7 @@ const siteData = [
     "type": "cd",
     "title": "BRUCE LIU THE SEASONS TCHAIKOVSKY",
     "image": "../CDs/BRUCE LIU THE SEASONS TCHAIKOVSKY/cover.jpg",
-    "description": "### 曲目\nThe Seasons Op. 37bis(37a)\n### 演奏家\nBruce Liu(刘晓禹)\n### 作曲家\nTchaikovsky\n### 风格\nclassic\n### 数量\n1\n### 来源\nRaccoon Records 浣熊唱片 上海 徐汇\n### 附\n已进入'浣熊唱片岳阳路店16群'."
+    "description": "### 曲目\nThe Seasons Op. 37bis(37a)\n### 演奏家\nBruce Liu(刘晓禹)\n### 作曲家\nTchaikovsky\n### 风格\nclassic\n### 数量\n1\n### 来源\nRaccoon Records 浣熊唱片 上海 徐汇\n### 附\n已进入'浣熊唱片岳阳路店16群'.\n\n这张的CD封面设计真是不错"
   },
   {
     "type": "cd",
@@ -87,7 +87,7 @@ const siteData = [
     "type": "cd",
     "title": "Prokofiev Piano Concerto No.3 & Ravel Piano Concerto in G & Ravel Gaspard de la Nuit",
     "image": "../CDs/Prokofiev Piano Concerto No.3 & Ravel Piano Concerto in G & Ravel Gaspard de la Nuit/cover.jpg",
-    "description": "### 曲目\nConcerto for Piano and Orchestra no. 3 in C major - Prokofiev\n\nConcerto for Piano and Orchestra in G major - Ravel\n\nGaspard de la nuit - Ravel\n### 演奏家\nMartha Argerich\n\nBerliner Philharmoniker-柏林爱乐乐团\n\nClaudio Abbado\n### 作曲家\nProkofiev, Ravel\n### 风格\nclassic\n### 数量\n1\n### 来源\nRaccoon Records 浣熊唱片 上海 徐汇\n### 附\n已进入'浣熊唱片岳阳路店16群'."
+    "description": "### 曲目\nConcerto for Piano and Orchestra no. 3 in C major - Prokofiev\n\nConcerto for Piano and Orchestra in G major - Ravel\n\nGaspard de la nuit - Ravel\n### 演奏家\nMartha Argerich\n\nBerliner Philharmoniker-柏林爱乐乐团\n\nClaudio Abbado\n### 作曲家\nProkofiev, Ravel\n### 风格\nclassic\n### 数量\n1\n### 来源\nRaccoon Records 浣熊唱片 上海 徐汇\n### 附\n已进入'浣熊唱片岳阳路店16群'.\n\n这张专辑封面我不知为何非常熟悉."
   },
   {
     "type": "cd",

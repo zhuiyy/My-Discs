@@ -85,6 +85,12 @@ const siteData = [
   },
   {
     "type": "cd",
+    "title": "Prokofiev Piano Concerto No.3 & Ravel Piano Concerto in G & Ravel Gaspard de la Nuit",
+    "image": "../CDs/Prokofiev Piano Concerto No.3 & Ravel Piano Concerto in G & Ravel Gaspard de la Nuit/cover.jpg",
+    "description": "### 曲目\nConcerto for Piano and Orchestra no. 3 in C major - Prokofiev\n\nConcerto for Piano and Orchestra in G major - Ravel\n\nGaspard de la nuit - Ravel\n### 演奏家\nMartha Argerich\n\nBerliner Philharmoniker-柏林爱乐乐团\n\nClaudio Abbado\n### 作曲家\nProkofiev, Ravel\n### 风格\nclassic\n### 数量\n1\n### 来源\nRaccoon Records 浣熊唱片 上海 徐汇\n### 附\n已进入'浣熊唱片岳阳路店16群'."
+  },
+  {
+    "type": "cd",
     "title": "KAPUSTIN & SCHNITTKE CELLO CONCERTOS",
     "image": "../CDs/KAPUSTIN & SCHNITTKE CELLO CONCERTOS/cover.jpg",
     "description": "### 曲目\nConcerto for cello and orchestra no. 1, Op. 85 - Kapustin\n\nConcerto for cello and orchestra no. 1 - Schnittke\n### 演奏家\nEckart Runge(cello) 领衔\n\nRundfunk-Sinfonieorchester Berlin-柏林广播交响乐团\n\nFrank Strobel(conductor) \n### 作曲家\nKapustin, Schnittke\n### 风格\nclassic(jazz)\n### 数量\n1\n### 来源\nTower Records 涩谷 东京\n### 附\n附纸套.\n\n付钱的时候有填信息享优惠环节, 我跟店员说我得编一个日本名字和地址, 他说'はいはいOKOK', 最后优惠了5%."

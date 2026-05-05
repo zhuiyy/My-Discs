@@ -1,5 +1,5 @@
 # Prokofiev Piano Concerto No.3 & Ravel Piano Concerto in G & Ravel Gaspard de la Nuit
-![_](./cover.jpeg)
+![_](./cover.jpg)
 ### 曲目
 Concerto for Piano and Orchestra no. 3 in C major - Prokofiev
 

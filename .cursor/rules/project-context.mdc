@@ -1,0 +1,42 @@
+---
+description: My-Discs 仓库结构、生成流程与部署说明
+alwaysApply: true
+---
+
+# My-Discs 项目上下文
+
+个人 **CD 收藏 + 音乐会照片** 记录站：Markdown 与封面图是数据源，静态页展示画廊与详情。
+
+## 目录
+
+| 路径 | 作用 |
+|------|------|
+| `CDs/<专辑名>/` | 每张盘一个文件夹：`README.md` 文案，`cover.{jpg,jpeg,png,webp}` 封面（文件名小写 `cover` + 扩展名） |
+| `concerts/README.md` | 音乐会条目：`####` 日期段内写 `![](./pics/文件名.jpg)` 关联 `concerts/pics/` |
+| `concerts/pics/` | 音乐会图片 |
+| `web/` | 站点：`index.html`、`style.css`、`script.js`、由脚本生成的 `data.js` |
+| `web/music/` | 播放器音频；`.gitignore` 忽略 `*` 仅保留 `.gitkeep`（若曾提交过音频则仍可能被 Git 跟踪） |
+| 根 `index.html` | 重定向到 `web/index.html`（GitHub Pages） |
+
+## 修改数据后必做
+
+在根目录执行：
+
+```bash
+python3 web/generate_data.py
+```
+
+会重写 `web/data.js`（`siteData` + `musicData`）。改完 `CDs/`、`concerts/` 或 `web/music/` 后应重新生成并**把 `data.js` 一并提交**，否则线上画廊与 CI 不一致。
+
+## CI
+
+`.github/workflows/verify-data.yml`：在 PR/push 上运行上述脚本，并对 `web/data.js` 做 `git diff --exit-code`，防止漏跑生成器。
+
+## 前端要点
+
+- 依赖 CDN：`marked`（Markdown 详情）、`DOMPurify`（消毒后再 `innerHTML`）
+- 音乐会条目顺序由 `concerts/README.md` 中出现的图片顺序决定；未在 README 引用的 `pics/` 文件会在生成时向 **stderr** 打警告
+
+## 线上地址
+
+根 `README.md` 中的 GitHub Pages 链接（`.../web/index.html`）。

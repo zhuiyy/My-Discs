@@ -1,7 +1,23 @@
 import os
 import json
 import re
-from datetime import datetime
+import sys
+
+COVER_EXTENSIONS = ('.jpg', '.jpeg', '.png', '.webp')
+
+
+def find_cover_filename(item_path):
+    """Return the cover image basename if present, else None."""
+    try:
+        names = os.listdir(item_path)
+    except OSError:
+        return None
+    for name in names:
+        base, ext = os.path.splitext(name)
+        if base.lower() == 'cover' and ext.lower() in COVER_EXTENSIONS:
+            return name
+    return None
+
 
 def parse_concerts_readme(readme_path):
     """
@@ -58,14 +74,14 @@ def generate_data():
         for item in os.listdir(cds_path):
             item_path = os.path.join(cds_path, item)
             if os.path.isdir(item_path):
-                cover_path = os.path.join(item_path, 'cover.jpg')
+                cover_name = find_cover_filename(item_path)
                 readme_path = os.path.join(item_path, 'README.md')
-                
-                if os.path.exists(cover_path):
+
+                if cover_name:
                     entry = {
                         'type': 'cd',
                         'title': item,
-                        'image': f'../CDs/{item}/cover.jpg',
+                        'image': f'../CDs/{item}/{cover_name}',
                         'description': ''
                     }
                     
@@ -93,7 +109,7 @@ def generate_data():
 
     if os.path.exists(concerts_pics_path):
         for item in os.listdir(concerts_pics_path):
-            if item.lower().endswith(('.jpg', '.jpeg', '.png')):
+            if item.lower().endswith(('.jpg', '.jpeg', '.png', '.webp')):
                 entry = {
                     'type': 'concert',
                     'title': 'Concert Memory',
@@ -107,14 +123,11 @@ def generate_data():
                     info = concert_info[item]
                     entry['title'] = info['title']
                     entry['description'] = info['description']
-                    entry['sort_date'] = info['title'] # Assuming title is date like 11.26.2025
+                    entry['sort_date'] = info['title']  # Assuming title is date like 11.26.2025
                 else:
-                     entry['description'] = f'Concert photo from {item.split(".")[0].replace("_", "/")}'
-                     try:
-                         date_str = item.split('.')[0].replace('_', '.')
-                         entry['sort_date'] = date_str
-                     except:
-                         entry['sort_date'] = '01.01.1970'
+                    stem = item.rsplit('.', 1)[0]
+                    entry['description'] = f'Concert photo from {stem.replace("_", "/")}'
+                    entry['sort_date'] = stem.replace('_', '.')
 
                 concert_entries.append(entry)
     # Sort Concerts by README order
@@ -129,6 +142,18 @@ def generate_data():
         return 99999  # Keep unlisted items at the very end
 
     concert_entries.sort(key=get_sort_index)
+
+    unlisted_pics = sorted(
+        e['image'].split('/')[-1]
+        for e in concert_entries
+        if e['image'].split('/')[-1] not in concert_info
+    )
+    if unlisted_pics:
+        print(
+            'Warning: concert image(s) not referenced in concerts/README.md: '
+            + ', '.join(unlisted_pics),
+            file=sys.stderr,
+        )
 
     # Clean up sort_date before saving
     for entry in concert_entries:

@@ -1,4 +1,19 @@
 ## 关于音乐会的记录
+
+#### 10.05.2026
+- **北京大学2026五四交响音乐会**
+  - Beethoven: Symphony No. 4 in B-flat major, Op. 60
+  - *—INTERMISSION—*
+  - Prokofiev: Violin Concerto No. 1 in D major, Op. 19
+  - Ysaÿe: Sonata for Solo Violin No. 2 in A minor, Op. 27, IV. "Les furies"(Allegro furioso)
+  - Stravinsky: The Firebird Suite(1919 version)
+  - 张帅: 雪花
+  - 李旭昊: 钢铁洪流进行曲
+- *黄屹 & 苏千寻 & 中国爱乐乐团*
+- 北京大学百周年纪念讲堂, 观众厅
+
+![Bhb](./pics/10_05_2026.jpg)
+
 #### 15.04.2026
 - **埃萨-佩卡·萨洛宁、卡普松与巴黎管弦乐团音乐会II**
   - Debussy: Rondes de printemps, Images pour orchestre

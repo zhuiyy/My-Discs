@@ -7,6 +7,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalDescription = document.getElementById('modal-description');
     const closeButton = document.querySelector('.close-button');
 
+    let lastFocusedBeforeModal = null;
+
+    function encodeMusicSrc(path) {
+        return encodeURI(path);
+    }
+
+    function renderMarkdownToSafeHtml(markdown) {
+        const raw = marked.parse(markdown);
+        return typeof DOMPurify !== 'undefined'
+            ? DOMPurify.sanitize(raw)
+            : raw;
+    }
+
     // Shuffle function (Fisher-Yates)
     function shuffle(array) {
         let currentIndex = array.length, randomIndex;
@@ -24,6 +37,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const el = document.createElement('div');
         el.className = 'gallery-item';
         el.style.animationDelay = `${index * 0.05}s`; // Staggered animation
+        el.setAttribute('role', 'button');
+        el.setAttribute('tabindex', '0');
+        el.setAttribute('aria-label', item.title);
 
         const img = document.createElement('img');
         img.src = item.image;
@@ -31,7 +47,14 @@ document.addEventListener('DOMContentLoaded', () => {
         img.loading = 'lazy';
 
         el.appendChild(img);
-        el.addEventListener('click', () => openModal(item));
+        const activate = () => openModal(item);
+        el.addEventListener('click', activate);
+        el.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                activate();
+            }
+        });
         return el;
     }
 
@@ -63,27 +86,68 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Modal Logic
+    function isModalOpen() {
+        return !modal.hasAttribute('hidden');
+    }
+
     function openModal(item) {
+        lastFocusedBeforeModal = document.activeElement;
+        modal.removeAttribute('hidden');
+        modal.setAttribute('aria-hidden', 'false');
+
         modalImage.src = item.image;
+        modalImage.alt = item.title;
         modalTitle.textContent = item.title;
-        
+
         if (item.description) {
-            modalDescription.innerHTML = marked.parse(item.description);
+            modalDescription.innerHTML = renderMarkdownToSafeHtml(item.description);
         } else {
             modalDescription.innerHTML = '<p>No description available.</p>';
         }
 
         modal.style.display = 'block';
         document.body.style.overflow = 'hidden';
+        closeButton.focus();
     }
 
     function closeModal() {
         modal.style.display = 'none';
+        modal.setAttribute('hidden', '');
         document.body.style.overflow = 'auto';
         modalImage.src = '';
+        modalImage.alt = '';
+        modal.setAttribute('aria-hidden', 'true');
+        modalDescription.innerHTML = '';
+        if (lastFocusedBeforeModal && typeof lastFocusedBeforeModal.focus === 'function') {
+            lastFocusedBeforeModal.focus();
+        }
+        lastFocusedBeforeModal = null;
     }
 
     closeButton.addEventListener('click', closeModal);
+
+    modal.addEventListener('keydown', (event) => {
+        if (event.key !== 'Tab' || !isModalOpen()) {
+            return;
+        }
+        const focusableSelector =
+            'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+        const focusables = Array.from(modal.querySelectorAll(focusableSelector)).filter(
+            (el) => el.offsetWidth > 0 || el.offsetHeight > 0 || el === closeButton
+        );
+        if (focusables.length === 0) {
+            return;
+        }
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+            event.preventDefault();
+            last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+            event.preventDefault();
+            first.focus();
+        }
+    });
 
     window.addEventListener('click', (event) => {
         if (event.target === modal) {
@@ -92,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape' && modal.style.display === 'block') {
+        if (event.key === 'Escape' && isModalOpen()) {
             closeModal();
         }
     });
@@ -116,11 +180,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Pick random track
         const randomTrack = musicData[Math.floor(Math.random() * musicData.length)];
-        
+
         // Setup Audio
         // Encode the path to handle spaces and special characters
-        audioPlayer.src = encodeURI(randomTrack.path);
-        audioPlayer.preload = 'auto'; 
+        audioPlayer.src = encodeMusicSrc(randomTrack.path);
+        audioPlayer.preload = 'auto';
         musicTitle.textContent = randomTrack.title;
         musicTitle.title = randomTrack.title;
 
@@ -134,7 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const togglePlay = (e) => {
             // We only use click event now to avoid conflicts
             // Touch devices will fire click after a short delay, which is fine
-            
+
             if (audioPlayer.paused) {
                 const playPromise = audioPlayer.play();
                 if (playPromise !== undefined) {
@@ -162,7 +226,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Auto-play next (random) when ended
         audioPlayer.addEventListener('ended', () => {
             const nextTrack = musicData[Math.floor(Math.random() * musicData.length)];
-            audioPlayer.src = nextTrack.path;
+            audioPlayer.src = encodeMusicSrc(nextTrack.path);
             musicTitle.textContent = nextTrack.title;
             musicTitle.title = nextTrack.title;
             audioPlayer.play().then(() => {

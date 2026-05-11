@@ -1,0 +1,17 @@
+name: Verify generated data
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  data-js:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Regenerate web/data.js
+        run: python3 web/generate_data.py
+      - name: Check for drift
+        run: git diff --exit-code web/data.js

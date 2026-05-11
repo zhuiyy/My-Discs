@@ -141,6 +141,11 @@ h1 {
     filter: brightness(1.05);
 }
 
+.gallery-item:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
 /* Modal */
 .modal {
     display: none;
@@ -181,9 +186,15 @@ h1 {
     position: absolute;
     top: 20px;
     right: 25px;
+    margin: 0;
+    padding: 4px 10px;
+    border: none;
+    background: transparent;
     color: var(--text-main);
+    font: inherit;
     font-size: 35px;
     font-weight: 300;
+    line-height: 1;
     cursor: pointer;
     z-index: 10;
     transition: color 0.3s;

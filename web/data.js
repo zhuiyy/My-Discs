@@ -43,6 +43,12 @@ const siteData = [
   },
   {
     "type": "cd",
+    "title": "Métropole 1&2",
+    "image": "../CDs/Métropole 1&2/cover.png",
+    "description": "### 曲目\n#### I\n- Ouverture\n- Métropole\n- Daybreak\n- New Space\n- Interlude\n- Velours\n- Le Bleury\n- Éouligue\n#### II\n- Canal\n- Madison\n- Notre-Dame Est\n- Crescent\n- Dame Ouest\n- Parc\n- Fin\n\n### 制作人\nAnomalie\n### 风格\nElectronic/Jazz/Pop\n### 数量\n1\n### 来源\nAnomalie官网"
+  },
+  {
+    "type": "cd",
     "title": "Holidays",
     "image": "../CDs/Holidays/cover.jpg",
     "description": "### 曲目\n- Deck the Halls\n- OTannenbaum\n- Silent Night\n- Last Christmas\n- The First Noel\n- Dance of the Sugar Plum Fairy\n- Santa Claus is Coming to Town\n- Have Yourself a Merry Little Christmas\n- Sleigh Ride\n\n### 制作人\nAnomalie\n### 风格\nElectronic/Jazz/Pop\n### 数量\n1\n### 来源\nAnomalie官网"
@@ -103,9 +109,22 @@ const siteData = [
   },
   {
     "type": "cd",
+    "title": "New Memories",
+    "image": "../CDs/New Memories/cover.webp",
+    "description": "### 曲目\nVariations for Piano, Op. 41 - Kapustin\n\nEight Concert Studies (Etudes) for Piano, Op. 40 - Kapustin\n\nFantasie \"Sleeping in a Dream\", Op. 7 - A Bu\n\nPiano Sonata No. 1 \"Pinus\" - A Bu\n### 演奏家\nA Bu(piano)\n### 作曲家\nKapustin, A Bu\n### 风格\nclassic(jazz)\n### 数量\n1\n### 来源\n中山音乐堂观看New Memories演出后签售\n### 附\n带有签名.\n\n这是我了解Kapustin的开始."
+  },
+  {
+    "type": "cd",
     "title": "QUEEN Greatest Hits",
     "image": "../CDs/QUEEN Greatest Hits/cover.jpg",
     "description": "### 曲目\nWe Will Rock You\n\nWe Are The Champions\n\nAnother One Bites The Dust\n\nKiller Queen\n\nSomebody To Love\n\nFat Bottomed Girls\n\nBicycle Race\n\nYou're My Best Friend\n\nCrazy Little Thing Called Love\n\nNow I'm Here\n\nPlay The Game\n\nSeven Seas Of Rhye\n\nBody Language\n\nSave Me\n\nDon't Stop Me Now\n\nGood Old Fashioned Lover Boy\n\nI Want To Break Free\n### 演奏家/歌手\nQueen\n### 作曲家\nQueen\n### 风格\nrock\n### 数量\n1\n### 来源\n泰和黑胶音乐 大连中山广场\n### 附\n无."
+  },
+  {
+    "type": "concert",
+    "title": "10.05.2026",
+    "subtitle": "10/05/2026",
+    "image": "../concerts/pics/10_05_2026.jpg",
+    "description": "- **北京大学2026五四交响音乐会**\n  - Beethoven: Symphony No. 4 in B-flat major, Op. 60\n  - *—INTERMISSION—*\n  - Prokofiev: Violin Concerto No. 1 in D major, Op. 19\n  - Ysaÿe: Sonata for Solo Violin No. 2 in A minor, Op. 27, IV. \"Les furies\"(Allegro furioso)\n  - Stravinsky: The Firebird Suite(1919 version)\n  - 张帅: 雪花\n  - 李旭昊: 钢铁洪流进行曲\n- *黄屹 & 苏千寻 & 中国爱乐乐团*\n- 北京大学百周年纪念讲堂, 观众厅"
   },
   {
     "type": "concert",

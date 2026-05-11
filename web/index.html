@@ -1,14 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Musical Journey</title>
+    <meta name="description" content="CD 收藏与音乐会记录：封面画廊与简介。">
+    <meta property="og:title" content="My Discs & Memories">
+    <meta property="og:description" content="CD 收藏与音乐会记录。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://zhuiyy.github.io/My-Discs/web/index.html">
+    <meta property="og:image" content="https://zhuiyy.github.io/My-Discs/CDs/%E7%B2%BE%E5%8D%8E/cover.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked@12.0.0/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.7/dist/purify.min.js"></script>
 </head>
 <body>
     <div class="background-animation"></div>
@@ -34,12 +41,12 @@
         </section>
     </main>
 
-    <div id="modal" class="modal">
+    <div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-hidden="true" hidden>
         <div class="modal-content">
-            <span class="close-button">&times;</span>
+            <button type="button" class="close-button" aria-label="关闭">&times;</button>
             <div class="modal-body">
                 <div class="modal-image-container">
-                    <img id="modal-image" src="" alt="Detail">
+                    <img id="modal-image" src="" alt="">
                 </div>
                 <div class="modal-info">
                     <h2 id="modal-title"></h2>

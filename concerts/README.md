@@ -4,8 +4,8 @@
 - **北京大学2026五四交响音乐会**
   - Beethoven: Symphony No. 4 in B-flat major, Op. 60
   - *—INTERMISSION—*
-  - Prokofiev: Violin Concerto No. 1 in D major, Op. 19
-  - Ysaÿe: Sonata for Solo Violin No. 2 in A minor, Op. 27, IV. "Les furies"(Allegro furioso)
+  - Prokofiev: Violin Concerto No. 1 in D major, Op. 19(with 苏千寻)
+  - Ysaÿe: Sonata for Solo Violin No. 2 in A minor, Op. 27, IV. "Les furies"(Allegro furioso)(苏千寻)
   - Stravinsky: The Firebird Suite(1919 version)
   - 张帅: 雪花
   - 李旭昊: 钢铁洪流进行曲

@@ -124,7 +124,7 @@ const siteData = [
     "title": "10.05.2026",
     "subtitle": "10/05/2026",
     "image": "../concerts/pics/10_05_2026.jpg",
-    "description": "- **北京大学2026五四交响音乐会**\n  - Beethoven: Symphony No. 4 in B-flat major, Op. 60\n  - *—INTERMISSION—*\n  - Prokofiev: Violin Concerto No. 1 in D major, Op. 19\n  - Ysaÿe: Sonata for Solo Violin No. 2 in A minor, Op. 27, IV. \"Les furies\"(Allegro furioso)\n  - Stravinsky: The Firebird Suite(1919 version)\n  - 张帅: 雪花\n  - 李旭昊: 钢铁洪流进行曲\n- *黄屹 & 苏千寻 & 中国爱乐乐团*\n- 北京大学百周年纪念讲堂, 观众厅"
+    "description": "- **北京大学2026五四交响音乐会**\n  - Beethoven: Symphony No. 4 in B-flat major, Op. 60\n  - *—INTERMISSION—*\n  - Prokofiev: Violin Concerto No. 1 in D major, Op. 19(with 苏千寻)\n  - Ysaÿe: Sonata for Solo Violin No. 2 in A minor, Op. 27, IV. \"Les furies\"(Allegro furioso)(苏千寻)\n  - Stravinsky: The Firebird Suite(1919 version)\n  - 张帅: 雪花\n  - 李旭昊: 钢铁洪流进行曲\n- *黄屹 & 苏千寻 & 中国爱乐乐团*\n- 北京大学百周年纪念讲堂, 观众厅"
   },
   {
     "type": "concert",

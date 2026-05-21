@@ -1,5 +1,17 @@
 ## 关于音乐会的记录
 
+#### 18.05.2026
+- **"狂想交响"——梵志登、康托洛夫与法国广播爱乐乐团音乐会**
+  - Paganini & Rachmaninof: Rhapsody on a Theme of Paganini, Op. 43(with Kantorow)
+  - Wagner & Liszt: Isoldens Liebestod, S. 447(Kantorow)
+  - *—INTERMISSION—*
+  - Bruckner: Symphony No. 7 in E Major, WAB 107
+  - Elgar: Variations on an Original Theme, Op. 36
+- *Jaap van Zweden & Alexandre Kantorow & Orchestre philharmonique de Radio France*
+- 国家大剧院, 音乐厅
+
+![kJg](./pics/18_05_2026.jpg)
+
 #### 10.05.2026
 - **北京大学2026五四交响音乐会**
   - Beethoven: Symphony No. 4 in B-flat major, Op. 60
@@ -12,7 +24,7 @@
 - *黄屹 & 苏千寻 & 中国爱乐乐团*
 - 北京大学百周年纪念讲堂, 观众厅
 
-![Bhb](./pics/10_05_2026.jpg)
+![bhb](./pics/10_05_2026.jpg)
 
 #### 15.04.2026
 - **埃萨-佩卡·萨洛宁、卡普松与巴黎管弦乐团音乐会II**

@@ -1,5 +1,17 @@
 ## 关于音乐会的记录
 
+#### 29.05.2026
+- **"俄乐史诗"——尼尔森斯与莱比锡布商大厦管弦乐团音乐会**
+  - Rachmaninof: Piano Concerto No. 2 in C minor, Op. 18(with Avdeeva)
+  - Rachmaninof: Moments musicaux, Op. 16, No. 4 in E minor(Avdeeva)
+  - *—INTERMISSION—*
+  - Shostakovich: Symphony No. 10 in E minor, Op. 93
+  - Shostakovich: Moscow, Cheryomushki, Op. 105 – I. A Spin Through Moscow
+- *Andris Nelsons & Yulianna Avdeeva & Gewandhausorchester Leipzig*
+- 国家大剧院, 音乐厅
+
+![eRg](./pics/29_05_2026.jpg)
+
 #### 18.05.2026
 - **"狂想交响"——梵志登、康托洛夫与法国广播爱乐乐团音乐会**
   - Paganini & Rachmaninof: Rhapsody on a Theme of Paganini, Op. 43(with Kantorow)
@@ -48,14 +60,14 @@
 
 ![yIg](./pics/29_03_2026.jpg)
 
-#### 11.26.2025
+#### 26.11.2025
 - **Bruckner: Symphony No. 5 in B-flat major**
 - *Christian Thielemann & Vienna Philharmonic Orchestra*
 - 国家大剧院, 音乐厅
 
-![BCg](./pics/11_26_2025.jpg)
+![BCg](./pics/26_11_2025.jpg)
 
-#### 06.22.2025
+#### 22.06.2025
 - **Jazz Piano Concert——暗流**
   - 久远之地 Long Ago and far Away
   - 秋 Fall
@@ -73,15 +85,16 @@
 - *苏绍南*
 - 北京大学百周年纪念讲堂, 李莹厅
 
-![Jsb](./pics/06_22_2025.jpg)
+![Jsb](./pics/22_06_2025.jpg)
 
-#### 05.13.2025
+#### 13.05.2025
 - **Mahler: Symphony No. 9 in D major**
 - *Adam Fischer & Düsseldorf Symphony Orchestra*
 - 北京大学百周年纪念讲堂, 观众厅
-![MAb](./pics/05_13_2025.jpg)
 
-#### 03.09.2025
+![MAb](./pics/13_05_2025.jpg)
+
+#### 09.03.2025
 - **2025“春之声”**
   - Shostakovich: Festive Overture, Op. 96
   - Sviridov: The Snowstorm
@@ -90,9 +103,9 @@
 - *李昊冉 & 北京交响乐团*
 - 北京大学百周年纪念讲堂, 观众厅
 
-![2lb](./pics/03_09_2025.jpg)
+![2lb](./pics/09_03_2025.jpg)
 
-#### 12.15.2024
+#### 15.12.2024
 - **刘晓禹钢琴独奏音乐会**
   - Tchaikovsky: The Seasons, Op. 37a (excerpt)
   - ~~Mendelssohn & Rachmaninoff: A Midsummer Night‘s Dream: Scherzo(Arr.)~~
@@ -104,9 +117,9 @@
 - *刘晓禹(Bruce Liu)*
 - 国家大剧院, 音乐厅
 
-![llg](./pics/12_15_2024.jpg)
+![llg](./pics/15_12_2024.jpg)
 
-#### 11.23.2024
+#### 23.11.2024
 - **Klavio室内乐音乐会**
   - Braga: Angel's Serenade
   - Franck: Violin Sonata in A Major, FWV 8
@@ -124,9 +137,9 @@
 - *PKU 钢琴社 & 提琴社*
 - 北京大学新太阳学生活动中心, B101
 
-![KPb](./pics/11_23_2024.jpg)
+![KPb](./pics/23_11_2024.jpg)
 
-#### 10.20.2024
+#### 20.10.2024
 - **自图画深处——罗维钢琴独奏音乐会**
   - Granados: 12 Spanish Dances, Op. 37, No. 2 "Oriental"
   - Albéniz: Iberia, Book 1
@@ -138,9 +151,9 @@
 - *罗维*
 - 北京大学百周年纪念讲堂, 观众厅
 
-![KPb](./pics/10_20_2024.jpg)
+![KPb](./pics/20_10_2024.jpg)
 
-#### 10.15.2024
+#### 15.10.2024
 - **“音画百讲·壶畔新声”秋季音乐会**
   - Beethoven: Violin Sonata No. 3 in G Major, Op. 30, I. Allegro
   - Ešenvalds: Only in Sleep
@@ -157,18 +170,18 @@
 - *PKU 提琴社, 钢琴社, 手风琴社, 口琴社, 元声室内合唱团 & BNU 提琴协会*
 - 北京大学百周年纪念讲堂, 咖啡厅
 
-![yPb](./pics/10_15_2024.jpg)
+![yPb](./pics/15_10_2024.jpg)
 
-#### 09.28.2024
+#### 28.09.2024
 - **“完全柴可夫斯基”2024爱乐汇交响乐团音乐季**
   - Tchaikovsky: Piano Concerto No. 1 in B-flat Minor, Op. 23
   - Tchaikovsky: Symphony No. 3 in D Major, Op. 29 "Polish"
 - *Konstantin Scherbakov & 刘炬 & 北京爱乐汇交响乐团*
 - 北京音乐厅
 
-![wKb](./pics/09_28_2024.jpg)
+![wKb](./pics/28_09_2024.jpg)
 
-#### 08.18.2022
+#### 18.08.2022
 - **自由飞翔——爵士钢琴家阿布独奏音乐会**
   - Kapustin: 8 Concert Etudes, Op. 40
   - A Bu: 在梦中睡, Fantasie "Sleeping in a Dream", Op. 7
@@ -181,4 +194,4 @@
 - *阿布 A Bu*
 - 中山公园音乐堂
 
-![zaz](./pics/08_18_2022.jpg)
+![zaz](./pics/18_08_2022.jpg)

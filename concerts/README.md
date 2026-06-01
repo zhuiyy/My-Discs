@@ -2,8 +2,8 @@
 
 #### 29.05.2026
 - **"俄乐史诗"——尼尔森斯与莱比锡布商大厦管弦乐团音乐会**
-  - Rachmaninof: Piano Concerto No. 2 in C minor, Op. 18(with Avdeeva)
-  - Rachmaninof: Moments musicaux, Op. 16, No. 4 in E minor(Avdeeva)
+  - Rachmaninoff: Piano Concerto No. 2 in C minor, Op. 18(with Avdeeva)
+  - Rachmaninoff: Moments musicaux, Op. 16, No. 4 in E minor(Avdeeva)
   - *—INTERMISSION—*
   - Shostakovich: Symphony No. 10 in E minor, Op. 93
   - Shostakovich: Moscow, Cheryomushki, Op. 105 – I. A Spin Through Moscow
@@ -14,7 +14,7 @@
 
 #### 18.05.2026
 - **"狂想交响"——梵志登、康托洛夫与法国广播爱乐乐团音乐会**
-  - Paganini & Rachmaninof: Rhapsody on a Theme of Paganini, Op. 43(with Kantorow)
+  - Paganini & Rachmaninoff: Rhapsody on a Theme of Paganini, Op. 43(with Kantorow)
   - Wagner & Liszt: Isoldens Liebestod, S. 447(Kantorow)
   - *—INTERMISSION—*
   - Bruckner: Symphony No. 7 in E Major, WAB 107

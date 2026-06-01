@@ -124,14 +124,14 @@ const siteData = [
     "title": "29.05.2026",
     "subtitle": "29/05/2026",
     "image": "../concerts/pics/29_05_2026.jpg",
-    "description": "- **\"俄乐史诗\"——尼尔森斯与莱比锡布商大厦管弦乐团音乐会**\n  - Rachmaninof: Piano Concerto No. 2 in C minor, Op. 18(with Avdeeva)\n  - Rachmaninof: Moments musicaux, Op. 16, No. 4 in E minor(Avdeeva)\n  - *—INTERMISSION—*\n  - Shostakovich: Symphony No. 10 in E minor, Op. 93\n  - Shostakovich: Moscow, Cheryomushki, Op. 105 – I. A Spin Through Moscow\n- *Andris Nelsons & Yulianna Avdeeva & Gewandhausorchester Leipzig*\n- 国家大剧院, 音乐厅"
+    "description": "- **\"俄乐史诗\"——尼尔森斯与莱比锡布商大厦管弦乐团音乐会**\n  - Rachmaninoff: Piano Concerto No. 2 in C minor, Op. 18(with Avdeeva)\n  - Rachmaninoff: Moments musicaux, Op. 16, No. 4 in E minor(Avdeeva)\n  - *—INTERMISSION—*\n  - Shostakovich: Symphony No. 10 in E minor, Op. 93\n  - Shostakovich: Moscow, Cheryomushki, Op. 105 – I. A Spin Through Moscow\n- *Andris Nelsons & Yulianna Avdeeva & Gewandhausorchester Leipzig*\n- 国家大剧院, 音乐厅"
   },
   {
     "type": "concert",
     "title": "18.05.2026",
     "subtitle": "18/05/2026",
     "image": "../concerts/pics/18_05_2026.jpg",
-    "description": "- **\"狂想交响\"——梵志登、康托洛夫与法国广播爱乐乐团音乐会**\n  - Paganini & Rachmaninof: Rhapsody on a Theme of Paganini, Op. 43(with Kantorow)\n  - Wagner & Liszt: Isoldens Liebestod, S. 447(Kantorow)\n  - *—INTERMISSION—*\n  - Bruckner: Symphony No. 7 in E Major, WAB 107\n  - Elgar: Variations on an Original Theme, Op. 36\n- *Jaap van Zweden & Alexandre Kantorow & Orchestre philharmonique de Radio France*\n- 国家大剧院, 音乐厅"
+    "description": "- **\"狂想交响\"——梵志登、康托洛夫与法国广播爱乐乐团音乐会**\n  - Paganini & Rachmaninoff: Rhapsody on a Theme of Paganini, Op. 43(with Kantorow)\n  - Wagner & Liszt: Isoldens Liebestod, S. 447(Kantorow)\n  - *—INTERMISSION—*\n  - Bruckner: Symphony No. 7 in E Major, WAB 107\n  - Elgar: Variations on an Original Theme, Op. 36\n- *Jaap van Zweden & Alexandre Kantorow & Orchestre philharmonique de Radio France*\n- 国家大剧院, 音乐厅"
   },
   {
     "type": "concert",
@@ -152,7 +152,7 @@ const siteData = [
     "title": "29.03.2026",
     "subtitle": "29/03/2026",
     "image": "../concerts/pics/29_03_2026.jpg",
-    "description": "- **伊万·费舍尔与布达佩斯节日管弦乐团音乐会II**\n  - Sergei Prokofiev: Cinderella Suite No. 1, Op. 107\n  - Brahms: Symphony No.2 in D major, Op. 73\n- *Iván Fischer & Budapest Festival Orchestra*\n- 国家大剧院, 音乐厅"
+    "description": "- **伊万·费舍尔与布达佩斯节日管弦乐团音乐会II**\n  - Sergei Prokofiev: Cinderella Suite No. 1, Op. 107\n  - *—INTERMISSION—*\n  - Brahms: Symphony No.2 in D major, Op. 73\n- *Iván Fischer & Budapest Festival Orchestra*\n- 国家大剧院, 音乐厅"
   },
   {
     "type": "concert",
@@ -187,7 +187,7 @@ const siteData = [
     "title": "15.12.2024",
     "subtitle": "15/12/2024",
     "image": "../concerts/pics/15_12_2024.jpg",
-    "description": "- **刘晓禹钢琴独奏音乐会**\n  - Tchaikovsky: The Seasons, Op. 37a (excerpt)\n  - ~~Mendelssohn & Rachmaninoff: A Midsummer Night‘s Dream: Scherzo(Arr.)~~\n  - Tchaikovsky: Swan Lake: Dance of the Four Swans(Arr. Wild for Piano)\n  - Scriabin: Sonata No. 4 in F-sharp major, Op. 30\n  - *—INTERMISSION—*\n  - Tchaikovsky: The Seasons, Op. 37a (excerpt) \n  - Prokofiev: Piano Sonata No. 7 in B-flat major, Op. 83\n- *刘晓禹(Bruce Liu)*\n- 国家大剧院, 音乐厅"
+    "description": "- **刘晓禹钢琴独奏音乐会**\n  - Tchaikovsky: The Seasons, Op. 37a(excerpt)\n  - ~~Mendelssohn & Rachmaninoff: A Midsummer Night‘s Dream: Scherzo(Arr.)~~\n  - Tchaikovsky: Swan Lake: Dance of the Four Swans(Arr. Wild for Piano)\n  - Scriabin: Sonata No. 4 in F-sharp major, Op. 30\n  - *—INTERMISSION—*\n  - Tchaikovsky: The Seasons, Op. 37a(excerpt) \n  - Prokofiev: Piano Sonata No. 7 in B-flat major, Op. 83\n- *刘晓禹(Bruce Liu)*\n- 国家大剧院, 音乐厅"
   },
   {
     "type": "concert",
@@ -215,7 +215,7 @@ const siteData = [
     "title": "28.09.2024",
     "subtitle": "28/09/2024",
     "image": "../concerts/pics/28_09_2024.jpg",
-    "description": "- **“完全柴可夫斯基”2024爱乐汇交响乐团音乐季**\n  - Tchaikovsky: Piano Concerto No. 1 in B-flat Minor, Op. 23\n  - Tchaikovsky: Symphony No. 3 in D Major, Op. 29 \"Polish\"\n- *Konstantin Scherbakov & 刘炬 & 北京爱乐汇交响乐团*\n- 北京音乐厅"
+    "description": "- **“完全柴可夫斯基”2024爱乐汇交响乐团音乐季**\n  - Tchaikovsky: Piano Concerto No. 1 in B-flat Minor, Op. 23(with Scherbakov)\n  - *—INTERMISSION—*\n  - Tchaikovsky: Symphony No. 3 in D Major, Op. 29 \"Polish\"\n- *Konstantin Scherbakov & 刘炬 & 北京爱乐汇交响乐团*\n- 北京音乐厅"
   },
   {
     "type": "concert",

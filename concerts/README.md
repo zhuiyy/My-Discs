@@ -54,6 +54,7 @@
 #### 29.03.2026
 - **伊万·费舍尔与布达佩斯节日管弦乐团音乐会II**
   - Sergei Prokofiev: Cinderella Suite No. 1, Op. 107
+  - *—INTERMISSION—*
   - Brahms: Symphony No.2 in D major, Op. 73
 - *Iván Fischer & Budapest Festival Orchestra*
 - 国家大剧院, 音乐厅
@@ -107,12 +108,12 @@
 
 #### 15.12.2024
 - **刘晓禹钢琴独奏音乐会**
-  - Tchaikovsky: The Seasons, Op. 37a (excerpt)
+  - Tchaikovsky: The Seasons, Op. 37a(excerpt)
   - ~~Mendelssohn & Rachmaninoff: A Midsummer Night‘s Dream: Scherzo(Arr.)~~
   - Tchaikovsky: Swan Lake: Dance of the Four Swans(Arr. Wild for Piano)
   - Scriabin: Sonata No. 4 in F-sharp major, Op. 30
   - *—INTERMISSION—*
-  - Tchaikovsky: The Seasons, Op. 37a (excerpt) 
+  - Tchaikovsky: The Seasons, Op. 37a(excerpt) 
   - Prokofiev: Piano Sonata No. 7 in B-flat major, Op. 83
 - *刘晓禹(Bruce Liu)*
 - 国家大剧院, 音乐厅
@@ -174,7 +175,8 @@
 
 #### 28.09.2024
 - **“完全柴可夫斯基”2024爱乐汇交响乐团音乐季**
-  - Tchaikovsky: Piano Concerto No. 1 in B-flat Minor, Op. 23
+  - Tchaikovsky: Piano Concerto No. 1 in B-flat Minor, Op. 23(with Scherbakov)
+  - *—INTERMISSION—*
   - Tchaikovsky: Symphony No. 3 in D Major, Op. 29 "Polish"
 - *Konstantin Scherbakov & 刘炬 & 北京爱乐汇交响乐团*
 - 北京音乐厅

@@ -24,13 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
             : raw;
     }
 
-    function compactList(values, limit = 2) {
-        if (!Array.isArray(values)) {
-            return values ? [String(values)] : [];
-        }
-        return values.filter(Boolean).map(String).slice(0, limit);
-    }
-
     function genreTokens(item) {
         return (item.genres || [])
             .flatMap((genre) => String(genre).split(/[(),/]+/))
@@ -61,14 +54,13 @@ document.addEventListener('DOMContentLoaded', () => {
             return {
                 eyebrow: formatDate(item.date || item.subtitle),
                 detail: [item.venue, item.hall].filter(Boolean).join(' · '),
-                tags: compactList(item.performers, 2)
+                tags: []
             };
         }
-        const performers = compactList(item.artists && item.artists.length ? item.artists : item.vocalists, 2);
         return {
             eyebrow: genreTokens(item).slice(0, 2).map(titleCase).join(' · '),
-            detail: performers.join(' · ') || item.source || '',
-            tags: compactList(item.composers, 2)
+            detail: '',
+            tags: []
         };
     }
 
@@ -94,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Create Gallery Item Element
     function createGalleryItem(item, index) {
         const el = document.createElement('div');
-        el.className = `gallery-item ${item.type}-item`;
+        el.className = `gallery-item ${item.type}-item is-entering`;
         el.style.animationDelay = `${index * 0.05}s`; // Staggered animation
         el.setAttribute('role', 'button');
         el.setAttribute('tabindex', '0');
@@ -128,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const detail = document.createElement('p');
         detail.className = 'item-detail';
-        detail.textContent = meta.detail || item.source || '';
+        detail.textContent = meta.detail || '';
 
         const tags = document.createElement('div');
         tags.className = 'item-tags';
@@ -161,30 +153,69 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         cdFilters.innerHTML = '';
         const genres = Array.from(new Set(cds.flatMap(genreTokens).map(titleCase))).sort((a, b) => a.localeCompare(b));
-        const labels = ['All', ...genres];
 
-        labels.forEach((label) => {
-            const button = document.createElement('button');
-            button.type = 'button';
-            button.className = 'filter-chip';
-            button.textContent = label;
-            button.setAttribute('aria-pressed', label.toLowerCase() === activeGenre);
-            button.addEventListener('click', () => {
-                activeGenre = label.toLowerCase();
-                updateCdFilter();
+        function addGroup(title, labels, activeValue, onSelect) {
+            const group = document.createElement('div');
+            group.className = 'filter-group';
+
+            const groupLabel = document.createElement('span');
+            groupLabel.className = 'filter-label';
+            groupLabel.textContent = title;
+            group.appendChild(groupLabel);
+
+            labels.forEach((label) => {
+                const value = label === '全部' ? 'all' : label.toLowerCase();
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.className = 'filter-chip';
+                button.textContent = label;
+                button.dataset.value = value;
+                button.setAttribute('aria-pressed', value === activeValue);
+                button.addEventListener('click', () => {
+                    onSelect(value);
+                    updateCdFilter();
+                });
+                group.appendChild(button);
             });
-            cdFilters.appendChild(button);
+
+            cdFilters.appendChild(group);
+        }
+
+        addGroup('类型', ['全部', ...genres], activeGenre, (value) => {
+            activeGenre = value;
         });
     }
 
+    function updateFilterButtonStates() {
+        cdFilters.querySelectorAll('.filter-group').forEach((group) => {
+            group.querySelectorAll('.filter-chip').forEach((button) => {
+                button.setAttribute('aria-pressed', button.dataset.value === activeGenre);
+            });
+        });
+    }
+
+    function restartEnterAnimation(element, index) {
+        element.classList.remove('is-entering');
+        element.style.animationDelay = `${index * 0.05}s`;
+        void element.offsetWidth;
+        element.classList.add('is-entering');
+    }
+
     function updateCdFilter() {
+        let visibleIndex = 0;
         cdItems.forEach(({ element, item }) => {
-            const matches = activeGenre === 'all' || genreTokens(item).map((genre) => titleCase(genre).toLowerCase()).includes(activeGenre);
-            element.hidden = !matches;
+            const genres = genreTokens(item).map((genre) => titleCase(genre).toLowerCase());
+            const matchesGenre = activeGenre === 'all' || genres.includes(activeGenre);
+            if (matchesGenre) {
+                element.hidden = false;
+                restartEnterAnimation(element, visibleIndex);
+                visibleIndex += 1;
+            } else {
+                element.hidden = true;
+                element.classList.remove('is-entering');
+            }
         });
-        cdFilters.querySelectorAll('.filter-chip').forEach((button) => {
-            button.setAttribute('aria-pressed', button.textContent.toLowerCase() === activeGenre);
-        });
+        updateFilterButtonStates();
     }
 
     // Render Galleries
@@ -215,7 +246,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Render Concerts
         sortedConcerts.forEach((item, index) => {
-            concertGallery.appendChild(createGalleryItem(item, index));
+            const element = createGalleryItem(item, index);
+            element.style.gridRow = String(index + 1);
+            concertGallery.appendChild(element);
         });
     }
 
@@ -234,17 +267,9 @@ document.addEventListener('DOMContentLoaded', () => {
         modalTitle.textContent = item.title;
         modalMeta.innerHTML = '';
 
-        const metaItems = item.type === 'concert'
-            ? [
-                item.date && formatDate(item.date),
-                [item.venue, item.hall].filter(Boolean).join(' · '),
-                ...(item.performers || []).slice(0, 3)
-            ]
-            : [
-                ...genreTokens(item).slice(0, 3).map(titleCase),
-                item.source,
-                ...((item.artists && item.artists.length ? item.artists : item.vocalists) || []).slice(0, 2)
-            ];
+        const metaItems = item.type === 'cd'
+            ? genreTokens(item).slice(0, 3).map(titleCase)
+            : [];
 
         metaItems.filter(Boolean).forEach((text) => {
             modalMeta.appendChild(createMetaPill(text));

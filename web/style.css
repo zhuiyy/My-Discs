@@ -103,14 +103,32 @@ h1 {
 }
 
 .filter-bar {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
+    display: grid;
+    gap: 12px;
     margin: -0.75rem auto 2rem;
+    max-width: 1180px;
+}
+
+.filter-group {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    overflow-x: auto;
+    padding: 2px 0 8px;
+    scrollbar-width: thin;
+}
+
+.filter-label {
+    flex: 0 0 auto;
+    color: var(--accent);
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    padding-right: 3px;
 }
 
 .filter-chip {
+    flex: 0 0 auto;
     border: 1px solid rgba(184, 134, 11, 0.28);
     background: rgba(255,255,255,0.72);
     color: var(--text-main);
@@ -150,8 +168,11 @@ h1 {
     box-shadow: 0 10px 30px var(--shadow-color);
     transition: transform 0.4s ease, box-shadow 0.4s ease;
     opacity: 0;
-    animation: fadeInUp 0.8s ease-out forwards;
     padding: 10px; /* Frame effect */
+}
+
+.gallery-item.is-entering {
+    animation: fadeInUp 0.8s ease-out forwards;
 }
 
 .gallery-item[hidden] {
@@ -245,103 +266,162 @@ h1 {
 
 .concert-timeline {
     display: grid;
-    gap: 22px;
-    max-width: 1120px;
+    grid-template-columns: minmax(0, 1fr) 108px minmax(0, 1fr);
+    row-gap: 16px;
+    max-width: 1240px;
     margin: 0 auto;
+    overflow: visible;
+    padding: 10px 0 46px;
     position: relative;
 }
 
 .concert-timeline::before {
     content: '';
     position: absolute;
-    left: 145px;
-    top: 14px;
-    bottom: 14px;
+    top: 20px;
+    bottom: 38px;
+    left: 50%;
     width: 1px;
-    background: rgba(184, 134, 11, 0.28);
+    background: linear-gradient(180deg, transparent, rgba(184, 134, 11, 0.42) 12%, rgba(184, 134, 11, 0.22) 88%, transparent);
 }
 
 .concert-item {
     display: grid;
-    grid-template-columns: 140px minmax(220px, 320px) 1fr;
-    gap: 26px;
-    min-height: 210px;
+    width: min(100%, 560px);
     aspect-ratio: auto;
+    min-height: 0;
+    overflow: visible;
     padding: 0;
-    border-radius: 6px;
+    border-radius: 0;
     cursor: pointer;
-    background: rgba(255,255,255,0.78);
-    border: 1px solid rgba(0,0,0,0.06);
-    box-shadow: 0 12px 32px rgba(0,0,0,0.08);
-}
-
-.concert-item::after {
-    content: attr(data-date);
-    position: absolute;
-    left: 0;
-    top: 24px;
-    width: 118px;
-    color: var(--accent);
-    font-family: 'Playfair Display', serif;
-    font-size: 1.2rem;
-    font-weight: 700;
-    text-align: right;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    transform: none;
+    transition: none;
 }
 
 .concert-item::before {
     content: '';
     position: absolute;
-    left: 139px;
-    top: 34px;
-    width: 12px;
-    height: 12px;
+    top: 26px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
-    background: var(--accent);
-    box-shadow: 0 0 0 6px var(--bg-color);
+    background: var(--bg-color);
+    border: 1px solid var(--accent);
+    box-shadow: 0 0 0 5px var(--bg-color);
     z-index: 2;
 }
 
+.concert-item::after {
+    content: '';
+    position: absolute;
+    top: 31px;
+    width: 42px;
+    height: 1px;
+    background: rgba(184, 134, 11, 0.32);
+}
+
+.concert-item:nth-child(odd) {
+    grid-column: 1;
+    justify-self: end;
+    margin: -148px 54px 0 0;
+}
+
+.concert-item:nth-child(even) {
+    grid-column: 3;
+    justify-self: start;
+    margin: -148px 0 0 54px;
+}
+
+.concert-item:first-child {
+    margin-top: 0;
+}
+
+.concert-item:nth-child(odd)::before {
+    right: -113px;
+}
+
+.concert-item:nth-child(even)::before {
+    left: -113px;
+}
+
+.concert-item:nth-child(odd)::after {
+    right: -103px;
+}
+
+.concert-item:nth-child(even)::after {
+    left: -103px;
+}
+
 .concert-item:hover {
-    transform: translateY(-4px);
+    transform: none;
+    box-shadow: none;
 }
 
 .concert-item .item-media {
-    grid-column: 2;
-    height: 100%;
-    min-height: 210px;
+    position: relative;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    min-height: 0;
+    overflow: hidden;
+    padding: 10px;
+    background: var(--card-bg);
+    border: 1px solid rgba(184, 134, 11, 0.22);
+    box-shadow: none;
 }
 
 .concert-item img {
     object-fit: cover;
+    border: 0;
+    filter: none;
+}
+
+.concert-item:hover img {
+    transform: none;
+    filter: none;
 }
 
 .concert-item .item-info {
-    position: static;
-    grid-column: 3;
-    align-self: center;
-    padding: 28px 28px 28px 0;
-    background: transparent;
-    color: var(--text-main);
-    opacity: 1;
-    transform: none;
+    position: absolute;
+    inset: auto 10px 10px;
+    max-width: none;
+    padding: 48px 14px 14px;
+    background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.62) 54%, rgba(0,0,0,0.84) 100%);
+    color: #fff;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.24s ease, transform 0.24s ease;
 }
 
 .concert-item .item-eyebrow {
-    color: var(--accent);
+    display: block;
+    position: static;
+    color: rgba(255,255,255,0.78);
+    font-family: 'Playfair Display', serif;
+    font-size: 0.78rem;
     font-weight: 700;
+    letter-spacing: 0.08em;
+    line-height: 1;
+    margin: 0 0 7px;
+    text-transform: uppercase;
 }
 
 .concert-item .item-title {
-    font-size: 1.45rem;
+    display: block;
+    font-size: 1.08rem;
+    line-height: 1.25;
+    margin-bottom: 7px;
 }
 
 .concert-item .item-detail {
-    color: var(--text-muted);
-}
-
-.concert-item .meta-pill {
-    background: rgba(184, 134, 11, 0.12);
-    color: var(--text-main);
+    display: block;
+    color: rgba(255,255,255,0.84);
+    font-size: 0.84rem;
+    line-height: 1.4;
+    margin-bottom: 0;
 }
 
 .gallery-item:focus-visible {
@@ -486,30 +566,6 @@ h1 {
     color: var(--accent);
 }
 
-@media (max-width: 900px) {
-    .concert-timeline::before,
-    .concert-item::before,
-    .concert-item::after {
-        display: none;
-    }
-
-    .concert-item {
-        grid-template-columns: minmax(120px, 42%) 1fr;
-        gap: 0;
-        min-height: 190px;
-    }
-
-    .concert-item .item-media {
-        grid-column: 1;
-        min-height: 190px;
-    }
-
-    .concert-item .item-info {
-        grid-column: 2;
-        padding: 22px;
-    }
-}
-
 @media (max-width: 640px) {
     header {
         padding: 3.5rem 1rem 2rem;
@@ -548,21 +604,62 @@ h1 {
         font-size: 0.8rem;
     }
 
+    .concert-timeline {
+        grid-template-columns: 28px minmax(0, 1fr);
+        row-gap: 8px;
+        max-width: 520px;
+        padding: 12px 0 36px;
+    }
+
+    .concert-timeline::before {
+        left: 14px;
+    }
+
     .concert-item {
-        display: block;
+        grid-column: 2;
+        width: 100%;
+        justify-self: stretch;
+        margin: 0;
+    }
+
+    .concert-item:nth-child(odd),
+    .concert-item:nth-child(even) {
+        grid-column: 2;
+        justify-self: stretch;
+        margin: 0;
+    }
+
+    .concert-item::before,
+    .concert-item:nth-child(odd)::before,
+    .concert-item:nth-child(even)::before {
+        left: -33px;
+        right: auto;
+        top: 22px;
+    }
+
+    .concert-item::after,
+    .concert-item:nth-child(odd)::after,
+    .concert-item:nth-child(even)::after {
+        left: -23px;
+        right: auto;
+        top: 27px;
+        width: 22px;
     }
 
     .concert-item .item-media {
-        height: 210px;
-        min-height: 0;
+        aspect-ratio: 16 / 9;
     }
 
     .concert-item .item-info {
-        padding: 20px;
+        opacity: 0;
+        transform: translateY(10px);
+        padding: 44px 12px 12px;
     }
 
-    .concert-item .item-title {
-        font-size: 1.25rem;
+    .concert-item:hover .item-info,
+    .concert-item:focus-visible .item-info {
+        opacity: 1;
+        transform: none;
     }
 
     .modal-content {

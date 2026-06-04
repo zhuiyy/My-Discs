@@ -210,17 +210,13 @@ def build_cd_description(item):
 
 def build_concert_description(item):
     parts = []
-    title = item.get('title')
-    if title:
-        parts.append(f'- **{title}**')
-
     program = item.get('program') or []
     if isinstance(program, str):
         program_lines = markdown_lines_to_list(program)
     else:
         program_lines = program
     for line in program_lines:
-        parts.append(f'  - {line}')
+        parts.append(f'- {line}')
 
     performers = item.get('performers') or []
     if performers:

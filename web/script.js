@@ -1,13 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
     const cdGallery = document.getElementById('cd-gallery');
     const concertGallery = document.getElementById('concert-gallery');
+    const cdFilters = document.getElementById('cd-filters');
     const modal = document.getElementById('modal');
     const modalImage = document.getElementById('modal-image');
     const modalTitle = document.getElementById('modal-title');
+    const modalMeta = document.getElementById('modal-meta');
     const modalDescription = document.getElementById('modal-description');
     const closeButton = document.querySelector('.close-button');
 
     let lastFocusedBeforeModal = null;
+    let activeGenre = 'all';
+    let cdItems = [];
 
     function encodeMusicSrc(path) {
         return encodeURI(path);
@@ -18,6 +22,61 @@ document.addEventListener('DOMContentLoaded', () => {
         return typeof DOMPurify !== 'undefined'
             ? DOMPurify.sanitize(raw)
             : raw;
+    }
+
+    function compactList(values, limit = 2) {
+        if (!Array.isArray(values)) {
+            return values ? [String(values)] : [];
+        }
+        return values.filter(Boolean).map(String).slice(0, limit);
+    }
+
+    function genreTokens(item) {
+        return (item.genres || [])
+            .flatMap((genre) => String(genre).split(/[(),/]+/))
+            .map((genre) => genre.trim())
+            .filter(Boolean);
+    }
+
+    function titleCase(value) {
+        return value
+            .split(/\s+/)
+            .map((word) => word ? word[0].toUpperCase() + word.slice(1) : word)
+            .join(' ');
+    }
+
+    function formatDate(date) {
+        if (!date) {
+            return '';
+        }
+        const parts = String(date).split('-');
+        if (parts.length !== 3) {
+            return date;
+        }
+        return `${parts[1]}.${parts[2]}.${parts[0]}`;
+    }
+
+    function getCardMeta(item) {
+        if (item.type === 'concert') {
+            return {
+                eyebrow: formatDate(item.date || item.subtitle),
+                detail: [item.venue, item.hall].filter(Boolean).join(' · '),
+                tags: compactList(item.performers, 2)
+            };
+        }
+        const performers = compactList(item.artists && item.artists.length ? item.artists : item.vocalists, 2);
+        return {
+            eyebrow: genreTokens(item).slice(0, 2).map(titleCase).join(' · '),
+            detail: performers.join(' · ') || item.source || '',
+            tags: compactList(item.composers, 2)
+        };
+    }
+
+    function createMetaPill(text) {
+        const pill = document.createElement('span');
+        pill.className = 'meta-pill';
+        pill.textContent = text;
+        return pill;
     }
 
     // Shuffle function (Fisher-Yates)
@@ -35,18 +94,56 @@ document.addEventListener('DOMContentLoaded', () => {
     // Create Gallery Item Element
     function createGalleryItem(item, index) {
         const el = document.createElement('div');
-        el.className = 'gallery-item';
+        el.className = `gallery-item ${item.type}-item`;
         el.style.animationDelay = `${index * 0.05}s`; // Staggered animation
         el.setAttribute('role', 'button');
         el.setAttribute('tabindex', '0');
         el.setAttribute('aria-label', item.title);
+        if (item.date) {
+            el.dataset.date = formatDate(item.date);
+        }
+
+        const media = document.createElement('div');
+        media.className = 'item-media';
 
         const img = document.createElement('img');
         img.src = item.image;
         img.alt = item.title;
         img.loading = 'lazy';
 
-        el.appendChild(img);
+        media.appendChild(img);
+        el.appendChild(media);
+
+        const meta = getCardMeta(item);
+        const info = document.createElement('div');
+        info.className = 'item-info';
+
+        const eyebrow = document.createElement('div');
+        eyebrow.className = 'item-eyebrow';
+        eyebrow.textContent = meta.eyebrow || (item.type === 'cd' ? 'Album' : 'Concert');
+
+        const title = document.createElement('h3');
+        title.className = 'item-title';
+        title.textContent = item.title;
+
+        const detail = document.createElement('p');
+        detail.className = 'item-detail';
+        detail.textContent = meta.detail || item.source || '';
+
+        const tags = document.createElement('div');
+        tags.className = 'item-tags';
+        meta.tags.forEach((tag) => tags.appendChild(createMetaPill(tag)));
+
+        info.appendChild(eyebrow);
+        info.appendChild(title);
+        if (detail.textContent) {
+            info.appendChild(detail);
+        }
+        if (meta.tags.length) {
+            info.appendChild(tags);
+        }
+        el.appendChild(info);
+
         const activate = () => openModal(item);
         el.addEventListener('click', activate);
         el.addEventListener('keydown', (event) => {
@@ -56,6 +153,38 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
         return el;
+    }
+
+    function renderFilters(cds) {
+        if (!cdFilters) {
+            return;
+        }
+        cdFilters.innerHTML = '';
+        const genres = Array.from(new Set(cds.flatMap(genreTokens).map(titleCase))).sort((a, b) => a.localeCompare(b));
+        const labels = ['All', ...genres];
+
+        labels.forEach((label) => {
+            const button = document.createElement('button');
+            button.type = 'button';
+            button.className = 'filter-chip';
+            button.textContent = label;
+            button.setAttribute('aria-pressed', label.toLowerCase() === activeGenre);
+            button.addEventListener('click', () => {
+                activeGenre = label.toLowerCase();
+                updateCdFilter();
+            });
+            cdFilters.appendChild(button);
+        });
+    }
+
+    function updateCdFilter() {
+        cdItems.forEach(({ element, item }) => {
+            const matches = activeGenre === 'all' || genreTokens(item).map((genre) => titleCase(genre).toLowerCase()).includes(activeGenre);
+            element.hidden = !matches;
+        });
+        cdFilters.querySelectorAll('.filter-chip').forEach((button) => {
+            button.setAttribute('aria-pressed', button.textContent.toLowerCase() === activeGenre);
+        });
     }
 
     // Render Galleries
@@ -74,10 +203,15 @@ document.addEventListener('DOMContentLoaded', () => {
         // Concerts are already sorted by date in data.js
         const sortedConcerts = [...concerts];
 
+        renderFilters(cds);
+
         // Render CDs
         shuffledCDs.forEach((item, index) => {
-            cdGallery.appendChild(createGalleryItem(item, index));
+            const element = createGalleryItem(item, index);
+            cdGallery.appendChild(element);
+            cdItems.push({ item, element });
         });
+        updateCdFilter();
 
         // Render Concerts
         sortedConcerts.forEach((item, index) => {
@@ -98,6 +232,23 @@ document.addEventListener('DOMContentLoaded', () => {
         modalImage.src = item.image;
         modalImage.alt = item.title;
         modalTitle.textContent = item.title;
+        modalMeta.innerHTML = '';
+
+        const metaItems = item.type === 'concert'
+            ? [
+                item.date && formatDate(item.date),
+                [item.venue, item.hall].filter(Boolean).join(' · '),
+                ...(item.performers || []).slice(0, 3)
+            ]
+            : [
+                ...genreTokens(item).slice(0, 3).map(titleCase),
+                item.source,
+                ...((item.artists && item.artists.length ? item.artists : item.vocalists) || []).slice(0, 2)
+            ];
+
+        metaItems.filter(Boolean).forEach((text) => {
+            modalMeta.appendChild(createMetaPill(text));
+        });
 
         if (item.description) {
             modalDescription.innerHTML = renderMarkdownToSafeHtml(item.description);
@@ -117,6 +268,7 @@ document.addEventListener('DOMContentLoaded', () => {
         modalImage.src = '';
         modalImage.alt = '';
         modal.setAttribute('aria-hidden', 'true');
+        modalMeta.innerHTML = '';
         modalDescription.innerHTML = '';
         if (lastFocusedBeforeModal && typeof lastFocusedBeforeModal.focus === 'function') {
             lastFocusedBeforeModal.focus();

@@ -9,7 +9,8 @@ artists:
 composers:
   - "Kapustin, A Bu"
 genres:
-  - "classic(jazz)"
+  - "classic"
+  - "jazz"
 count: "1"
 source: "中山音乐堂观看New Memories演出后签售"
 notes: |

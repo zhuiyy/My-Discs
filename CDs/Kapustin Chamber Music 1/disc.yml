@@ -12,7 +12,8 @@ artists:
 composers:
   - "Kapustin"
 genres:
-  - "classic(jazz)"
+  - "classic"
+  - "jazz"
 count: "1"
 source: "Tower Records 涩谷 东京"
 notes: |

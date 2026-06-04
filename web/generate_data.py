@@ -1,7 +1,6 @@
 import os
 import json
 import re
-import sys
 
 COVER_EXTENSIONS = ('.jpg', '.jpeg', '.png', '.webp')
 YAML_EXTENSIONS = ('.yml', '.yaml')
@@ -99,85 +98,12 @@ def find_cover_filename(item_path):
     return None
 
 
-def parse_concerts_readme(readme_path):
-    """
-    Parses the concerts README to map image filenames to their descriptions.
-    Returns a dict: { 'filename.jpg': { 'title': '...', 'description': '...' } }
-    """
-    if not os.path.exists(readme_path):
-        return {}
-
-    with open(readme_path, 'r', encoding='utf-8') as f:
-        content = f.read()
-
-    # Split by level 4 headers (#### Date)
-    sections = re.split(r'^####\s+', content, flags=re.MULTILINE)
-    
-    mapping = {}
-    
-    for section in sections:
-        if not section.strip():
-            continue
-            
-        # Look for image link: ![alt](./pics/filename.jpg)
-        img_match = re.search(r'!\[.*?\]\(\./pics/(.*?)\)', section)
-        if img_match:
-            filename = img_match.group(1)
-            
-            # The description is the section content, minus the image link
-            desc = section.replace(img_match.group(0), '')
-            
-            lines = desc.strip().split('\n')
-            # The first line is the date
-            date_line = lines[0].strip()
-            
-            # The rest is the description
-            desc_text = '\n'.join(lines[1:]).strip()
-            
-            mapping[filename] = {
-                'title': date_line,
-                'description': desc_text
-            }
-            
-    return mapping
-
-
-def split_markdown_sections(content):
-    sections = {}
-    current_title = None
-    current_lines = []
-
-    for line in content.splitlines():
-        match = re.match(r'^###\s+(.+?)\s*$', line)
-        if match:
-            if current_title:
-                sections[current_title] = '\n'.join(current_lines).strip()
-            current_title = match.group(1).strip()
-            current_lines = []
-        elif current_title:
-            current_lines.append(line)
-
-    if current_title:
-        sections[current_title] = '\n'.join(current_lines).strip()
-
-    return sections
-
-
 def markdown_lines_to_list(value):
     if isinstance(value, list):
         return value
     if not value:
         return []
     return [line.strip() for line in value.splitlines() if line.strip()]
-
-
-def parse_readme_content(readme_path):
-    with open(readme_path, 'r', encoding='utf-8') as f:
-        content = f.read()
-
-    content = re.sub(r'^#\s+.*$', '', content, flags=re.MULTILINE)
-    content = re.sub(r'!\[.*?\]\(.*?\)', '', content)
-    return content.strip()
 
 
 def build_cd_description(item):
@@ -242,13 +168,6 @@ def normalize_list(value):
     return markdown_lines_to_list(str(value))
 
 
-def date_from_legacy_title(title):
-    match = re.match(r'^(\d{2})\.(\d{2})\.(\d{4})$', title or '')
-    if not match:
-        return title or ''
-    day, month, year = match.groups()
-    return f'{year}-{month}-{day}'
-
 def generate_data():
     data = []
     music_data = []
@@ -263,7 +182,6 @@ def generate_data():
             item_path = os.path.join(cds_path, item)
             if os.path.isdir(item_path):
                 cover_name = find_cover_filename(item_path)
-                readme_path = os.path.join(item_path, 'README.md')
                 yaml_path = next(
                     (
                         os.path.join(item_path, f'disc{ext}')
@@ -273,8 +191,8 @@ def generate_data():
                     None,
                 )
 
-                if cover_name:
-                    structured = parse_simple_yaml(yaml_path) if yaml_path else {}
+                if cover_name and yaml_path:
+                    structured = parse_simple_yaml(yaml_path)
                     entry = {
                         'type': 'cd',
                         'title': structured.get('title') or item,
@@ -292,28 +210,18 @@ def generate_data():
                         'tags': normalize_list(structured.get('tags')),
                         'notes': structured.get('notes') or '',
                     }
-
-                    if structured:
-                        entry['description'] = build_cd_description(entry)
-                    elif os.path.exists(readme_path):
-                        content = parse_readme_content(readme_path)
-                        entry['description'] = content
+                    entry['description'] = build_cd_description(entry)
                     
                     data.append(entry)
 
     # Process Concerts
     concerts_dir = os.path.join(root_dir, 'concerts')
-    concerts_pics_path = os.path.join(concerts_dir, 'pics')
-    concerts_readme_path = os.path.join(concerts_dir, 'README.md')
-    
-    concert_info = parse_concerts_readme(concerts_readme_path)
     concert_entries = []
-    structured_concerts_found = False
 
     if os.path.exists(concerts_dir):
         for item in os.listdir(concerts_dir):
             item_path = os.path.join(concerts_dir, item)
-            if not os.path.isdir(item_path) or item == 'pics':
+            if not os.path.isdir(item_path):
                 continue
             yaml_path = next(
                 (
@@ -329,7 +237,6 @@ def generate_data():
             image_name = structured.get('image') or find_cover_filename(item_path)
             if not image_name:
                 continue
-            structured_concerts_found = True
             entry = {
                 'type': 'concert',
                 'title': structured.get('title') or item,
@@ -347,66 +254,7 @@ def generate_data():
             entry['description'] = build_concert_description(entry)
             concert_entries.append(entry)
 
-    if not structured_concerts_found and os.path.exists(concerts_pics_path):
-        for item in os.listdir(concerts_pics_path):
-            if item.lower().endswith(('.jpg', '.jpeg', '.png', '.webp')):
-                entry = {
-                    'type': 'concert',
-                    'title': 'Concert Memory',
-                    'subtitle': item.split('.')[0].replace('_', '/'),
-                    'image': f'../concerts/pics/{item}',
-                    'description': '',
-                    'sort_date': '' # Helper for sorting
-                }
-                
-                if item in concert_info:
-                    info = concert_info[item]
-                    entry['title'] = info['title']
-                    entry['date'] = date_from_legacy_title(info['title'])
-                    entry['subtitle'] = entry['date']
-                    entry['description'] = info['description']
-                    entry['sort_date'] = info['title']  # Assuming title is date like 11.26.2025
-                else:
-                    stem = item.rsplit('.', 1)[0]
-                    entry['description'] = f'Concert photo from {stem.replace("_", "/")}'
-                    entry['sort_date'] = stem.replace('_', '.')
-
-                concert_entries.append(entry)
-    # Sort Concerts by README order for legacy records, date for structured records.
-    readme_order = list(concert_info.keys())
-
-    def get_sort_index(entry):
-        if entry.get('date'):
-            return entry['date']
-        # Extract the filename from the image path (e.g., '../concerts/pics/file.jpg' -> 'file.jpg')
-        filename = entry['image'].split('/')[-1]
-        if filename in readme_order:
-            return readme_order.index(filename)
-        return 99999  # Keep unlisted items at the very end
-
-    if concert_entries and concert_entries[0].get('date'):
-        concert_entries.sort(key=get_sort_index, reverse=True)
-    else:
-        concert_entries.sort(key=get_sort_index)
-
-    unlisted_pics = []
-    if not structured_concerts_found:
-        unlisted_pics = sorted(
-            e['image'].split('/')[-1]
-            for e in concert_entries
-            if e['image'].split('/')[-1] not in concert_info
-        )
-    if unlisted_pics:
-        print(
-            'Warning: concert image(s) not referenced in concerts/README.md: '
-            + ', '.join(unlisted_pics),
-            file=sys.stderr,
-        )
-
-    # Clean up sort_date before saving
-    for entry in concert_entries:
-        if 'sort_date' in entry:
-            del entry['sort_date']
+    concert_entries.sort(key=lambda entry: entry.get('date') or '', reverse=True)
 
     # Combine Data
     data.extend(concert_entries)

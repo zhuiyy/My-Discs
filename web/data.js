@@ -72,7 +72,7 @@ const siteData = [
     "type": "cd",
     "title": "Kapustin Piano Works 2",
     "image": "../CDs/Kapustin Piano Works 2/cover.jpg",
-    "description": "### 曲目\nTen Bagatelles Op. 59\n\nBerceuse Op. 65\n\nHumoresque Op. 75\n\nSonatina Op. 100\n\nParaphrase on \"Aquarela do Brasil\" by Ary Barroso Op. 188\n### 演奏家\nMasahiro Kawakami-川上 昌裕\n### 作曲家\nKapustin\n### 风格\nclassic(jazz)\n### 数量\n1\n### 来源\nTower Records 涩谷 东京\n### 附\n中古品.\n\n付钱的时候有填信息享优惠环节, 我跟店员说我得编一个日本名字和地址, 他说'はいはいOKOK', 最后优惠了5%.",
+    "description": "### 曲目\nTen Bagatelles Op. 59\n\nBerceuse Op. 65\n\nHumoresque Op. 75\n\nSonatina Op. 100\n\nParaphrase on \"Aquarela do Brasil\" by Ary Barroso Op. 188\n### 演奏家\nMasahiro Kawakami-川上 昌裕\n### 作曲家\nKapustin\n### 风格\nclassic\n\njazz\n### 数量\n1\n### 来源\nTower Records 涩谷 东京\n### 附\n中古品.\n\n付钱的时候有填信息享优惠环节, 我跟店员说我得编一个日本名字和地址, 他说'はいはいOKOK', 最后优惠了5%.",
     "tracks": [
       "Ten Bagatelles Op. 59",
       "Berceuse Op. 65",
@@ -90,7 +90,8 @@ const siteData = [
     ],
     "producers": [],
     "genres": [
-      "classic(jazz)"
+      "classic",
+      "jazz"
     ],
     "count": "1",
     "source": "Tower Records 涩谷 东京",
@@ -284,7 +285,7 @@ const siteData = [
     "type": "cd",
     "title": "Nikolai KAPUSTIN Eight Concer Etudes & 24 Preludes",
     "image": "../CDs/Nikolai KAPUSTIN Eight Concer Etudes & 24 Preludes/cover.jpg",
-    "description": "### 曲目\nEight Concert Etudes, Op. 40\n\n24 Preludes in Jazz Style, Op. 53\n### 演奏家\nCatherin Gordeladze(piano)\n### 作曲家\nKapustin\n### 风格\nclassic(jazz)\n### 数量\n1\n### 来源\nTower Records 涩谷 东京\n### 附\n中古品.\n\n这张太有名了.\n\n付钱的时候有填信息享优惠环节, 我跟店员说我得编一个日本名字和地址, 他说'はいはいOKOK', 最后优惠了5%.",
+    "description": "### 曲目\nEight Concert Etudes, Op. 40\n\n24 Preludes in Jazz Style, Op. 53\n### 演奏家\nCatherin Gordeladze(piano)\n### 作曲家\nKapustin\n### 风格\nclassic\n\njazz\n### 数量\n1\n### 来源\nTower Records 涩谷 东京\n### 附\n中古品.\n\n这张太有名了.\n\n付钱的时候有填信息享优惠环节, 我跟店员说我得编一个日本名字和地址, 他说'はいはいOKOK', 最后优惠了5%.",
     "tracks": [
       "Eight Concert Etudes, Op. 40",
       "24 Preludes in Jazz Style, Op. 53"
@@ -299,7 +300,8 @@ const siteData = [
     ],
     "producers": [],
     "genres": [
-      "classic(jazz)"
+      "classic",
+      "jazz"
     ],
     "count": "1",
     "source": "Tower Records 涩谷 东京",
@@ -344,7 +346,7 @@ const siteData = [
     "type": "cd",
     "title": "浪漫中国 理查德克莱德曼 中国巡演二十周年纪念特辑",
     "image": "../CDs/浪漫中国 理查德克莱德曼 中国巡演二十周年纪念特辑/cover.jpg",
-    "description": "### 曲目\nChariots of Fire-火之战车\n\nBallade Pour Adeline-致艾德琳\n\nCoup De Coeur-一见钟情\n\nLyphard Melody-星空\n\nGive A Little Time To Your Love-命运\n\nMariage D'amour-梦中婚礼\n\nA Comme Amour-秋日私语\n\nRomance-浪漫曲\n\nThe Last Days Of Anastasia Kemski-安纳斯塔西亚\n\nSouvenirs D'enfance-童年回忆\n\nAquarela-水彩画\n\nChinese Garden-魅力东方情\n\nThe Butterfly Lovers-梁祝\n\nDiablessa-弦上精灵\n\nThe Schindler List-辛德勒名单\n\nCorazon De Nino-亲亲宝贝\n\nThe Fight-蓝色的呼唤\n\nPour Tout L'amour Du Monde-祝福世界上所有的爱\n### 演奏家\nRichard Clayderman\n### 作曲家\nRichard Clayderman\n### 风格\npop(classic)\n### 数量\n1\n### 来源\n理查德克莱德曼中国巡演二十周年演出后购买\n### 附\n可惜的是只剩了一个空壳子, 里面的cd和dvd都不知道哪去了...\n\n理论上还含一个dvd.\n\n曲目翻译挺怪的.",
+    "description": "### 曲目\nChariots of Fire-火之战车\n\nBallade Pour Adeline-致艾德琳\n\nCoup De Coeur-一见钟情\n\nLyphard Melody-星空\n\nGive A Little Time To Your Love-命运\n\nMariage D'amour-梦中婚礼\n\nA Comme Amour-秋日私语\n\nRomance-浪漫曲\n\nThe Last Days Of Anastasia Kemski-安纳斯塔西亚\n\nSouvenirs D'enfance-童年回忆\n\nAquarela-水彩画\n\nChinese Garden-魅力东方情\n\nThe Butterfly Lovers-梁祝\n\nDiablessa-弦上精灵\n\nThe Schindler List-辛德勒名单\n\nCorazon De Nino-亲亲宝贝\n\nThe Fight-蓝色的呼唤\n\nPour Tout L'amour Du Monde-祝福世界上所有的爱\n### 演奏家\nRichard Clayderman\n### 作曲家\nRichard Clayderman\n### 风格\npop\n\nclassic\n### 数量\n1\n### 来源\n理查德克莱德曼中国巡演二十周年演出后购买\n### 附\n可惜的是只剩了一个空壳子, 里面的cd和dvd都不知道哪去了...\n\n理论上还含一个dvd.\n\n曲目翻译挺怪的.",
     "tracks": [
       "Chariots of Fire-火之战车",
       "Ballade Pour Adeline-致艾德琳",
@@ -375,7 +377,8 @@ const siteData = [
     ],
     "producers": [],
     "genres": [
-      "pop(classic)"
+      "pop",
+      "classic"
     ],
     "count": "1",
     "source": "理查德克莱德曼中国巡演二十周年演出后购买",
@@ -386,7 +389,7 @@ const siteData = [
     "type": "cd",
     "title": "Kapustin 24 Preludes and Fugues for Piano Op.82, Violin Sonata etc",
     "image": "../CDs/Kapustin 24 Preludes and Fugues for Piano Op.82, Violin Sonata etc/cover.jpg",
-    "description": "### 曲目\n24 Preludes and Fufues for Piano Op. 82\n\nElegy for Cello and Piano Op. 96\n\nBurlesque for Cello and Piano Op. 97\n\nNearly Waltz for Cello and Piano Op. 98\n\nViolin Sonata Op. 70\n### 演奏家\nNikolai Kapustin(piano) 领衔\n\nAlexander Zagorinsky(cello)\n\nAlexander Chernov(violin)\n### 作曲家\nKapustin\n### 风格\nclassic(jazz)\n### 数量\n1\n### 来源\nTower Records 涩谷 东京\n### 附\n中古品.\n\nKapustin本人演奏.\n\n这张cd的介绍书特别容易拿出来.\n\n付钱的时候有填信息享优惠环节, 我跟店员说我得编一个日本名字和地址, 他说'はいはいOKOK', 最后优惠了5%.",
+    "description": "### 曲目\n24 Preludes and Fufues for Piano Op. 82\n\nElegy for Cello and Piano Op. 96\n\nBurlesque for Cello and Piano Op. 97\n\nNearly Waltz for Cello and Piano Op. 98\n\nViolin Sonata Op. 70\n### 演奏家\nNikolai Kapustin(piano) 领衔\n\nAlexander Zagorinsky(cello)\n\nAlexander Chernov(violin)\n### 作曲家\nKapustin\n### 风格\nclassic\n\njazz\n### 数量\n1\n### 来源\nTower Records 涩谷 东京\n### 附\n中古品.\n\nKapustin本人演奏.\n\n这张cd的介绍书特别容易拿出来.\n\n付钱的时候有填信息享优惠环节, 我跟店员说我得编一个日本名字和地址, 他说'はいはいOKOK', 最后优惠了5%.",
     "tracks": [
       "24 Preludes and Fufues for Piano Op. 82",
       "Elegy for Cello and Piano Op. 96",
@@ -406,7 +409,8 @@ const siteData = [
     ],
     "producers": [],
     "genres": [
-      "classic(jazz)"
+      "classic",
+      "jazz"
     ],
     "count": "1",
     "source": "Tower Records 涩谷 东京",
@@ -447,7 +451,7 @@ const siteData = [
     "type": "cd",
     "title": "Kapustin Chamber Music 1",
     "image": "../CDs/Kapustin Chamber Music 1/cover.jpg",
-    "description": "### 曲目\nSinfonietta, Op. 49\n\nSonata for Flute & Piano, Op. 125\n\nSonata for Violin & Piano, Op. 70\n\nParaphrase on Dizzy Gillespie's MANTECA for Two Pianos, Op. 129\n### 演奏家\nMasahiro Kawakami-川上 昌裕(piano) 领衔\n\nYukari Kawakami-川上 ゆかり(piano)\n\nAkane Otsuka-大塚 茜(flute)\n\nHayato Takenaka-竹中 勇人(violin)\n### 作曲家\nKapustin\n### 风格\nclassic(jazz)\n### 数量\n1\n### 来源\nTower Records 涩谷 东京\n### 附\n中古品.\n\nOp. 49连续演奏.\n\n付钱的时候有填信息享优惠环节, 我跟店员说我得编一个日本名字和地址, 他说'はいはいOKOK', 最后优惠了5%.",
+    "description": "### 曲目\nSinfonietta, Op. 49\n\nSonata for Flute & Piano, Op. 125\n\nSonata for Violin & Piano, Op. 70\n\nParaphrase on Dizzy Gillespie's MANTECA for Two Pianos, Op. 129\n### 演奏家\nMasahiro Kawakami-川上 昌裕(piano) 领衔\n\nYukari Kawakami-川上 ゆかり(piano)\n\nAkane Otsuka-大塚 茜(flute)\n\nHayato Takenaka-竹中 勇人(violin)\n### 作曲家\nKapustin\n### 风格\nclassic\n\njazz\n### 数量\n1\n### 来源\nTower Records 涩谷 东京\n### 附\n中古品.\n\nOp. 49连续演奏.\n\n付钱的时候有填信息享优惠环节, 我跟店员说我得编一个日本名字和地址, 他说'はいはいOKOK', 最后优惠了5%.",
     "tracks": [
       "Sinfonietta, Op. 49",
       "Sonata for Flute & Piano, Op. 125",
@@ -467,7 +471,8 @@ const siteData = [
     ],
     "producers": [],
     "genres": [
-      "classic(jazz)"
+      "classic",
+      "jazz"
     ],
     "count": "1",
     "source": "Tower Records 涩谷 东京",
@@ -507,7 +512,7 @@ const siteData = [
     "type": "cd",
     "title": "KAPUSTIN | SCHNITTKE CELLO CONCERTOS",
     "image": "../CDs/KAPUSTIN & SCHNITTKE CELLO CONCERTOS/cover.jpg",
-    "description": "### 曲目\nConcerto for cello and orchestra no. 1, Op. 85 - Kapustin\n\nConcerto for cello and orchestra no. 1 - Schnittke\n### 演奏家\nEckart Runge(cello) 领衔\n\nRundfunk-Sinfonieorchester Berlin-柏林广播交响乐团\n\nFrank Strobel(conductor)\n### 作曲家\nKapustin, Schnittke\n### 风格\nclassic(jazz)\n### 数量\n1\n### 来源\nTower Records 涩谷 东京\n### 附\n附纸套.\n\n付钱的时候有填信息享优惠环节, 我跟店员说我得编一个日本名字和地址, 他说'はいはいOKOK', 最后优惠了5%.",
+    "description": "### 曲目\nConcerto for cello and orchestra no. 1, Op. 85 - Kapustin\n\nConcerto for cello and orchestra no. 1 - Schnittke\n### 演奏家\nEckart Runge(cello) 领衔\n\nRundfunk-Sinfonieorchester Berlin-柏林广播交响乐团\n\nFrank Strobel(conductor)\n### 作曲家\nKapustin, Schnittke\n### 风格\nclassic\n\njazz\n### 数量\n1\n### 来源\nTower Records 涩谷 东京\n### 附\n附纸套.\n\n付钱的时候有填信息享优惠环节, 我跟店员说我得编一个日本名字和地址, 他说'はいはいOKOK', 最后优惠了5%.",
     "tracks": [
       "Concerto for cello and orchestra no. 1, Op. 85 - Kapustin",
       "Concerto for cello and orchestra no. 1 - Schnittke"
@@ -524,7 +529,8 @@ const siteData = [
     ],
     "producers": [],
     "genres": [
-      "classic(jazz)"
+      "classic",
+      "jazz"
     ],
     "count": "1",
     "source": "Tower Records 涩谷 东京",
@@ -561,7 +567,7 @@ const siteData = [
     "type": "cd",
     "title": "New Memories",
     "image": "../CDs/New Memories/cover.webp",
-    "description": "### 曲目\nVariations for Piano, Op. 41 - Kapustin\n\nEight Concert Studies (Etudes) for Piano, Op. 40 - Kapustin\n\nFantasie \"Sleeping in a Dream\", Op. 7 - A Bu\n\nPiano Sonata No. 1 \"Pinus\" - A Bu\n### 演奏家\nA Bu(piano)\n### 作曲家\nKapustin, A Bu\n### 风格\nclassic(jazz)\n### 数量\n1\n### 来源\n中山音乐堂观看New Memories演出后签售\n### 附\n带有签名.\n\n这是我了解Kapustin的开始.",
+    "description": "### 曲目\nVariations for Piano, Op. 41 - Kapustin\n\nEight Concert Studies (Etudes) for Piano, Op. 40 - Kapustin\n\nFantasie \"Sleeping in a Dream\", Op. 7 - A Bu\n\nPiano Sonata No. 1 \"Pinus\" - A Bu\n### 演奏家\nA Bu(piano)\n### 作曲家\nKapustin, A Bu\n### 风格\nclassic\n\njazz\n### 数量\n1\n### 来源\n中山音乐堂观看New Memories演出后签售\n### 附\n带有签名.\n\n这是我了解Kapustin的开始.",
     "tracks": [
       "Variations for Piano, Op. 41 - Kapustin",
       "Eight Concert Studies (Etudes) for Piano, Op. 40 - Kapustin",
@@ -578,7 +584,8 @@ const siteData = [
     ],
     "producers": [],
     "genres": [
-      "classic(jazz)"
+      "classic",
+      "jazz"
     ],
     "count": "1",
     "source": "中山音乐堂观看New Memories演出后签售",

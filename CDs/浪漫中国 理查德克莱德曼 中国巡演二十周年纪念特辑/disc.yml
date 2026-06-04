@@ -23,7 +23,8 @@ artists:
 composers:
   - "Richard Clayderman"
 genres:
-  - "pop(classic)"
+  - "pop"
+  - "classic"
 count: "1"
 source: "理查德克莱德曼中国巡演二十周年演出后购买"
 notes: |

@@ -566,6 +566,42 @@ h1 {
     color: var(--accent);
 }
 
+/* Footer entry */
+.site-footer {
+    display: flex;
+    justify-content: center;
+    padding: 0 40px 6rem;
+}
+
+.footer-link-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 34px;
+    padding: 7px 18px;
+    border: 1px solid rgba(184, 134, 11, 0.34);
+    border-radius: 999px;
+    background: rgba(255,255,255,0.54);
+    color: var(--accent);
+    font-size: 0.88rem;
+    line-height: 1;
+    text-decoration: none;
+    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.footer-link-pill:hover,
+.footer-link-pill:focus-visible {
+    border-color: var(--accent);
+    background: rgba(255,255,255,0.86);
+    color: var(--text-main);
+    transform: translateY(-1px);
+}
+
+.footer-link-pill:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
 /* Wishlist */
 .wishlist-section {
     max-width: 1420px;
@@ -788,6 +824,16 @@ h1 {
 
     #music-player-container {
         bottom: 18px;
+    }
+
+    .site-footer {
+        padding: 0 18px 5.5rem;
+    }
+
+    .footer-link-pill {
+        min-height: 32px;
+        padding: 7px 16px;
+        font-size: 0.84rem;
     }
 
     .wishlist-section {

@@ -91,7 +91,7 @@ def find_cover_filename(item_path):
         names = os.listdir(item_path)
     except OSError:
         return None
-    for name in names:
+    for name in sorted(names, key=str.casefold):
         base, ext = os.path.splitext(name)
         if base.lower() == 'cover' and ext.lower() in COVER_EXTENSIONS:
             return name
@@ -178,7 +178,7 @@ def generate_data():
     # Process CDs
     cds_path = os.path.join(root_dir, 'CDs')
     if os.path.exists(cds_path):
-        for item in os.listdir(cds_path):
+        for item in sorted(os.listdir(cds_path), key=str.casefold):
             item_path = os.path.join(cds_path, item)
             if os.path.isdir(item_path):
                 cover_name = find_cover_filename(item_path)
@@ -219,7 +219,7 @@ def generate_data():
     concert_entries = []
 
     if os.path.exists(concerts_dir):
-        for item in os.listdir(concerts_dir):
+        for item in sorted(os.listdir(concerts_dir), key=str.casefold):
             item_path = os.path.join(concerts_dir, item)
             if not os.path.isdir(item_path):
                 continue
@@ -262,7 +262,7 @@ def generate_data():
     # Process Music
     music_path = os.path.join(base_dir, 'music')
     if os.path.exists(music_path):
-        for item in os.listdir(music_path):
+        for item in sorted(os.listdir(music_path), key=str.casefold):
             if item.lower().endswith(('.mp3', '.flac', '.wav', '.ogg', '.m4a')):
                 entry = {
                     'title': os.path.splitext(item)[0],

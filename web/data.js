@@ -1,6 +1,34 @@
 const siteData = [
   {
     "type": "cd",
+    "title": "8 Concert Etudes",
+    "image": "../CDs/8 Concert Etudes/cover.jpg",
+    "description": "### 曲目\n8 Concert Etudes, Op. 40 - Kapustin\n\nPiano Sonata No. 1, Op. 39 \"Sonata Fantasy\" - Kapustin\n\nSuite in Old Style, Op. 28 - Kapustin\n\nVariations, Op. 41 - Kapustin\n### 演奏家\nKapustin\n### 作曲家\nKapustin\n### 风格\nclassic\n\njazz\n### 数量\n1\n### 来源\nTower Records 涩谷 东京 tim代购\n### 附\nKapustin plays Kapustin",
+    "tracks": [
+      "8 Concert Etudes, Op. 40 - Kapustin",
+      "Piano Sonata No. 1, Op. 39 \"Sonata Fantasy\" - Kapustin",
+      "Suite in Old Style, Op. 28 - Kapustin",
+      "Variations, Op. 41 - Kapustin"
+    ],
+    "artists": [
+      "Kapustin"
+    ],
+    "vocalists": [],
+    "original_artists": [],
+    "composers": [
+      "Kapustin"
+    ],
+    "producers": [],
+    "genres": [
+      "classic",
+      "jazz"
+    ],
+    "count": "1",
+    "source": "Tower Records 涩谷 东京 tim代购",
+    "notes": "Kapustin plays Kapustin"
+  },
+  {
+    "type": "cd",
     "title": "Argerich · Perlman: Beethoven & Franck Sonatas",
     "image": "../CDs/ARGERICH PERLMAN BEETHOVEN & FRANCK Sonata/cover.jpg",
     "description": "### 曲目\nViolin Sonata No. 9 in A major, Op. 47 \"Kreutzer\" - Beethoven\n\nViolin Sonata in A major, FWV 8 - Franck\n### 演奏家\nMartha Argerich (piano)\n\nItzhak Perlman (violin)\n### 作曲家\nBeethoven\n\nFranck\n### 风格\nclassic\n### 数量\n1\n### 来源\nMusic Store 北京王府井\n### 附\n带签名.\n\n这是第一次在北京找到Franck的作品, 第二次是在芳草地的Echo Records.\n\ncd介绍上贴着店员小哥写的介绍, 只有'阿格里奇'四个字是粗黑色油墨字迹, 其余用蓝色签字笔书写. 我告诉他我爱听Cory Wong, 他觉得挺不错, 可惜那张没出过CD. 走之前他推荐我<蓦然回首>的OST, 还在店内播放, 我表示没看过不会买, 他说'谁他妈让你买了, 我是让你听!'... \n\n这个店挺贵的.\n\n26年初又仔细看了一下常听的Franck Violin Sonata版本, 才发现钢琴也是阿格里奇弹的.",
@@ -111,6 +139,107 @@ const siteData = [
     "count": "1",
     "source": "Raccoon Records 浣熊唱片 上海 徐汇",
     "notes": "已进入'浣熊唱片岳阳路店16群'.\n\n这张的CD封面设计真是不错"
+  },
+  {
+    "type": "cd",
+    "title": "Djesse Vol. 1",
+    "image": "../CDs/Djesse Vol. 1/cover.jpg",
+    "description": "### 曲目\nHome Is (Feat. Vocess) - Jacob Collier\n\nOverture - Jacob Collier\n\nOcean Wide, Canyon Deep (Feat. Laura Mvula) - Jacob Collier\n\nDjesse - Jacob Collier\n\nEverlasting Motion (Feat. Hamid El Kasri) - Jacob Collier\n\nEvery Little Thing She Does Is Magic - Jacob Collier\n\nOnce You (Feat. Suzie Collier) - Jacob Collier\n\nAll Night Long (Feat. Take 6) - Jacob Collier\n### 作曲家\nJacob Collier\n### 风格\npop\n### 数量\n1\n### 来源\nTower Records 涩谷 东京 tim代购",
+    "tracks": [
+      "Home Is (Feat. Vocess) - Jacob Collier",
+      "Overture - Jacob Collier",
+      "Ocean Wide, Canyon Deep (Feat. Laura Mvula) - Jacob Collier",
+      "Djesse - Jacob Collier",
+      "Everlasting Motion (Feat. Hamid El Kasri) - Jacob Collier",
+      "Every Little Thing She Does Is Magic - Jacob Collier",
+      "Once You (Feat. Suzie Collier) - Jacob Collier",
+      "All Night Long (Feat. Take 6) - Jacob Collier"
+    ],
+    "artists": [],
+    "vocalists": [],
+    "original_artists": [],
+    "composers": [
+      "Jacob Collier"
+    ],
+    "producers": [],
+    "genres": [
+      "pop"
+    ],
+    "count": "1",
+    "source": "Tower Records 涩谷 东京 tim代购",
+    "notes": ""
+  },
+  {
+    "type": "cd",
+    "title": "Djesse Vol. 3",
+    "image": "../CDs/Djesse Vol. 3/cover.jpg",
+    "description": "### 曲目\nClarity - Jacob Collier\n\nCount The People (Feat. Jessie Reyez & T-Pain) - Jacob Collier\n\nIn My Bones (Feat. Kimbra & Tank and The Bangas) - Jacob Collier\n\nTime Alone With You (Feat. Daniel Caesar) - Jacob Collier\n\nAll I Need (with Mahalia $ Ty Dolla $ign) - Jacob Collier\n\nIn Too Deep (Feat. Kiana Ledé) - Jacob Collier\n\nButterflies - Jacob Collier\n\nSleeping On My Dreams - Jacob Collier\n\nRunning Outta Love (Feat. Tori Kelly) - Jacob Collier\n\nLight It Up On Me - Jacob Collier\n\nHe Won't Hold You (Feat. Rapsody) - Jacob Collier\n\nTo Sleep - Jacob Collier\n\nIn Too Deep (Acoustic, Feat. Kiana Ledé, Japan Bonus Track) - Jacob Collier\n### 作曲家\nJacob Collier\n### 风格\npop\n### 数量\n1\n### 来源\nTower Records 涩谷 东京 tim代购",
+    "tracks": [
+      "Clarity - Jacob Collier",
+      "Count The People (Feat. Jessie Reyez & T-Pain) - Jacob Collier",
+      "In My Bones (Feat. Kimbra & Tank and The Bangas) - Jacob Collier",
+      "Time Alone With You (Feat. Daniel Caesar) - Jacob Collier",
+      "All I Need (with Mahalia $ Ty Dolla $ign) - Jacob Collier",
+      "In Too Deep (Feat. Kiana Ledé) - Jacob Collier",
+      "Butterflies - Jacob Collier",
+      "Sleeping On My Dreams - Jacob Collier",
+      "Running Outta Love (Feat. Tori Kelly) - Jacob Collier",
+      "Light It Up On Me - Jacob Collier",
+      "He Won't Hold You (Feat. Rapsody) - Jacob Collier",
+      "To Sleep - Jacob Collier",
+      "In Too Deep (Acoustic, Feat. Kiana Ledé, Japan Bonus Track) - Jacob Collier"
+    ],
+    "artists": [],
+    "vocalists": [],
+    "original_artists": [],
+    "composers": [
+      "Jacob Collier"
+    ],
+    "producers": [],
+    "genres": [
+      "pop"
+    ],
+    "count": "1",
+    "source": "Tower Records 涩谷 东京 tim代购",
+    "notes": ""
+  },
+  {
+    "type": "cd",
+    "title": "Djesse Vol. 4",
+    "image": "../CDs/Djesse Vol. 4/cover.jpg",
+    "description": "### 曲目\n100, 000 Voices - Jacob Collier\n\nShe Put Sunshine - Jacob Collier\n\nLittle Blue (Feat. Brandi Carlile) - Jacob Collier\n\nWellll - Jacob Collier\n\nCommon Crush (Feat. Lindsey Lomis) - Jacob Collier\n\nWherever I Go (Feat. Lawrence & Michael McDonald) - Jacob Collier\n\nSummer Rain (Feat. Madison Cunningham & Chris Thile) - Jacob Collier\n\nA Rock Somewhere (Feat. Anoushka Shankar & Varijashree VenuGopal) - Jacob Collier\n\nMi Corazon (Feat. Camilo) - Jacob Collier\n\nWitness Me (Feat. Shawn Mendes, Stormzy & Kirk Franklin) - Jacob Collier\n\nNever Gonna Be Alone (Feat. Lizzy McApline & John Mayer) - Jacob Collier\n\nBridge Over Troubled Water (Feat. John Legend & Tori Kelly) - Jacob Collier\n\nOver You (Feat. AESPA & Chris Martin) - Jacob Collier\n\nBox Of Stars Pt.1 (Feat. Kirk Franklin, CHIKA, D Smoke, Sho Madjozi, Yelle & Kanyi Mavi) - Jacob Collier\n\nBox Of Stars Pt.1 (Feat. Metropole Orkest, Suzie Collier, Steve Vai & VOCESS) - Jacob Collier\n\nWorld O World - Jacob Collier\n\nLittle Blue (Mahogany Sessions, Japan Bonus Track) - Jacob Collier\n### 作曲家\nJacob Collier\n### 风格\npop\n### 数量\n1\n### 来源\nTower Records 涩谷 东京 tim代购",
+    "tracks": [
+      "100, 000 Voices - Jacob Collier",
+      "She Put Sunshine - Jacob Collier",
+      "Little Blue (Feat. Brandi Carlile) - Jacob Collier",
+      "Wellll - Jacob Collier",
+      "Common Crush (Feat. Lindsey Lomis) - Jacob Collier",
+      "Wherever I Go (Feat. Lawrence & Michael McDonald) - Jacob Collier",
+      "Summer Rain (Feat. Madison Cunningham & Chris Thile) - Jacob Collier",
+      "A Rock Somewhere (Feat. Anoushka Shankar & Varijashree VenuGopal) - Jacob Collier",
+      "Mi Corazon (Feat. Camilo) - Jacob Collier",
+      "Witness Me (Feat. Shawn Mendes, Stormzy & Kirk Franklin) - Jacob Collier",
+      "Never Gonna Be Alone (Feat. Lizzy McApline & John Mayer) - Jacob Collier",
+      "Bridge Over Troubled Water (Feat. John Legend & Tori Kelly) - Jacob Collier",
+      "Over You (Feat. AESPA & Chris Martin) - Jacob Collier",
+      "Box Of Stars Pt.1 (Feat. Kirk Franklin, CHIKA, D Smoke, Sho Madjozi, Yelle & Kanyi Mavi) - Jacob Collier",
+      "Box Of Stars Pt.1 (Feat. Metropole Orkest, Suzie Collier, Steve Vai & VOCESS) - Jacob Collier",
+      "World O World - Jacob Collier",
+      "Little Blue (Mahogany Sessions, Japan Bonus Track) - Jacob Collier"
+    ],
+    "artists": [],
+    "vocalists": [],
+    "original_artists": [],
+    "composers": [
+      "Jacob Collier"
+    ],
+    "producers": [],
+    "genres": [
+      "pop"
+    ],
+    "count": "1",
+    "source": "Tower Records 涩谷 东京 tim代购",
+    "notes": ""
   },
   {
     "type": "cd",
@@ -392,6 +521,37 @@ const siteData = [
   },
   {
     "type": "cd",
+    "title": "Nikolai Kapustin Piano Music",
+    "image": "../CDs/Nikolai Kapustin Piano Music/cover.jpg",
+    "description": "### 曲目\nVariations, Op. 41 - Kapustin\n\nEight Concert Études, Op. 40 - Kapustin\n\nBagatelle No. 9, Op. 59 - Kapustin\n\nSuite in the Old Style, Op. 28 - Kapustin\n\nPiano Sonata No. 6, Op. 62 - Kapustin\n\nSonatina, Op. 100 - Kapustin\n\nFive Études in Different Intervals, Op. 68 - Kapustin\n### 演奏家\nMarc-André Hamelin\n### 作曲家\nKapustin\n### 风格\nclassic\n\njazz\n### 数量\n1\n### 来源\nTower Records 涩谷 东京 tim代购\n### 附\n哈默林弹得非常好",
+    "tracks": [
+      "Variations, Op. 41 - Kapustin",
+      "Eight Concert Études, Op. 40 - Kapustin",
+      "Bagatelle No. 9, Op. 59 - Kapustin",
+      "Suite in the Old Style, Op. 28 - Kapustin",
+      "Piano Sonata No. 6, Op. 62 - Kapustin",
+      "Sonatina, Op. 100 - Kapustin",
+      "Five Études in Different Intervals, Op. 68 - Kapustin"
+    ],
+    "artists": [
+      "Marc-André Hamelin"
+    ],
+    "vocalists": [],
+    "original_artists": [],
+    "composers": [
+      "Kapustin"
+    ],
+    "producers": [],
+    "genres": [
+      "classic",
+      "jazz"
+    ],
+    "count": "1",
+    "source": "Tower Records 涩谷 东京 tim代购",
+    "notes": "哈默林弹得非常好"
+  },
+  {
+    "type": "cd",
     "title": "Prokofiev · Ravel: Piano Concertos & Gaspard de la nuit",
     "image": "../CDs/Prokofiev Piano Concerto No.3 & Ravel Piano Concerto in G & Ravel Gaspard de la Nuit/cover.jpg",
     "description": "### 曲目\nPiano Concerto No. 3 in C major, Op. 26 - Prokofiev\n\nPiano Concerto in G major, M. 83 - Ravel\n\nGaspard de la nuit, M. 55 - Ravel\n### 演奏家\nMartha Argerich\n\nBerliner Philharmoniker\n\nClaudio Abbado (conductor)\n### 作曲家\nProkofiev\n\nRavel\n### 风格\nclassic\n### 数量\n1\n### 来源\nRaccoon Records 浣熊唱片 上海 徐汇\n### 附\n已进入'浣熊唱片岳阳路店16群'.\n\n这张专辑封面我不知为何非常熟悉.",
@@ -488,6 +648,30 @@ const siteData = [
     "count": "1",
     "source": "伊青唱片 天津河西",
     "notes": "老板热情展示cd机."
+  },
+  {
+    "type": "cd",
+    "title": "Selected Works for Keyboard",
+    "image": "../CDs/Selected Works for Keyboard/cover.jpg",
+    "description": "### 曲目\nThe Well-Tempered Clavier · Partitas · Toccatas · French Suites (selected) - Bach\n### 演奏家\n盛原(Yuan Sheng, harpsichord)\n### 作曲家\nBach\n### 风格\nclassic\n### 数量\n1\n### 来源\n网购\n### 附\n这是GEB三件套的一件.",
+    "tracks": [
+      "The Well-Tempered Clavier · Partitas · Toccatas · French Suites (selected) - Bach"
+    ],
+    "artists": [
+      "盛原(Yuan Sheng, harpsichord)"
+    ],
+    "vocalists": [],
+    "original_artists": [],
+    "composers": [
+      "Bach"
+    ],
+    "producers": [],
+    "genres": [
+      "classic"
+    ],
+    "count": "1",
+    "source": "网购",
+    "notes": "这是GEB三件套的一件."
   },
   {
     "type": "cd",
@@ -683,6 +867,48 @@ const siteData = [
     "count": "1",
     "source": "未知",
     "notes": "dvd, 古老但保存的很好.\n\n封面对周杰伦以外的歌手的评价是'強勢出擊喧賓奪主'."
+  },
+  {
+    "type": "vinyl",
+    "title": "ten days",
+    "image": "../Vinyls/ten days/cover.jpg",
+    "description": "### 曲目\n.one - Fred again..\n\nadore u - Fred again.., Obongjayar\n\n.two - Fred again..\n\nten - Fred again.., Jozzy, Jim Legxacy\n\n.three - Fred again..\n\nfear less - Fred again.., Sampha\n\n.four - Fred again..\n\njust stand there - Fred again.., Soak\n\n.five - Fred again..\n\nplaces to be - Fred again.., Anderson .Paak, CHIKA\n\n.six - Fred again..\n\nglow - Fred again.., Duskus, Four Tet, Skrillex\n\n.seven - Fred again..\n\ni saw you - Fred again..\n\n.eight - Fred again..\n\nwhere will i be - Fred again.., Emmylou Harris\n\n.nine - Fred again..\n\npeace u need - Fred again.., Joy Anonymous\n\n.ten - Fred again..\n\nbackseat - Fred again.., The Japanese House, Scott Hardkiss\n### 作曲家\nFred again..\n### 风格\nElectronic\n\nPop\n### 数量\n1\n### 来源\nTower Records 涩谷 东京 tim代购\n### 附\n这是我的第一张黑胶. \n我认为这个专辑中glow, ten和fear less是最佳曲目.",
+    "tracks": [
+      ".one - Fred again..",
+      "adore u - Fred again.., Obongjayar",
+      ".two - Fred again..",
+      "ten - Fred again.., Jozzy, Jim Legxacy",
+      ".three - Fred again..",
+      "fear less - Fred again.., Sampha",
+      ".four - Fred again..",
+      "just stand there - Fred again.., Soak",
+      ".five - Fred again..",
+      "places to be - Fred again.., Anderson .Paak, CHIKA",
+      ".six - Fred again..",
+      "glow - Fred again.., Duskus, Four Tet, Skrillex",
+      ".seven - Fred again..",
+      "i saw you - Fred again..",
+      ".eight - Fred again..",
+      "where will i be - Fred again.., Emmylou Harris",
+      ".nine - Fred again..",
+      "peace u need - Fred again.., Joy Anonymous",
+      ".ten - Fred again..",
+      "backseat - Fred again.., The Japanese House, Scott Hardkiss"
+    ],
+    "artists": [],
+    "vocalists": [],
+    "original_artists": [],
+    "composers": [
+      "Fred again.."
+    ],
+    "producers": [],
+    "genres": [
+      "Electronic",
+      "Pop"
+    ],
+    "count": "1",
+    "source": "Tower Records 涩谷 东京 tim代购",
+    "notes": "这是我的第一张黑胶. \n我认为这个专辑中glow, ten和fear less是最佳曲目."
   },
   {
     "type": "concert",

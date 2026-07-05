@@ -387,7 +387,7 @@ PAGE_HTML = """<!doctype html>
       </section>
 
       <div class="actions">
-        <button id="submit-button" type="submit">保存并生成 data.js</button>
+        <button id="submit-button" type="button">保存并生成 data.js</button>
         <span class="hint">保存后可打开 /web/index.html 查看。</span>
       </div>
       <div id="status" class="status" role="status" aria-live="polite"></div>
@@ -516,8 +516,11 @@ PAGE_HTML = """<!doctype html>
       });
     });
 
-    form.addEventListener('submit', async (event) => {
+    form.addEventListener('submit', (event) => {
       event.preventDefault();
+    });
+
+    async function saveEntry() {
       statusBox.className = 'status';
       statusBox.textContent = '';
       submitButton.disabled = true;
@@ -547,7 +550,9 @@ PAGE_HTML = """<!doctype html>
         submitButton.disabled = false;
         submitButton.textContent = '保存并生成 data.js';
       }
-    });
+    }
+
+    submitButton.addEventListener('click', saveEntry);
 
     syncType();
   </script>

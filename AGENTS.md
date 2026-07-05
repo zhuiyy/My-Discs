@@ -96,7 +96,7 @@ genres:
   - "classic"
   - "jazz"
 count: "1"
-source: "Tower Records 涩谷 东京"
+source: "Tower Records 新宿 东京"
 notes: |
   可选备注。支持 Markdown。
 ```

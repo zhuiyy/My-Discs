@@ -310,7 +310,7 @@ const siteData = [
     "type": "cd",
     "title": "Kapustin & Schnittke: Cello Concertos",
     "image": "../CDs/KAPUSTIN & SCHNITTKE CELLO CONCERTOS/cover.jpg",
-    "description": "### 曲目\nCello Concerto No. 1, Op. 85 - Kapustin\n\nCello Concerto No. 1 - Schnittke\n### 演奏家\nEckart Runge (cello)\n\nRundfunk-Sinfonieorchester Berlin\n\nFrank Strobel (conductor)\n### 作曲家\nKapustin\n\nSchnittke\n### 风格\nclassic\n\njazz\n### 数量\n1\n### 来源\nTower Records 涩谷 东京\n### 附\n附纸套.\n\n付钱的时候有填信息享优惠环节, 我跟店员说我得编一个日本名字和地址, 他说'はいはいOKOK', 最后优惠了5%.",
+    "description": "### 曲目\nCello Concerto No. 1, Op. 85 - Kapustin\n\nCello Concerto No. 1 - Schnittke\n### 演奏家\nEckart Runge (cello)\n\nRundfunk-Sinfonieorchester Berlin\n\nFrank Strobel (conductor)\n### 作曲家\nKapustin\n\nSchnittke\n### 风格\nclassic\n\njazz\n### 数量\n1\n### 来源\nTower Records 新宿 东京\n### 附\n附纸套.\n\n付钱的时候有填信息享优惠环节, 我跟店员说我得编一个日本名字和地址, 他说'はいはいOKOK', 最后优惠了5%.",
     "tracks": [
       "Cello Concerto No. 1, Op. 85 - Kapustin",
       "Cello Concerto No. 1 - Schnittke"
@@ -332,14 +332,14 @@ const siteData = [
       "jazz"
     ],
     "count": "1",
-    "source": "Tower Records 涩谷 东京",
+    "source": "Tower Records 新宿 东京",
     "notes": "附纸套.\n\n付钱的时候有填信息享优惠环节, 我跟店员说我得编一个日本名字和地址, 他说'はいはいOKOK', 最后优惠了5%."
   },
   {
     "type": "cd",
     "title": "Kapustin: 24 Preludes and Fugues, Op. 82 · Violin Sonata, Op. 70",
     "image": "../CDs/Kapustin 24 Preludes and Fugues for Piano Op.82, Violin Sonata etc/cover.jpg",
-    "description": "### 曲目\n24 Preludes and Fugues, Op. 82 - Kapustin\n\nElegy for Cello and Piano, Op. 96 - Kapustin\n\nBurlesque for Cello and Piano, Op. 97 - Kapustin\n\nNearly Waltz for Cello and Piano, Op. 98 - Kapustin\n\nViolin Sonata, Op. 70 - Kapustin\n### 演奏家\nNikolai Kapustin (piano)\n\nAlexander Zagorinsky (cello)\n\nAlexander Chernov (violin)\n### 作曲家\nKapustin\n### 风格\nclassic\n\njazz\n### 数量\n1\n### 来源\nTower Records 涩谷 东京\n### 附\n中古品.\n\nKapustin本人演奏.\n\n这张cd的介绍书特别容易拿出来.\n\n付钱的时候有填信息享优惠环节, 我跟店员说我得编一个日本名字和地址, 他说'はいはいOKOK', 最后优惠了5%.",
+    "description": "### 曲目\n24 Preludes and Fugues, Op. 82 - Kapustin\n\nElegy for Cello and Piano, Op. 96 - Kapustin\n\nBurlesque for Cello and Piano, Op. 97 - Kapustin\n\nNearly Waltz for Cello and Piano, Op. 98 - Kapustin\n\nViolin Sonata, Op. 70 - Kapustin\n### 演奏家\nNikolai Kapustin (piano)\n\nAlexander Zagorinsky (cello)\n\nAlexander Chernov (violin)\n### 作曲家\nKapustin\n### 风格\nclassic\n\njazz\n### 数量\n1\n### 来源\nTower Records 新宿 东京\n### 附\n中古品.\n\nKapustin本人演奏.\n\n这张cd的介绍书特别容易拿出来.\n\n付钱的时候有填信息享优惠环节, 我跟店员说我得编一个日本名字和地址, 他说'はいはいOKOK', 最后优惠了5%.",
     "tracks": [
       "24 Preludes and Fugues, Op. 82 - Kapustin",
       "Elegy for Cello and Piano, Op. 96 - Kapustin",
@@ -363,14 +363,14 @@ const siteData = [
       "jazz"
     ],
     "count": "1",
-    "source": "Tower Records 涩谷 东京",
+    "source": "Tower Records 新宿 东京",
     "notes": "中古品.\n\nKapustin本人演奏.\n\n这张cd的介绍书特别容易拿出来.\n\n付钱的时候有填信息享优惠环节, 我跟店员说我得编一个日本名字和地址, 他说'はいはいOKOK', 最后优惠了5%."
   },
   {
     "type": "cd",
     "title": "Kapustin Chamber Music 1",
     "image": "../CDs/Kapustin Chamber Music 1/cover.jpg",
-    "description": "### 曲目\nSinfonietta, Op. 49 - Kapustin\n\nFlute Sonata, Op. 125 - Kapustin\n\nViolin Sonata, Op. 70 - Kapustin\n\nParaphrase on Dizzy Gillespie's \"Manteca\" for Two Pianos, Op. 129 - Kapustin\n### 演奏家\nMasahiro Kawakami (川上 昌裕, piano)\n\nYukari Kawakami (川上 ゆかり, piano)\n\nAkane Otsuka (大塚 茜, flute)\n\nHayato Takenaka (竹中 勇人, violin)\n### 作曲家\nKapustin\n### 风格\nclassic\n\njazz\n### 数量\n1\n### 来源\nTower Records 涩谷 东京\n### 附\n中古品.\n\nOp. 49连续演奏.\n\n付钱的时候有填信息享优惠环节, 我跟店员说我得编一个日本名字和地址, 他说'はいはいOKOK', 最后优惠了5%.",
+    "description": "### 曲目\nSinfonietta, Op. 49 - Kapustin\n\nFlute Sonata, Op. 125 - Kapustin\n\nViolin Sonata, Op. 70 - Kapustin\n\nParaphrase on Dizzy Gillespie's \"Manteca\" for Two Pianos, Op. 129 - Kapustin\n### 演奏家\nMasahiro Kawakami (川上 昌裕, piano)\n\nYukari Kawakami (川上 ゆかり, piano)\n\nAkane Otsuka (大塚 茜, flute)\n\nHayato Takenaka (竹中 勇人, violin)\n### 作曲家\nKapustin\n### 风格\nclassic\n\njazz\n### 数量\n1\n### 来源\nTower Records 新宿 东京\n### 附\n中古品.\n\nOp. 49连续演奏.\n\n付钱的时候有填信息享优惠环节, 我跟店员说我得编一个日本名字和地址, 他说'はいはいOKOK', 最后优惠了5%.",
     "tracks": [
       "Sinfonietta, Op. 49 - Kapustin",
       "Flute Sonata, Op. 125 - Kapustin",
@@ -394,14 +394,14 @@ const siteData = [
       "jazz"
     ],
     "count": "1",
-    "source": "Tower Records 涩谷 东京",
+    "source": "Tower Records 新宿 东京",
     "notes": "中古品.\n\nOp. 49连续演奏.\n\n付钱的时候有填信息享优惠环节, 我跟店员说我得编一个日本名字和地址, 他说'はいはいOKOK', 最后优惠了5%."
   },
   {
     "type": "cd",
     "title": "Kapustin Piano Works 2",
     "image": "../CDs/Kapustin Piano Works 2/cover.jpg",
-    "description": "### 曲目\nTen Bagatelles, Op. 59 - Kapustin\n\nBerceuse, Op. 65 - Kapustin\n\nHumoresque, Op. 75 - Kapustin\n\nSonatina, Op. 100 - Kapustin\n\nParaphrase on Ary Barroso's \"Aquarela do Brasil\", Op. 188 - Kapustin\n### 演奏家\nMasahiro Kawakami (川上 昌裕, piano)\n### 作曲家\nKapustin\n### 风格\nclassic\n\njazz\n### 数量\n1\n### 来源\nTower Records 涩谷 东京\n### 附\n中古品.\n\n付钱的时候有填信息享优惠环节, 我跟店员说我得编一个日本名字和地址, 他说'はいはいOKOK', 最后优惠了5%.",
+    "description": "### 曲目\nTen Bagatelles, Op. 59 - Kapustin\n\nBerceuse, Op. 65 - Kapustin\n\nHumoresque, Op. 75 - Kapustin\n\nSonatina, Op. 100 - Kapustin\n\nParaphrase on Ary Barroso's \"Aquarela do Brasil\", Op. 188 - Kapustin\n### 演奏家\nMasahiro Kawakami (川上 昌裕, piano)\n### 作曲家\nKapustin\n### 风格\nclassic\n\njazz\n### 数量\n1\n### 来源\nTower Records 新宿 东京\n### 附\n中古品.\n\n付钱的时候有填信息享优惠环节, 我跟店员说我得编一个日本名字和地址, 他说'はいはいOKOK', 最后优惠了5%.",
     "tracks": [
       "Ten Bagatelles, Op. 59 - Kapustin",
       "Berceuse, Op. 65 - Kapustin",
@@ -423,7 +423,7 @@ const siteData = [
       "jazz"
     ],
     "count": "1",
-    "source": "Tower Records 涩谷 东京",
+    "source": "Tower Records 新宿 东京",
     "notes": "中古品.\n\n付钱的时候有填信息享优惠环节, 我跟店员说我得编一个日本名字和地址, 他说'はいはいOKOK', 最后优惠了5%."
   },
   {
@@ -497,7 +497,7 @@ const siteData = [
     "type": "cd",
     "title": "Nikolai Kapustin: Eight Concert Études & 24 Preludes",
     "image": "../CDs/Nikolai KAPUSTIN Eight Concer Etudes & 24 Preludes/cover.jpg",
-    "description": "### 曲目\nEight Concert Études, Op. 40 - Kapustin\n\n24 Preludes in Jazz Style, Op. 53 - Kapustin\n### 演奏家\nCatherine Gordeladze (piano)\n### 作曲家\nKapustin\n### 风格\nclassic\n\njazz\n### 数量\n1\n### 来源\nTower Records 涩谷 东京\n### 附\n中古品.\n\n这张太有名了.\n\n付钱的时候有填信息享优惠环节, 我跟店员说我得编一个日本名字和地址, 他说'はいはいOKOK', 最后优惠了5%.",
+    "description": "### 曲目\nEight Concert Études, Op. 40 - Kapustin\n\n24 Preludes in Jazz Style, Op. 53 - Kapustin\n### 演奏家\nCatherine Gordeladze (piano)\n### 作曲家\nKapustin\n### 风格\nclassic\n\njazz\n### 数量\n1\n### 来源\nTower Records 新宿 东京\n### 附\n中古品.\n\n这张太有名了.\n\n付钱的时候有填信息享优惠环节, 我跟店员说我得编一个日本名字和地址, 他说'はいはいOKOK', 最后优惠了5%.",
     "tracks": [
       "Eight Concert Études, Op. 40 - Kapustin",
       "24 Preludes in Jazz Style, Op. 53 - Kapustin"
@@ -516,7 +516,7 @@ const siteData = [
       "jazz"
     ],
     "count": "1",
-    "source": "Tower Records 涩谷 东京",
+    "source": "Tower Records 新宿 东京",
     "notes": "中古品.\n\n这张太有名了.\n\n付钱的时候有填信息享优惠环节, 我跟店员说我得编一个日本名字和地址, 他说'はいはいOKOK', 最后优惠了5%."
   },
   {
@@ -872,7 +872,7 @@ const siteData = [
     "type": "vinyl",
     "title": "ten days",
     "image": "../Vinyls/ten days/cover.jpg",
-    "description": "### 曲目\n.one - Fred again..\n\nadore u - Fred again.., Obongjayar\n\n.two - Fred again..\n\nten - Fred again.., Jozzy, Jim Legxacy\n\n.three - Fred again..\n\nfear less - Fred again.., Sampha\n\n.four - Fred again..\n\njust stand there - Fred again.., Soak\n\n.five - Fred again..\n\nplaces to be - Fred again.., Anderson .Paak, CHIKA\n\n.six - Fred again..\n\nglow - Fred again.., Duskus, Four Tet, Skrillex\n\n.seven - Fred again..\n\ni saw you - Fred again..\n\n.eight - Fred again..\n\nwhere will i be - Fred again.., Emmylou Harris\n\n.nine - Fred again..\n\npeace u need - Fred again.., Joy Anonymous\n\n.ten - Fred again..\n\nbackseat - Fred again.., The Japanese House, Scott Hardkiss\n### 作曲家\nFred again..\n### 风格\nElectronic\n\nPop\n### 数量\n1\n### 来源\nTower Records 涩谷 东京 tim代购\n### 附\n这是我的第一张黑胶. \n我认为这个专辑中glow, ten和fear less是最佳曲目.",
+    "description": "### 曲目\n.one - Fred again..\n\nadore u - Fred again.., Obongjayar\n\n.two - Fred again..\n\nten - Fred again.., Jozzy, Jim Legxacy\n\n.three - Fred again..\n\nfear less - Fred again.., Sampha\n\n.four - Fred again..\n\njust stand there - Fred again.., Soak\n\n.five - Fred again..\n\nplaces to be - Fred again.., Anderson .Paak, CHIKA\n\n.six - Fred again..\n\nglow - Fred again.., Duskus, Four Tet, Skrillex\n\n.seven - Fred again..\n\ni saw you - Fred again..\n\n.eight - Fred again..\n\nwhere will i be - Fred again.., Emmylou Harris\n\n.nine - Fred again..\n\npeace u need - Fred again.., Joy Anonymous\n\n.ten - Fred again..\n\nbackseat - Fred again.., The Japanese House, Scott Hardkiss\n### 作曲家\nFred again..\n### 风格\nelectronic\n\npop\n### 数量\n1\n### 来源\nTower Records 涩谷 东京 tim代购\n### 附\n这是我的第一张黑胶. \n我认为这个专辑中glow, ten和fear less是最佳曲目.",
     "tracks": [
       ".one - Fred again..",
       "adore u - Fred again.., Obongjayar",
@@ -903,8 +903,8 @@ const siteData = [
     ],
     "producers": [],
     "genres": [
-      "Electronic",
-      "Pop"
+      "electronic",
+      "pop"
     ],
     "count": "1",
     "source": "Tower Records 涩谷 东京 tim代购",

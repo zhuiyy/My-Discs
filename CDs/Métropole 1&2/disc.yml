@@ -1,22 +1,20 @@
 title: "Métropole 1|2"
-tracks: |
-  #### I
-  - Ouverture
-  - Métropole
-  - Daybreak
-  - New Space
-  - Interlude
-  - Velours
-  - Le Bleury
-  - Éouligue
-  #### II
-  - Canal
-  - Madison
-  - Notre-Dame Est
-  - Crescent
-  - Dame Ouest
-  - Parc
-  - Fin
+tracks:
+  - "Ouverture - Anomalie"
+  - "Métropole - Anomalie"
+  - "Daybreak - Anomalie"
+  - "New Space - Anomalie"
+  - "Interlude - Anomalie"
+  - "Velours - Anomalie"
+  - "Le Bleury - Anomalie"
+  - "Éouligue - Anomalie"
+  - "Canal - Anomalie"
+  - "Madison - Anomalie"
+  - "Notre-Dame Est - Anomalie"
+  - "Crescent - Anomalie"
+  - "Dame Ouest - Anomalie"
+  - "Parc - Anomalie"
+  - "Fin - Anomalie"
 producers:
   - "Anomalie"
 genres:

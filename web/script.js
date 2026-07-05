@@ -1,7 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
     const cdGallery = document.getElementById('cd-gallery');
+    const vinylGallery = document.getElementById('vinyl-gallery');
     const concertGallery = document.getElementById('concert-gallery');
     const cdFilters = document.getElementById('cd-filters');
+    const vinylFilters = document.getElementById('vinyl-filters');
     const modal = document.getElementById('modal');
     const modalImage = document.getElementById('modal-image');
     const modalTitle = document.getElementById('modal-title');
@@ -10,12 +12,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeButton = document.querySelector('.close-button');
 
     let lastFocusedBeforeModal = null;
-    let activeGenre = 'all';
-    let cdItems = [];
-
-    function encodeMusicSrc(path) {
-        return encodeURI(path);
-    }
+    const collectionState = {
+        cd: { activeGenre: 'all', filters: cdFilters, items: [] },
+        vinyl: { activeGenre: 'all', filters: vinylFilters, items: [] }
+    };
 
     function renderMarkdownToSafeHtml(markdown) {
         const raw = marked.parse(markdown);
@@ -52,15 +52,13 @@ document.addEventListener('DOMContentLoaded', () => {
     function getCardMeta(item) {
         if (item.type === 'concert') {
             return {
-                eyebrow: formatDate(item.date || item.subtitle),
-                detail: [item.venue, item.hall].filter(Boolean).join(' · '),
-                tags: []
+                eyebrow: formatDate(item.date),
+                detail: [item.venue, item.hall].filter(Boolean).join(' · ')
             };
         }
         return {
             eyebrow: genreTokens(item).slice(0, 2).map(titleCase).join(' · '),
-            detail: '',
-            tags: []
+            detail: ''
         };
     }
 
@@ -112,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const eyebrow = document.createElement('div');
         eyebrow.className = 'item-eyebrow';
-        eyebrow.textContent = meta.eyebrow || (item.type === 'cd' ? 'Album' : 'Concert');
+        eyebrow.textContent = meta.eyebrow || (item.type === 'concert' ? 'Concert' : item.type === 'vinyl' ? 'Vinyl' : 'Album');
 
         const title = document.createElement('h3');
         title.className = 'item-title';
@@ -122,17 +120,10 @@ document.addEventListener('DOMContentLoaded', () => {
         detail.className = 'item-detail';
         detail.textContent = meta.detail || '';
 
-        const tags = document.createElement('div');
-        tags.className = 'item-tags';
-        meta.tags.forEach((tag) => tags.appendChild(createMetaPill(tag)));
-
         info.appendChild(eyebrow);
         info.appendChild(title);
         if (detail.textContent) {
             info.appendChild(detail);
-        }
-        if (meta.tags.length) {
-            info.appendChild(tags);
         }
         el.appendChild(info);
 
@@ -147,12 +138,13 @@ document.addEventListener('DOMContentLoaded', () => {
         return el;
     }
 
-    function renderFilters(cds) {
-        if (!cdFilters) {
+    function renderFilters(collectionType, items) {
+        const state = collectionState[collectionType];
+        if (!state || !state.filters) {
             return;
         }
-        cdFilters.innerHTML = '';
-        const genres = Array.from(new Set(cds.flatMap(genreTokens).map(titleCase))).sort((a, b) => a.localeCompare(b));
+        state.filters.innerHTML = '';
+        const genres = Array.from(new Set(items.flatMap(genreTokens).map(titleCase))).sort((a, b) => a.localeCompare(b));
 
         function addGroup(title, labels, activeValue, onSelect) {
             const group = document.createElement('div');
@@ -173,23 +165,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 button.setAttribute('aria-pressed', value === activeValue);
                 button.addEventListener('click', () => {
                     onSelect(value);
-                    updateCdFilter();
+                    updateCollectionFilter(collectionType);
                 });
                 group.appendChild(button);
             });
 
-            cdFilters.appendChild(group);
+            state.filters.appendChild(group);
         }
 
-        addGroup('类型', ['全部', ...genres], activeGenre, (value) => {
-            activeGenre = value;
+        addGroup('类型', ['全部', ...genres], state.activeGenre, (value) => {
+            state.activeGenre = value;
         });
     }
 
-    function updateFilterButtonStates() {
-        cdFilters.querySelectorAll('.filter-group').forEach((group) => {
+    function updateFilterButtonStates(state) {
+        if (!state || !state.filters) {
+            return;
+        }
+        state.filters.querySelectorAll('.filter-group').forEach((group) => {
             group.querySelectorAll('.filter-chip').forEach((button) => {
-                button.setAttribute('aria-pressed', button.dataset.value === activeGenre);
+                button.setAttribute('aria-pressed', button.dataset.value === state.activeGenre);
             });
         });
     }
@@ -201,11 +196,15 @@ document.addEventListener('DOMContentLoaded', () => {
         element.classList.add('is-entering');
     }
 
-    function updateCdFilter() {
+    function updateCollectionFilter(collectionType) {
+        const state = collectionState[collectionType];
+        if (!state) {
+            return;
+        }
         let visibleIndex = 0;
-        cdItems.forEach(({ element, item }) => {
+        state.items.forEach(({ element, item }) => {
             const genres = genreTokens(item).map((genre) => titleCase(genre).toLowerCase());
-            const matchesGenre = activeGenre === 'all' || genres.includes(activeGenre);
+            const matchesGenre = state.activeGenre === 'all' || genres.includes(state.activeGenre);
             if (matchesGenre) {
                 element.hidden = false;
                 restartEnterAnimation(element, visibleIndex);
@@ -215,7 +214,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 element.classList.remove('is-entering');
             }
         });
-        updateFilterButtonStates();
+        updateFilterButtonStates(state);
+    }
+
+    function renderCollection(collectionType, items, gallery) {
+        const state = collectionState[collectionType];
+        if (!gallery || !state) {
+            return;
+        }
+        state.items = [];
+        gallery.innerHTML = '';
+        renderFilters(collectionType, items);
+        shuffle([...items]).forEach((item, index) => {
+            const element = createGalleryItem(item, index);
+            gallery.appendChild(element);
+            state.items.push({ item, element });
+        });
+        updateCollectionFilter(collectionType);
     }
 
     // Render Galleries
@@ -227,22 +242,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Separate data
         const cds = siteData.filter(item => item.type === 'cd');
+        const vinyls = siteData.filter(item => item.type === 'vinyl');
         const concerts = siteData.filter(item => item.type === 'concert');
 
-        // Shuffle CDs only
-        const shuffledCDs = shuffle([...cds]);
         // Concerts are already sorted by date in data.js
         const sortedConcerts = [...concerts];
 
-        renderFilters(cds);
-
-        // Render CDs
-        shuffledCDs.forEach((item, index) => {
-            const element = createGalleryItem(item, index);
-            cdGallery.appendChild(element);
-            cdItems.push({ item, element });
-        });
-        updateCdFilter();
+        renderCollection('cd', cds, cdGallery);
+        renderCollection('vinyl', vinyls, vinylGallery);
 
         // Render Concerts
         sortedConcerts.forEach((item, index) => {
@@ -267,7 +274,7 @@ document.addEventListener('DOMContentLoaded', () => {
         modalTitle.textContent = item.title;
         modalMeta.innerHTML = '';
 
-        const metaItems = item.type === 'cd'
+        const metaItems = item.type === 'cd' || item.type === 'vinyl'
             ? genreTokens(item).slice(0, 3).map(titleCase)
             : [];
 
@@ -340,76 +347,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize
     renderGalleries();
-    initMusicPlayer();
-
-    // Music Player Logic
-    function initMusicPlayer() {
-        if (typeof musicData === 'undefined' || musicData.length === 0) {
-            console.log('No music data found');
-            document.getElementById('music-player-container').style.display = 'none';
-            return;
-        }
-
-        const audioPlayer = document.getElementById('audio-player');
-        const playPauseBtn = document.getElementById('play-pause-btn');
-        const musicTitle = document.getElementById('music-title');
-        const gramophone = document.querySelector('.flat-gramophone'); // Updated selector
-
-        // Pick random track
-        const randomTrack = musicData[Math.floor(Math.random() * musicData.length)];
-
-        // Setup Audio
-        // Encode the path to handle spaces and special characters
-        audioPlayer.src = encodeMusicSrc(randomTrack.path);
-        audioPlayer.preload = 'auto';
-        musicTitle.textContent = randomTrack.title;
-        musicTitle.title = randomTrack.title;
-
-        // Error handling
-        audioPlayer.addEventListener('error', (e) => {
-            console.error("Audio error:", audioPlayer.error);
-            musicTitle.textContent = "Error loading track";
-        });
-
-        // Play/Pause Toggle
-        const togglePlay = (e) => {
-            // We only use click event now to avoid conflicts
-            // Touch devices will fire click after a short delay, which is fine
-
-            if (audioPlayer.paused) {
-                const playPromise = audioPlayer.play();
-                if (playPromise !== undefined) {
-                    playPromise.then(() => {
-                        playPauseBtn.textContent = '⏸';
-                        gramophone.classList.add('playing');
-                        document.body.classList.add('music-playing');
-                    }).catch(error => {
-                        console.error("Playback failed:", error);
-                        // If autoplay was prevented, we might need user interaction again
-                        // But this IS a user interaction handler, so it should work.
-                    });
-                }
-            } else {
-                audioPlayer.pause();
-                playPauseBtn.textContent = '▶';
-                gramophone.classList.remove('playing');
-                document.body.classList.remove('music-playing');
-            }
-        };
-
-        playPauseBtn.addEventListener('click', togglePlay);
-        // Removed touchstart to prevent double-firing or prevention issues
-
-        // Auto-play next (random) when ended
-        audioPlayer.addEventListener('ended', () => {
-            const nextTrack = musicData[Math.floor(Math.random() * musicData.length)];
-            audioPlayer.src = encodeMusicSrc(nextTrack.path);
-            musicTitle.textContent = nextTrack.title;
-            musicTitle.title = nextTrack.title;
-            audioPlayer.play().then(() => {
-                playPauseBtn.textContent = '⏸';
-                gramophone.classList.add('playing');
-            });
-        });
-    }
 });

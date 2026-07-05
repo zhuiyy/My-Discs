@@ -153,10 +153,6 @@ def build_concert_description(item):
     if venue:
         parts.append(f'- {venue}')
 
-    notes = item.get('notes')
-    if notes:
-        parts.append(str(notes))
-
     return '\n'.join(parts).strip()
 
 
@@ -168,51 +164,57 @@ def normalize_list(value):
     return markdown_lines_to_list(str(value))
 
 
+def process_disc_collection(root_dir, directory_name, item_type):
+    entries = []
+    collection_path = os.path.join(root_dir, directory_name)
+    if not os.path.exists(collection_path):
+        return entries
+
+    for item in sorted(os.listdir(collection_path), key=str.casefold):
+        item_path = os.path.join(collection_path, item)
+        if os.path.isdir(item_path):
+            cover_name = find_cover_filename(item_path)
+            yaml_path = next(
+                (
+                    os.path.join(item_path, f'disc{ext}')
+                    for ext in YAML_EXTENSIONS
+                    if os.path.exists(os.path.join(item_path, f'disc{ext}'))
+                ),
+                None,
+            )
+
+            if cover_name and yaml_path:
+                structured = parse_simple_yaml(yaml_path)
+                entry = {
+                    'type': item_type,
+                    'title': structured.get('title') or item,
+                    'image': f'../{directory_name}/{item}/{cover_name}',
+                    'description': '',
+                    'tracks': structured.get('tracks') or [],
+                    'artists': normalize_list(structured.get('artists')),
+                    'vocalists': normalize_list(structured.get('vocalists')),
+                    'original_artists': normalize_list(structured.get('original_artists')),
+                    'composers': normalize_list(structured.get('composers')),
+                    'producers': normalize_list(structured.get('producers')),
+                    'genres': normalize_list(structured.get('genres')),
+                    'count': structured.get('count') or '',
+                    'source': structured.get('source') or '',
+                    'notes': structured.get('notes') or '',
+                }
+                entry['description'] = build_cd_description(entry)
+                entries.append(entry)
+
+    return entries
+
+
 def generate_data():
     data = []
-    music_data = []
-    
+
     base_dir = os.path.dirname(os.path.abspath(__file__))
     root_dir = os.path.dirname(base_dir)
-    
-    # Process CDs
-    cds_path = os.path.join(root_dir, 'CDs')
-    if os.path.exists(cds_path):
-        for item in sorted(os.listdir(cds_path), key=str.casefold):
-            item_path = os.path.join(cds_path, item)
-            if os.path.isdir(item_path):
-                cover_name = find_cover_filename(item_path)
-                yaml_path = next(
-                    (
-                        os.path.join(item_path, f'disc{ext}')
-                        for ext in YAML_EXTENSIONS
-                        if os.path.exists(os.path.join(item_path, f'disc{ext}'))
-                    ),
-                    None,
-                )
 
-                if cover_name and yaml_path:
-                    structured = parse_simple_yaml(yaml_path)
-                    entry = {
-                        'type': 'cd',
-                        'title': structured.get('title') or item,
-                        'image': f'../CDs/{item}/{cover_name}',
-                        'description': '',
-                        'tracks': structured.get('tracks') or [],
-                        'artists': normalize_list(structured.get('artists')),
-                        'vocalists': normalize_list(structured.get('vocalists')),
-                        'original_artists': normalize_list(structured.get('original_artists')),
-                        'composers': normalize_list(structured.get('composers')),
-                        'producers': normalize_list(structured.get('producers')),
-                        'genres': normalize_list(structured.get('genres')),
-                        'count': structured.get('count') or '',
-                        'source': structured.get('source') or '',
-                        'tags': normalize_list(structured.get('tags')),
-                        'notes': structured.get('notes') or '',
-                    }
-                    entry['description'] = build_cd_description(entry)
-                    
-                    data.append(entry)
+    data.extend(process_disc_collection(root_dir, 'CDs', 'cd'))
+    data.extend(process_disc_collection(root_dir, 'Vinyls', 'vinyl'))
 
     # Process Concerts
     concerts_dir = os.path.join(root_dir, 'concerts')
@@ -241,15 +243,12 @@ def generate_data():
                 'type': 'concert',
                 'title': structured.get('title') or item,
                 'date': structured.get('date') or item,
-                'subtitle': structured.get('date') or item,
                 'image': f'../concerts/{item}/{image_name}',
                 'description': '',
                 'venue': structured.get('venue') or '',
                 'hall': structured.get('hall') or '',
                 'performers': normalize_list(structured.get('performers')),
                 'program': structured.get('program') or [],
-                'encores': structured.get('encores') or [],
-                'notes': structured.get('notes') or '',
             }
             entry['description'] = build_concert_description(entry)
             concert_entries.append(entry)
@@ -259,23 +258,10 @@ def generate_data():
     # Combine Data
     data.extend(concert_entries)
 
-    # Process Music
-    music_path = os.path.join(base_dir, 'music')
-    if os.path.exists(music_path):
-        for item in sorted(os.listdir(music_path), key=str.casefold):
-            if item.lower().endswith(('.mp3', '.flac', '.wav', '.ogg', '.m4a')):
-                entry = {
-                    'title': os.path.splitext(item)[0],
-                    'path': f'music/{item}'
-                }
-                music_data.append(entry)
-
     # Write to data.js
     output_path = os.path.join(base_dir, 'data.js')
     with open(output_path, 'w', encoding='utf-8') as f:
-        # Write both siteData and musicData
-        f.write(f'const siteData = {json.dumps(data, ensure_ascii=False, indent=2)};\n')
-        f.write(f'const musicData = {json.dumps(music_data, ensure_ascii=False, indent=2)};')
+        f.write(f'const siteData = {json.dumps(data, ensure_ascii=False, indent=2)};')
 
 if __name__ == '__main__':
     generate_data()

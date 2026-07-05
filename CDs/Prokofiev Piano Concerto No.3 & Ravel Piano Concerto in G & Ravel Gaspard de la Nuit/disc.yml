@@ -1,14 +1,15 @@
-title: "Prokofiev Piano Concerto No.3 & Ravel Piano Concerto in G & Ravel Gaspard de la Nuit"
+title: "Prokofiev · Ravel: Piano Concertos & Gaspard de la nuit"
 tracks:
-  - "Concerto for Piano and Orchestra no. 3 in C major - Prokofiev"
-  - "Concerto for Piano and Orchestra in G major - Ravel"
-  - "Gaspard de la nuit - Ravel"
+  - "Piano Concerto No. 3 in C major, Op. 26 - Prokofiev"
+  - "Piano Concerto in G major, M. 83 - Ravel"
+  - "Gaspard de la nuit, M. 55 - Ravel"
 artists:
   - "Martha Argerich"
-  - "Berliner Philharmoniker-柏林爱乐乐团"
-  - "Claudio Abbado"
+  - "Berliner Philharmoniker"
+  - "Claudio Abbado (conductor)"
 composers:
-  - "Prokofiev, Ravel"
+  - "Prokofiev"
+  - "Ravel"
 genres:
   - "classic"
 count: "1"

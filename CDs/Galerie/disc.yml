@@ -1,17 +1,15 @@
 title: "Galerie"
-tracks: |
-  #### Disc
-  - Lune
-  - Bond
-  #### Disc 01
-  - Dribble
-  - Mollo
-  - Come Running to Me
-  - Generations
-  - Hummingbird
-  - Memory Leaves
-  - Untouchable
-  - Leiria
+tracks:
+  - "Lune - Anomalie"
+  - "Bond - Anomalie"
+  - "Dribble - Anomalie"
+  - "Mollo - Anomalie"
+  - "Come Running to Me - Anomalie"
+  - "Generations - Anomalie"
+  - "Hummingbird - Anomalie"
+  - "Memory Leaves - Anomalie"
+  - "Untouchable - Anomalie"
+  - "Leiria - Anomalie"
 producers:
   - "Anomalie"
 genres:

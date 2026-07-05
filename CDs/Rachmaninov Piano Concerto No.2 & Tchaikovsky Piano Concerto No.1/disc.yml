@@ -1,15 +1,16 @@
-title: "Rachmaninov Piano Concerto No.2 & Tchaikovsky Piano Concerto No.1"
+title: "Rachmaninoff Piano Concerto No. 2 & Tchaikovsky Piano Concerto No. 1"
 tracks:
-  - "Concerto for Piano and Orchestra no. 2 in C minor - Rachmaninov"
-  - "Concerto for Piano and Orchestra no. 1 in B flat minor - Tchaikovsky"
+  - "Piano Concerto No. 2 in C minor, Op. 18 - Rachmaninoff"
+  - "Piano Concerto No. 1 in B-flat minor, Op. 23 - Tchaikovsky"
 artists:
-  - "Sviatoslav Richter"
-  - "Warsaw National Philharmonic Orchestra-华沙爱乐乐团"
-  - "Stanislaw Wislocki"
-  - "Wiener Symphoniker-维也纳爱乐乐团"
-  - "Herbert Von Karajan"
+  - "Sviatoslav Richter (piano)"
+  - "Warsaw National Philharmonic Orchestra"
+  - "Stanisław Wisłocki (conductor)"
+  - "Wiener Symphoniker"
+  - "Herbert von Karajan (conductor)"
 composers:
-  - "Rachmaninov, Tchaikovsky"
+  - "Rachmaninoff"
+  - "Tchaikovsky"
 genres:
   - "classic"
 count: "1"

@@ -3,7 +3,7 @@ const siteData = [
     "type": "cd",
     "title": "8 Concert Etudes",
     "image": "../CDs/8 Concert Etudes/cover.jpg",
-    "description": "### 曲目\n8 Concert Etudes, Op. 40 - Kapustin\n\nPiano Sonata No. 1, Op. 39 \"Sonata Fantasy\" - Kapustin\n\nSuite in Old Style, Op. 28 - Kapustin\n\nVariations, Op. 41 - Kapustin\n### 演奏家\nKapustin\n### 作曲家\nKapustin\n### 风格\nclassic\n\njazz\n### 数量\n1\n### 来源\nTower Records 涩谷 东京 tim代购\n### 附\nKapustin plays Kapustin",
+    "description": "### 曲目\n8 Concert Etudes, Op. 40 - Kapustin\n\nPiano Sonata No. 1, Op. 39 \"Sonata Fantasy\" - Kapustin\n\nSuite in Old Style, Op. 28 - Kapustin\n\nVariations, Op. 41 - Kapustin\n### 演奏家\nKapustin\n### 作曲家\nKapustin\n### 风格\nclassic\n\njazz\n### 数量\n1\n### 来源\nTower Records 涩谷 东京 Tim代购\n### 附\nKapustin plays Kapustin",
     "tracks": [
       "8 Concert Etudes, Op. 40 - Kapustin",
       "Piano Sonata No. 1, Op. 39 \"Sonata Fantasy\" - Kapustin",
@@ -24,7 +24,7 @@ const siteData = [
       "jazz"
     ],
     "count": "1",
-    "source": "Tower Records 涩谷 东京 tim代购",
+    "source": "Tower Records 涩谷 东京 Tim代购",
     "notes": "Kapustin plays Kapustin"
   },
   {
@@ -91,7 +91,7 @@ const siteData = [
     "type": "cd",
     "title": "Beethoven · Schumann · Franck",
     "image": "../CDs/Beethoven · Schumann · Franck/cover.jpg",
-    "description": "### 曲目\nViolin Sonata No. 1 in A minor, Op. 105 - Schumann\n\nViolin Sonata No. 9 in A major, Op. 47 \"Kreutzer\" - Beethoven\n\nViolin Sonata in A major, FWV 8 - Franck\n### 演奏家\nRenaud Capuçon (violin)\n\nMartha Argerich (piano)\n### 作曲家\nSchumann\n\nBeethoven\n\nFranck\n### 风格\nclassic\n### 数量\n1\n### 来源\nTower Records 涩谷 东京 tim代购\n### 附\n终于有Franck sonata best version了!",
+    "description": "### 曲目\nViolin Sonata No. 1 in A minor, Op. 105 - Schumann\n\nViolin Sonata No. 9 in A major, Op. 47 \"Kreutzer\" - Beethoven\n\nViolin Sonata in A major, FWV 8 - Franck\n### 演奏家\nRenaud Capuçon (violin)\n\nMartha Argerich (piano)\n### 作曲家\nSchumann\n\nBeethoven\n\nFranck\n### 风格\nclassic\n### 数量\n1\n### 来源\nTower Records 涩谷 东京 Tim代购\n### 附\n终于有Franck sonata best version了!",
     "tracks": [
       "Violin Sonata No. 1 in A minor, Op. 105 - Schumann",
       "Violin Sonata No. 9 in A major, Op. 47 \"Kreutzer\" - Beethoven",
@@ -113,7 +113,7 @@ const siteData = [
       "classic"
     ],
     "count": "1",
-    "source": "Tower Records 涩谷 东京 tim代购",
+    "source": "Tower Records 涩谷 东京 Tim代购",
     "notes": "终于有Franck sonata best version了!"
   },
   {
@@ -144,7 +144,7 @@ const siteData = [
     "type": "cd",
     "title": "Djesse Vol. 1",
     "image": "../CDs/Djesse Vol. 1/cover.jpg",
-    "description": "### 曲目\nHome Is (Feat. Vocess) - Jacob Collier\n\nOverture - Jacob Collier\n\nOcean Wide, Canyon Deep (Feat. Laura Mvula) - Jacob Collier\n\nDjesse - Jacob Collier\n\nEverlasting Motion (Feat. Hamid El Kasri) - Jacob Collier\n\nEvery Little Thing She Does Is Magic - Jacob Collier\n\nOnce You (Feat. Suzie Collier) - Jacob Collier\n\nAll Night Long (Feat. Take 6) - Jacob Collier\n### 作曲家\nJacob Collier\n### 风格\npop\n### 数量\n1\n### 来源\nTower Records 涩谷 东京 tim代购",
+    "description": "### 曲目\nHome Is (Feat. Vocess) - Jacob Collier\n\nOverture - Jacob Collier\n\nOcean Wide, Canyon Deep (Feat. Laura Mvula) - Jacob Collier\n\nDjesse - Jacob Collier\n\nEverlasting Motion (Feat. Hamid El Kasri) - Jacob Collier\n\nEvery Little Thing She Does Is Magic - Jacob Collier\n\nOnce You (Feat. Suzie Collier) - Jacob Collier\n\nAll Night Long (Feat. Take 6) - Jacob Collier\n### 作曲家\nJacob Collier\n### 风格\npop\n### 数量\n1\n### 来源\nTower Records 涩谷 东京 Tim代购",
     "tracks": [
       "Home Is (Feat. Vocess) - Jacob Collier",
       "Overture - Jacob Collier",
@@ -166,7 +166,7 @@ const siteData = [
       "pop"
     ],
     "count": "1",
-    "source": "Tower Records 涩谷 东京 tim代购",
+    "source": "Tower Records 涩谷 东京 Tim代购",
     "notes": ""
   },
   {
@@ -207,7 +207,7 @@ const siteData = [
     "type": "cd",
     "title": "Djesse Vol. 4",
     "image": "../CDs/Djesse Vol. 4/cover.jpg",
-    "description": "### 曲目\n100, 000 Voices - Jacob Collier\n\nShe Put Sunshine - Jacob Collier\n\nLittle Blue (Feat. Brandi Carlile) - Jacob Collier\n\nWellll - Jacob Collier\n\nCommon Crush (Feat. Lindsey Lomis) - Jacob Collier\n\nWherever I Go (Feat. Lawrence & Michael McDonald) - Jacob Collier\n\nSummer Rain (Feat. Madison Cunningham & Chris Thile) - Jacob Collier\n\nA Rock Somewhere (Feat. Anoushka Shankar & Varijashree VenuGopal) - Jacob Collier\n\nMi Corazon (Feat. Camilo) - Jacob Collier\n\nWitness Me (Feat. Shawn Mendes, Stormzy & Kirk Franklin) - Jacob Collier\n\nNever Gonna Be Alone (Feat. Lizzy McApline & John Mayer) - Jacob Collier\n\nBridge Over Troubled Water (Feat. John Legend & Tori Kelly) - Jacob Collier\n\nOver You (Feat. AESPA & Chris Martin) - Jacob Collier\n\nBox Of Stars Pt.1 (Feat. Kirk Franklin, CHIKA, D Smoke, Sho Madjozi, Yelle & Kanyi Mavi) - Jacob Collier\n\nBox Of Stars Pt.1 (Feat. Metropole Orkest, Suzie Collier, Steve Vai & VOCESS) - Jacob Collier\n\nWorld O World - Jacob Collier\n\nLittle Blue (Mahogany Sessions, Japan Bonus Track) - Jacob Collier\n### 作曲家\nJacob Collier\n### 风格\npop\n### 数量\n1\n### 来源\nTower Records 涩谷 东京 tim代购",
+    "description": "### 曲目\n100, 000 Voices - Jacob Collier\n\nShe Put Sunshine - Jacob Collier\n\nLittle Blue (Feat. Brandi Carlile) - Jacob Collier\n\nWellll - Jacob Collier\n\nCommon Crush (Feat. Lindsey Lomis) - Jacob Collier\n\nWherever I Go (Feat. Lawrence & Michael McDonald) - Jacob Collier\n\nSummer Rain (Feat. Madison Cunningham & Chris Thile) - Jacob Collier\n\nA Rock Somewhere (Feat. Anoushka Shankar & Varijashree VenuGopal) - Jacob Collier\n\nMi Corazon (Feat. Camilo) - Jacob Collier\n\nWitness Me (Feat. Shawn Mendes, Stormzy & Kirk Franklin) - Jacob Collier\n\nNever Gonna Be Alone (Feat. Lizzy McApline & John Mayer) - Jacob Collier\n\nBridge Over Troubled Water (Feat. John Legend & Tori Kelly) - Jacob Collier\n\nOver You (Feat. AESPA & Chris Martin) - Jacob Collier\n\nBox Of Stars Pt.1 (Feat. Kirk Franklin, CHIKA, D Smoke, Sho Madjozi, Yelle & Kanyi Mavi) - Jacob Collier\n\nBox Of Stars Pt.1 (Feat. Metropole Orkest, Suzie Collier, Steve Vai & VOCESS) - Jacob Collier\n\nWorld O World - Jacob Collier\n\nLittle Blue (Mahogany Sessions, Japan Bonus Track) - Jacob Collier\n### 作曲家\nJacob Collier\n### 风格\npop\n### 数量\n1\n### 来源\nTower Records 涩谷 东京 Tim代购",
     "tracks": [
       "100, 000 Voices - Jacob Collier",
       "She Put Sunshine - Jacob Collier",
@@ -238,7 +238,7 @@ const siteData = [
       "pop"
     ],
     "count": "1",
-    "source": "Tower Records 涩谷 东京 tim代购",
+    "source": "Tower Records 涩谷 东京 Tim代购",
     "notes": ""
   },
   {
@@ -523,7 +523,7 @@ const siteData = [
     "type": "cd",
     "title": "Nikolai Kapustin Piano Music",
     "image": "../CDs/Nikolai Kapustin Piano Music/cover.jpg",
-    "description": "### 曲目\nVariations, Op. 41 - Kapustin\n\nEight Concert Études, Op. 40 - Kapustin\n\nBagatelle No. 9, Op. 59 - Kapustin\n\nSuite in the Old Style, Op. 28 - Kapustin\n\nPiano Sonata No. 6, Op. 62 - Kapustin\n\nSonatina, Op. 100 - Kapustin\n\nFive Études in Different Intervals, Op. 68 - Kapustin\n### 演奏家\nMarc-André Hamelin\n### 作曲家\nKapustin\n### 风格\nclassic\n\njazz\n### 数量\n1\n### 来源\nTower Records 涩谷 东京 tim代购\n### 附\n哈默林弹得非常好",
+    "description": "### 曲目\nVariations, Op. 41 - Kapustin\n\nEight Concert Études, Op. 40 - Kapustin\n\nBagatelle No. 9, Op. 59 - Kapustin\n\nSuite in the Old Style, Op. 28 - Kapustin\n\nPiano Sonata No. 6, Op. 62 - Kapustin\n\nSonatina, Op. 100 - Kapustin\n\nFive Études in Different Intervals, Op. 68 - Kapustin\n### 演奏家\nMarc-André Hamelin\n### 作曲家\nKapustin\n### 风格\nclassic\n\njazz\n### 数量\n1\n### 来源\nTower Records 涩谷 东京 Tim代购\n### 附\n哈默林弹得非常好",
     "tracks": [
       "Variations, Op. 41 - Kapustin",
       "Eight Concert Études, Op. 40 - Kapustin",
@@ -547,7 +547,7 @@ const siteData = [
       "jazz"
     ],
     "count": "1",
-    "source": "Tower Records 涩谷 东京 tim代购",
+    "source": "Tower Records 涩谷 东京 Tim代购",
     "notes": "哈默林弹得非常好"
   },
   {
@@ -872,7 +872,7 @@ const siteData = [
     "type": "vinyl",
     "title": "ten days",
     "image": "../Vinyls/ten days/cover.jpg",
-    "description": "### 曲目\n.one - Fred again..\n\nadore u - Fred again.., Obongjayar\n\n.two - Fred again..\n\nten - Fred again.., Jozzy, Jim Legxacy\n\n.three - Fred again..\n\nfear less - Fred again.., Sampha\n\n.four - Fred again..\n\njust stand there - Fred again.., Soak\n\n.five - Fred again..\n\nplaces to be - Fred again.., Anderson .Paak, CHIKA\n\n.six - Fred again..\n\nglow - Fred again.., Duskus, Four Tet, Skrillex\n\n.seven - Fred again..\n\ni saw you - Fred again..\n\n.eight - Fred again..\n\nwhere will i be - Fred again.., Emmylou Harris\n\n.nine - Fred again..\n\npeace u need - Fred again.., Joy Anonymous\n\n.ten - Fred again..\n\nbackseat - Fred again.., The Japanese House, Scott Hardkiss\n### 作曲家\nFred again..\n### 风格\nelectronic\n\npop\n### 数量\n1\n### 来源\nTower Records 涩谷 东京 tim代购\n### 附\n这是我的第一张黑胶. \n我认为这个专辑中glow, ten和fear less是最佳曲目.",
+    "description": "### 曲目\n.one - Fred again..\n\nadore u - Fred again.., Obongjayar\n\n.two - Fred again..\n\nten - Fred again.., Jozzy, Jim Legxacy\n\n.three - Fred again..\n\nfear less - Fred again.., Sampha\n\n.four - Fred again..\n\njust stand there - Fred again.., Soak\n\n.five - Fred again..\n\nplaces to be - Fred again.., Anderson .Paak, CHIKA\n\n.six - Fred again..\n\nglow - Fred again.., Duskus, Four Tet, Skrillex\n\n.seven - Fred again..\n\ni saw you - Fred again..\n\n.eight - Fred again..\n\nwhere will i be - Fred again.., Emmylou Harris\n\n.nine - Fred again..\n\npeace u need - Fred again.., Joy Anonymous\n\n.ten - Fred again..\n\nbackseat - Fred again.., The Japanese House, Scott Hardkiss\n### 作曲家\nFred again..\n### 风格\nelectronic\n\npop\n### 数量\n1\n### 来源\nTower Records 涩谷 东京 Tim代购\n### 附\n这是我的第一张黑胶. \n我认为这个专辑中glow, ten和fear less是最佳曲目.",
     "tracks": [
       ".one - Fred again..",
       "adore u - Fred again.., Obongjayar",
@@ -907,7 +907,7 @@ const siteData = [
       "pop"
     ],
     "count": "1",
-    "source": "Tower Records 涩谷 东京 tim代购",
+    "source": "Tower Records 涩谷 东京 Tim代购",
     "notes": "这是我的第一张黑胶. \n我认为这个专辑中glow, ten和fear less是最佳曲目."
   },
   {

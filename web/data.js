@@ -912,10 +912,33 @@ const siteData = [
   },
   {
     "type": "concert",
+    "title": "上海爱乐乐团2025-2026音乐季闭幕音乐会",
+    "date": "2026-07-25",
+    "image": "../concerts/2026-07-25/cover.jpg",
+    "description": "- Piano Concerto No. 2 in B-flat Major, Op. 83 (with Marc-André Hamelin) - Brahms\n- Etude No. 1, based on George Gershwin’s \"Liza\" - Wild\n- Ich liebe dich, S. 542a - Liszt\n- Étude-Tableau in E-flat Minor No. 5, Op. 39 - Rachmaninoff\n- *—INTERMISSION—*\n- Symphony No. 1 in C Minor, Op. 68 - Brahms\n- Hungarian Dance No. 1 in G Minor, WoO 1 No. 1 - Brahms\n- *Marc-André Hamelin & 张艺 & 上海爱乐乐团*\n- 上海东方艺术中心, 音乐厅",
+    "venue": "上海东方艺术中心",
+    "hall": "音乐厅",
+    "performers": [
+      "Marc-André Hamelin",
+      "张艺",
+      "上海爱乐乐团"
+    ],
+    "program": [
+      "Piano Concerto No. 2 in B-flat Major, Op. 83 (with Marc-André Hamelin) - Brahms",
+      "Etude No. 1, based on George Gershwin’s \"Liza\" - Wild",
+      "Ich liebe dich, S. 542a - Liszt",
+      "Étude-Tableau in E-flat Minor No. 5, Op. 39 - Rachmaninoff",
+      "*—INTERMISSION—*",
+      "Symphony No. 1 in C Minor, Op. 68 - Brahms",
+      "Hungarian Dance No. 1 in G Minor, WoO 1 No. 1 - Brahms"
+    ]
+  },
+  {
+    "type": "concert",
     "title": "\"俄乐史诗\"——尼尔森斯与莱比锡布商大厦管弦乐团音乐会",
     "date": "2026-05-29",
     "image": "../concerts/2026-05-29/cover.jpg",
-    "description": "- Piano Concerto No. 2 in C minor, Op. 18 (with Yulianna Avdeeva) - Rachmaninoff\n- Moments musicaux, Op. 16: No. 4 in E minor (with Yulianna Avdeeva) - Rachmaninoff\n- *—INTERMISSION—*\n- Symphony No. 10 in E minor, Op. 93 - Shostakovich\n- Moscow, Cheryomushki, Op. 105: I. A Spin Through Moscow - Shostakovich\n- *Andris Nelsons & Yulianna Avdeeva & Gewandhausorchester Leipzig*\n- 国家大剧院, 音乐厅",
+    "description": "- Piano Concerto No. 2 in C minor, Op. 18 (with Yulianna Avdeeva) - Rachmaninoff\n- Moments musicaux, Op. 16: No. 4 in E minor - Rachmaninoff\n- *—INTERMISSION—*\n- Symphony No. 10 in E minor, Op. 93 - Shostakovich\n- Moscow, Cheryomushki, Op. 105: I. A Spin Through Moscow - Shostakovich\n- *Andris Nelsons & Yulianna Avdeeva & Gewandhausorchester Leipzig*\n- 国家大剧院, 音乐厅",
     "venue": "国家大剧院",
     "hall": "音乐厅",
     "performers": [
@@ -925,7 +948,7 @@ const siteData = [
     ],
     "program": [
       "Piano Concerto No. 2 in C minor, Op. 18 (with Yulianna Avdeeva) - Rachmaninoff",
-      "Moments musicaux, Op. 16: No. 4 in E minor (with Yulianna Avdeeva) - Rachmaninoff",
+      "Moments musicaux, Op. 16: No. 4 in E minor - Rachmaninoff",
       "*—INTERMISSION—*",
       "Symphony No. 10 in E minor, Op. 93 - Shostakovich",
       "Moscow, Cheryomushki, Op. 105: I. A Spin Through Moscow - Shostakovich"
@@ -936,7 +959,7 @@ const siteData = [
     "title": "\"狂想交响\"——梵志登、康托洛夫与法国广播爱乐乐团音乐会",
     "date": "2026-05-18",
     "image": "../concerts/2026-05-18/cover.jpg",
-    "description": "- Rhapsody on a Theme of Paganini, Op. 43 (with Alexandre Kantorow) - Rachmaninoff\n- Isoldes Liebestod, S. 447 (with Alexandre Kantorow) - Liszt\n- *—INTERMISSION—*\n- Symphony No. 7 in E major, WAB 107 - Bruckner\n- Variations on an Original Theme, Op. 36 \"Enigma\" - Elgar\n- *Jaap van Zweden & Alexandre Kantorow & Orchestre philharmonique de Radio France*\n- 国家大剧院, 音乐厅",
+    "description": "- Rhapsody on a Theme of Paganini, Op. 43 (with Alexandre Kantorow) - Rachmaninoff\n- Isoldes Liebestod, S. 447 - Liszt\n- *—INTERMISSION—*\n- Symphony No. 7 in E major, WAB 107 - Bruckner\n- Variations on an Original Theme, Op. 36 \"Enigma\" - Elgar\n- *Jaap van Zweden & Alexandre Kantorow & Orchestre philharmonique de Radio France*\n- 国家大剧院, 音乐厅",
     "venue": "国家大剧院",
     "hall": "音乐厅",
     "performers": [
@@ -946,7 +969,7 @@ const siteData = [
     ],
     "program": [
       "Rhapsody on a Theme of Paganini, Op. 43 (with Alexandre Kantorow) - Rachmaninoff",
-      "Isoldes Liebestod, S. 447 (with Alexandre Kantorow) - Liszt",
+      "Isoldes Liebestod, S. 447 - Liszt",
       "*—INTERMISSION—*",
       "Symphony No. 7 in E major, WAB 107 - Bruckner",
       "Variations on an Original Theme, Op. 36 \"Enigma\" - Elgar"
@@ -957,7 +980,7 @@ const siteData = [
     "title": "北京大学2026五四交响音乐会",
     "date": "2026-05-10",
     "image": "../concerts/2026-05-10/cover.jpg",
-    "description": "- Symphony No. 4 in B-flat major, Op. 60 - Beethoven\n- *—INTERMISSION—*\n- Violin Concerto No. 1 in D major, Op. 19 (with 苏千寻) - Prokofiev\n- Sonata for Solo Violin No. 2 in A minor, Op. 27 No. 2 \"Les furies\": IV. Allegro furioso (with 苏千寻) - Ysaÿe\n- The Firebird Suite (1919 version) - Stravinsky\n- 雪花 - 张帅\n- 钢铁洪流进行曲 - 李旭昊\n- *黄屹 & 苏千寻 & 中国爱乐乐团*\n- 北京大学百周年纪念讲堂, 观众厅",
+    "description": "- Symphony No. 4 in B-flat major, Op. 60 - Beethoven\n- *—INTERMISSION—*\n- Violin Concerto No. 1 in D major, Op. 19 (with 苏千寻) - Prokofiev\n- Sonata for Solo Violin No. 2 in A minor, Op. 27 No. 2 \"Les furies\": IV. Allegro furioso - Ysaÿe\n- The Firebird Suite (1919 version) - Stravinsky\n- 雪花 - 张帅\n- 钢铁洪流进行曲 - 李旭昊\n- *黄屹 & 苏千寻 & 中国爱乐乐团*\n- 北京大学百周年纪念讲堂, 观众厅",
     "venue": "北京大学百周年纪念讲堂",
     "hall": "观众厅",
     "performers": [
@@ -969,7 +992,7 @@ const siteData = [
       "Symphony No. 4 in B-flat major, Op. 60 - Beethoven",
       "*—INTERMISSION—*",
       "Violin Concerto No. 1 in D major, Op. 19 (with 苏千寻) - Prokofiev",
-      "Sonata for Solo Violin No. 2 in A minor, Op. 27 No. 2 \"Les furies\": IV. Allegro furioso (with 苏千寻) - Ysaÿe",
+      "Sonata for Solo Violin No. 2 in A minor, Op. 27 No. 2 \"Les furies\": IV. Allegro furioso - Ysaÿe",
       "The Firebird Suite (1919 version) - Stravinsky",
       "雪花 - 张帅",
       "钢铁洪流进行曲 - 李旭昊"
@@ -980,7 +1003,7 @@ const siteData = [
     "title": "埃萨-佩卡·萨洛宁、卡普松与巴黎管弦乐团音乐会II",
     "date": "2026-04-15",
     "image": "../concerts/2026-04-15/cover.jpg",
-    "description": "- Images pour orchestre: Rondes de printemps, L. 122 - Debussy\n- Violin Concerto No. 3 in G major, K. 216 (with Renaud Capuçon) - Mozart\n- Orfeo ed Euridice: Dance of the Blessed Spirits (with Renaud Capuçon) - Gluck\n- *—INTERMISSION—*\n- Symphony No. 5 in E-flat major, Op. 82 - Sibelius\n- Bist du bei mir, BWV 508 - Stölzel\n- *Esa-Pekka Salonen & Renaud Capuçon & Orchestre de Paris*\n- 国家大剧院, 音乐厅",
+    "description": "- Images pour orchestre: Rondes de printemps, L. 122 - Debussy\n- Violin Concerto No. 3 in G major, K. 216 (with Renaud Capuçon) - Mozart\n- Orfeo ed Euridice: Dance of the Blessed Spirits - Gluck\n- *—INTERMISSION—*\n- Symphony No. 5 in E-flat major, Op. 82 - Sibelius\n- Bist du bei mir, BWV 508 - Stölzel\n- *Esa-Pekka Salonen & Renaud Capuçon & Orchestre de Paris*\n- 国家大剧院, 音乐厅",
     "venue": "国家大剧院",
     "hall": "音乐厅",
     "performers": [
@@ -991,7 +1014,7 @@ const siteData = [
     "program": [
       "Images pour orchestre: Rondes de printemps, L. 122 - Debussy",
       "Violin Concerto No. 3 in G major, K. 216 (with Renaud Capuçon) - Mozart",
-      "Orfeo ed Euridice: Dance of the Blessed Spirits (with Renaud Capuçon) - Gluck",
+      "Orfeo ed Euridice: Dance of the Blessed Spirits - Gluck",
       "*—INTERMISSION—*",
       "Symphony No. 5 in E-flat major, Op. 82 - Sibelius",
       "Bist du bei mir, BWV 508 - Stölzel"

@@ -6,6 +6,7 @@ import html
 import json
 import os
 import re
+import secrets
 import shutil
 import subprocess
 import sys
@@ -20,6 +21,7 @@ WEB_DIR = os.path.join(ROOT_DIR, 'web')
 GENERATE_SCRIPT = os.path.join(WEB_DIR, 'generate_data.py')
 COVER_EXTENSIONS = {'.jpg', '.jpeg', '.png', '.webp'}
 MAX_UPLOAD_BYTES = 30 * 1024 * 1024
+CSRF_TOKEN = secrets.token_urlsafe(32)
 
 
 PAGE_HTML = """<!doctype html>
@@ -255,6 +257,7 @@ PAGE_HTML = """<!doctype html>
     <p class="subhead">提交后会写入现有 YAML/封面目录，并重新生成 web/data.js。</p>
 
     <form id="entry-form">
+      <input type="hidden" name="csrf_token" value="__CSRF_TOKEN__">
       <fieldset>
         <legend>条目类型</legend>
         <div class="type-row">
@@ -617,6 +620,12 @@ def parse_multipart(headers, body):
     return fields, files
 
 
+def validate_csrf_token(fields):
+    token = fields.get('csrf_token') or ''
+    if not secrets.compare_digest(token, CSRF_TOKEN):
+        raise AdminError('提交令牌无效，请刷新本地录入页面后重试。')
+
+
 def split_lines(value):
     return [line.strip() for line in (value or '').splitlines() if line.strip()]
 
@@ -742,6 +751,8 @@ def run_generator():
 
 
 def create_entry(fields, files):
+    validate_csrf_token(fields)
+
     entry_type = (fields.get('entry_type') or '').strip()
     if entry_type not in {'cd', 'vinyl', 'concert'}:
         raise AdminError('请选择 CD、黑胶或音乐会。')
@@ -812,7 +823,7 @@ class AdminHandler(BaseHTTPRequestHandler):
     def do_GET(self):
         path = urlparse(self.path).path
         if path in {'/', '/index.html'}:
-            text_response(self, 200, PAGE_HTML)
+            text_response(self, 200, PAGE_HTML.replace('__CSRF_TOKEN__', html.escape(CSRF_TOKEN, quote=True)))
             return
         if path == '/health':
             json_response(self, 200, {'ok': True})

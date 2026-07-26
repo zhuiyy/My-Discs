@@ -1,27 +1,75 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const cdGallery = document.getElementById('cd-gallery');
-    const vinylGallery = document.getElementById('vinyl-gallery');
+    const collectionGallery = document.getElementById('collection-gallery');
     const concertGallery = document.getElementById('concert-gallery');
-    const cdFilters = document.getElementById('cd-filters');
-    const vinylFilters = document.getElementById('vinyl-filters');
+    const typeFilters = document.getElementById('type-filters');
+    const genreFilter = document.getElementById('genre-filter');
+    const searchInput = document.getElementById('collection-search');
+    const clearSearch = document.getElementById('clear-search');
+    const resultSummary = document.getElementById('result-summary');
+    const emptyState = document.getElementById('empty-state');
+    const archiveStats = document.getElementById('archive-stats');
+    const concertCount = document.getElementById('concert-count');
     const modal = document.getElementById('modal');
+    const modalContent = modal.querySelector('.modal-content');
     const modalImage = document.getElementById('modal-image');
     const modalTitle = document.getElementById('modal-title');
     const modalMeta = document.getElementById('modal-meta');
     const modalDescription = document.getElementById('modal-description');
-    const closeButton = document.querySelector('.close-button');
+    const modalCounter = document.getElementById('modal-counter');
+    const closeButton = modal.querySelector('.close-button');
+    const modalPrev = document.getElementById('modal-prev');
+    const modalNext = document.getElementById('modal-next');
 
+    const hasGSAP = typeof gsap !== 'undefined';
+    const hasFlip = hasGSAP && typeof Flip !== 'undefined';
+    const hasScrollTrigger = hasGSAP && typeof ScrollTrigger !== 'undefined';
+    const reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    if (hasGSAP) {
+        const plugins = [];
+        if (hasFlip) {
+            plugins.push(Flip);
+        }
+        if (hasScrollTrigger) {
+            plugins.push(ScrollTrigger);
+        }
+        if (plugins.length) {
+            gsap.registerPlugin(...plugins);
+        }
+        gsap.defaults({ duration: 0.5, ease: 'power3.out' });
+    }
+
+    let collectionRecords = [];
+    let concertRecords = [];
+    let visibleCollectionRecords = [];
+    let activeModalList = [];
+    let activeModalIndex = -1;
     let lastFocusedBeforeModal = null;
+    let activeSourceElement = null;
+    let modalIsAnimating = false;
+    let refreshTimer = null;
+
     const collectionState = {
-        cd: { activeGenre: 'all', filters: cdFilters, items: [] },
-        vinyl: { activeGenre: 'all', filters: vinylFilters, items: [] }
+        type: 'all',
+        genre: 'all',
+        query: ''
     };
 
+    function prefersReducedMotion() {
+        return reduceMotionQuery.matches;
+    }
+
     function renderMarkdownToSafeHtml(markdown) {
+        if (!markdown) {
+            return '<p>No description available.</p>';
+        }
+        if (typeof marked === 'undefined') {
+            const paragraph = document.createElement('p');
+            paragraph.textContent = markdown;
+            return paragraph.outerHTML;
+        }
         const raw = marked.parse(markdown);
-        return typeof DOMPurify !== 'undefined'
-            ? DOMPurify.sanitize(raw)
-            : raw;
+        return typeof DOMPurify !== 'undefined' ? DOMPurify.sanitize(raw) : raw;
     }
 
     function genreTokens(item) {
@@ -49,17 +97,59 @@ document.addEventListener('DOMContentLoaded', () => {
         return `${parts[1]}.${parts[2]}.${parts[0]}`;
     }
 
-    function getCardMeta(item) {
-        if (item.type === 'concert') {
-            return {
-                eyebrow: formatDate(item.date),
-                detail: [item.venue, item.hall].filter(Boolean).join(' · ')
-            };
+    function splitDate(date) {
+        const parts = String(date || '').split('-');
+        if (parts.length !== 3) {
+            return { year: '', day: date || '' };
         }
         return {
-            eyebrow: genreTokens(item).slice(0, 2).map(titleCase).join(' · '),
-            detail: ''
+            year: parts[0],
+            day: `${parts[1]}.${parts[2]}`
         };
+    }
+
+    function mediaLabel(type) {
+        if (type === 'vinyl') {
+            return 'Vinyl';
+        }
+        if (type === 'concert') {
+            return 'Concert';
+        }
+        return 'CD';
+    }
+
+    function searchText(item) {
+        return [
+            item.title,
+            item.source,
+            item.venue,
+            item.hall,
+            ...(item.tracks || []),
+            ...(item.artists || []),
+            ...(item.composers || []),
+            ...(item.performers || []),
+            ...genreTokens(item)
+        ].filter(Boolean).join(' ').toLowerCase();
+    }
+
+    function shuffle(array) {
+        let currentIndex = array.length;
+        while (currentIndex !== 0) {
+            const randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex -= 1;
+            [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+        }
+        return array;
+    }
+
+    function addKeyboardActivation(element, callback) {
+        element.addEventListener('click', callback);
+        element.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                callback();
+            }
+        });
     }
 
     function createMetaPill(text) {
@@ -69,257 +159,605 @@ document.addEventListener('DOMContentLoaded', () => {
         return pill;
     }
 
-    // Shuffle function (Fisher-Yates)
-    function shuffle(array) {
-        let currentIndex = array.length, randomIndex;
-        while (currentIndex != 0) {
-            randomIndex = Math.floor(Math.random() * currentIndex);
-            currentIndex--;
-            [array[currentIndex], array[randomIndex]] = [
-                array[randomIndex], array[currentIndex]];
-        }
-        return array;
-    }
+    function createCollectionCard(item, index) {
+        const card = document.createElement('article');
+        card.className = `collection-card ${item.type}-item`;
+        card.dataset.uid = item.uid;
+        card.dataset.type = item.type;
+        card.setAttribute('role', 'button');
+        card.setAttribute('tabindex', '0');
+        card.setAttribute('aria-label', item.title);
 
-    // Create Gallery Item Element
-    function createGalleryItem(item, index) {
-        const el = document.createElement('div');
-        el.className = `gallery-item ${item.type}-item is-entering`;
-        el.style.animationDelay = `${index * 0.05}s`; // Staggered animation
-        el.setAttribute('role', 'button');
-        el.setAttribute('tabindex', '0');
-        el.setAttribute('aria-label', item.title);
-        if (item.date) {
-            el.dataset.date = formatDate(item.date);
+        const cover = document.createElement('div');
+        cover.className = 'cover-frame';
+
+        if (item.type === 'cd') {
+            const spine = document.createElement('span');
+            spine.className = 'case-spine';
+            spine.setAttribute('aria-hidden', 'true');
+            cover.appendChild(spine);
         }
 
-        const media = document.createElement('div');
-        media.className = 'item-media';
+        const artwork = document.createElement('div');
+        artwork.className = 'cover-artwork';
 
-        const img = document.createElement('img');
-        img.src = item.image;
-        img.alt = item.title;
-        img.loading = 'lazy';
+        const image = document.createElement('img');
+        image.src = item.image;
+        image.alt = item.title;
+        image.loading = index < 10 ? 'eager' : 'lazy';
+        artwork.appendChild(image);
+        cover.appendChild(artwork);
 
-        media.appendChild(img);
-        el.appendChild(media);
-
-        const meta = getCardMeta(item);
         const info = document.createElement('div');
         info.className = 'item-info';
 
-        const eyebrow = document.createElement('div');
-        eyebrow.className = 'item-eyebrow';
-        eyebrow.textContent = meta.eyebrow || (item.type === 'concert' ? 'Concert' : item.type === 'vinyl' ? 'Vinyl' : 'Album');
+        const titleRow = document.createElement('div');
+        titleRow.className = 'item-title-row';
 
         const title = document.createElement('h3');
         title.className = 'item-title';
         title.textContent = item.title;
 
+        const format = document.createElement('span');
+        format.className = 'format-mark';
+        format.textContent = mediaLabel(item.type);
+
         const detail = document.createElement('p');
         detail.className = 'item-detail';
-        detail.textContent = meta.detail || '';
+        detail.textContent = genreTokens(item).slice(0, 2).map(titleCase).join(' / ') || 'Unclassified';
 
-        info.appendChild(eyebrow);
-        info.appendChild(title);
-        if (detail.textContent) {
-            info.appendChild(detail);
+        titleRow.append(title, format);
+        info.append(titleRow, detail);
+        card.append(cover, info);
+
+        addKeyboardActivation(card, () => openModal(item, card));
+        return card;
+    }
+
+    function createConcertCard(item, index) {
+        const card = document.createElement('article');
+        card.className = 'concert-entry';
+        card.dataset.uid = item.uid;
+        card.dataset.type = item.type;
+        card.setAttribute('role', 'button');
+        card.setAttribute('tabindex', '0');
+        card.setAttribute('aria-label', item.title);
+
+        const date = splitDate(item.date);
+        const dateBlock = document.createElement('time');
+        dateBlock.className = 'concert-date';
+        dateBlock.dateTime = item.date || '';
+        dateBlock.innerHTML = `<span>${date.year}</span><strong>${date.day}</strong>`;
+
+        const poster = document.createElement('div');
+        poster.className = 'concert-poster';
+        const image = document.createElement('img');
+        image.src = item.image;
+        image.alt = item.title;
+        image.loading = index < 3 ? 'eager' : 'lazy';
+        poster.appendChild(image);
+
+        const copy = document.createElement('div');
+        copy.className = 'concert-copy';
+        const number = document.createElement('p');
+        number.className = 'concert-number';
+        number.textContent = String(index + 1).padStart(2, '0');
+        const title = document.createElement('h3');
+        title.textContent = item.title;
+        const venue = document.createElement('p');
+        venue.className = 'concert-venue';
+        venue.textContent = [item.venue, item.hall].filter(Boolean).join(' / ');
+        const action = document.createElement('span');
+        action.className = 'concert-action';
+        action.innerHTML = 'Programme <span aria-hidden="true">&rarr;</span>';
+        copy.append(number, title, venue, action);
+
+        card.append(dateBlock, poster, copy);
+        addKeyboardActivation(card, () => openModal(item, card));
+        return card;
+    }
+
+    function updateArchiveStats(items) {
+        const counts = {
+            cd: items.filter((item) => item.type === 'cd').length,
+            vinyl: items.filter((item) => item.type === 'vinyl').length,
+            concert: items.filter((item) => item.type === 'concert').length
+        };
+        archiveStats.innerHTML = '';
+        [
+            ['CD', counts.cd],
+            ['Vinyl', counts.vinyl],
+            ['Live', counts.concert]
+        ].forEach(([label, value]) => {
+            const stat = document.createElement('p');
+            stat.className = 'archive-stat';
+            stat.innerHTML = `<span>${label}</span><strong>${String(value).padStart(2, '0')}</strong>`;
+            archiveStats.appendChild(stat);
+        });
+    }
+
+    function renderTypeFilters() {
+        const counts = {
+            all: collectionRecords.length,
+            cd: collectionRecords.filter((item) => item.type === 'cd').length,
+            vinyl: collectionRecords.filter((item) => item.type === 'vinyl').length
+        };
+        typeFilters.innerHTML = '';
+        [
+            ['all', 'All'],
+            ['cd', 'CD'],
+            ['vinyl', 'Vinyl']
+        ].forEach(([value, label]) => {
+            const button = document.createElement('button');
+            button.type = 'button';
+            button.className = 'segment';
+            button.dataset.value = value;
+            button.setAttribute('aria-pressed', value === collectionState.type);
+            button.innerHTML = `<span>${label}</span><strong>${counts[value]}</strong>`;
+            button.addEventListener('click', () => {
+                collectionState.type = value;
+                applyCollectionFilters();
+            });
+            typeFilters.appendChild(button);
+        });
+    }
+
+    function renderGenreFilters() {
+        const genres = Array.from(
+            new Set(collectionRecords.flatMap(genreTokens).map(titleCase))
+        ).sort((a, b) => a.localeCompare(b));
+
+        genreFilter.innerHTML = '';
+        ['All', ...genres].forEach((label) => {
+            const value = label === 'All' ? 'all' : label.toLowerCase();
+            const option = document.createElement('option');
+            option.value = value;
+            option.textContent = label;
+            genreFilter.appendChild(option);
+        });
+        genreFilter.value = collectionState.genre;
+    }
+
+    function updateControlStates() {
+        typeFilters.querySelectorAll('.segment').forEach((button) => {
+            button.setAttribute('aria-pressed', button.dataset.value === collectionState.type);
+        });
+        genreFilter.value = collectionState.genre;
+    }
+
+    function collectionMatches(item) {
+        const typeMatches = collectionState.type === 'all' || item.type === collectionState.type;
+        const genres = genreTokens(item).map((genre) => titleCase(genre).toLowerCase());
+        const genreMatches = collectionState.genre === 'all' || genres.includes(collectionState.genre);
+        const queryMatches = !collectionState.query || item.searchText.includes(collectionState.query);
+        return typeMatches && genreMatches && queryMatches;
+    }
+
+    function applyCollectionFilters(animate = true) {
+        const allCardElements = collectionRecords.map((item) => item.element);
+        if (hasGSAP) {
+            gsap.killTweensOf(allCardElements);
         }
-        el.appendChild(info);
+        const flipState = hasFlip && animate && !prefersReducedMotion()
+            ? Flip.getState(allCardElements)
+            : null;
 
-        const activate = () => openModal(item);
-        el.addEventListener('click', activate);
-        el.addEventListener('keydown', (event) => {
-            if (event.key === 'Enter' || event.key === ' ') {
-                event.preventDefault();
-                activate();
+        visibleCollectionRecords = collectionRecords.filter(collectionMatches);
+        const visibleIds = new Set(visibleCollectionRecords.map((item) => item.uid));
+
+        collectionRecords.forEach((item) => {
+            const isVisible = visibleIds.has(item.uid);
+            item.element.classList.toggle('is-filtered-out', !isVisible);
+            item.element.setAttribute('aria-hidden', String(!isVisible));
+            item.element.tabIndex = isVisible ? 0 : -1;
+        });
+
+        visibleCollectionRecords.forEach((item) => {
+            collectionGallery.appendChild(item.element);
+        });
+
+        updateControlStates();
+        clearSearch.hidden = !collectionState.query;
+        emptyState.hidden = visibleCollectionRecords.length !== 0;
+        resultSummary.textContent = `${String(visibleCollectionRecords.length).padStart(2, '0')} / ${String(collectionRecords.length).padStart(2, '0')} objects`;
+
+        if (flipState) {
+            Flip.from(flipState, {
+                absolute: true,
+                simple: true,
+                scale: false,
+                duration: 0.68,
+                ease: 'power3.inOut',
+                stagger: 0.008,
+                onEnter: (elements) => {
+                    gsap.fromTo(elements, {
+                        autoAlpha: 0,
+                        y: 18
+                    }, {
+                        autoAlpha: 1,
+                        y: 0,
+                        duration: 0.42,
+                        stagger: 0.025,
+                        clearProps: 'opacity,visibility,transform'
+                    });
+                },
+                onLeave: (elements) => {
+                    gsap.to(elements, {
+                        autoAlpha: 0,
+                        duration: 0.18,
+                        stagger: 0.01
+                    });
+                }
+            });
+        } else if (hasGSAP) {
+            gsap.set(visibleCollectionRecords.map((item) => item.element), {
+                clearProps: 'opacity,visibility,transform'
+            });
+        }
+
+        refreshScrollTriggers();
+    }
+
+    function renderCollection() {
+        collectionGallery.innerHTML = '';
+        collectionRecords.forEach((item, index) => {
+            item.element = createCollectionCard(item, index);
+            collectionGallery.appendChild(item.element);
+        });
+        renderTypeFilters();
+        renderGenreFilters();
+        applyCollectionFilters(false);
+    }
+
+    function renderConcerts() {
+        const track = concertGallery.querySelector('.timeline-track');
+        concertGallery.innerHTML = '';
+        if (track) {
+            concertGallery.appendChild(track);
+        }
+        concertRecords.forEach((item, index) => {
+            item.element = createConcertCard(item, index);
+            concertGallery.appendChild(item.element);
+        });
+        concertCount.textContent = `${String(concertRecords.length).padStart(2, '0')} performances`;
+    }
+
+    function animateIntro() {
+        if (!hasGSAP || prefersReducedMotion()) {
+            return;
+        }
+
+        const firstCards = visibleCollectionRecords.slice(0, 10).map((item) => item.element);
+        const timeline = gsap.timeline({
+            defaults: { duration: 0.65, ease: 'power3.out' }
+        });
+
+        timeline
+            .from('.site-label, h1', { autoAlpha: 0, y: 18, stagger: 0.08 })
+            .from('.archive-stat', { autoAlpha: 0, y: 14, stagger: 0.055 }, '<0.16')
+            .from('.collection-heading > *', { autoAlpha: 0, y: 16, stagger: 0.06 }, '-=0.35')
+            .from('.collection-toolbar', { autoAlpha: 0, y: 12 }, '-=0.38')
+            .from(firstCards, {
+                autoAlpha: 0,
+                y: 26,
+                stagger: { amount: 0.4, from: 'start' },
+                clearProps: 'opacity,visibility,transform'
+            }, '-=0.42');
+    }
+
+    function initScrollAnimations() {
+        if (!hasGSAP || !hasScrollTrigger || prefersReducedMotion()) {
+            return;
+        }
+
+        concertRecords.forEach((item, index) => {
+            const entry = item.element;
+            const date = entry.querySelector('.concert-date');
+            const poster = entry.querySelector('.concert-poster');
+            const copy = entry.querySelector('.concert-copy');
+            const timeline = gsap.timeline({
+                scrollTrigger: {
+                    trigger: entry,
+                    start: 'top 82%',
+                    toggleActions: 'play none none reverse'
+                },
+                defaults: { duration: 0.72, ease: 'power3.out' }
+            });
+            timeline
+                .from(date, { autoAlpha: 0, x: -18 })
+                .from(poster, { autoAlpha: 0, y: 34 }, '<0.04')
+                .from(copy, { autoAlpha: 0, x: 24 }, '<0.08');
+
+            ScrollTrigger.create({
+                trigger: entry,
+                start: 'top 55%',
+                end: 'bottom 45%',
+                toggleClass: { targets: entry, className: 'is-active' },
+                refreshPriority: index
+            });
+        });
+
+        gsap.fromTo('.timeline-progress', {
+            scaleY: 0
+        }, {
+            scaleY: 1,
+            ease: 'none',
+            scrollTrigger: {
+                trigger: concertGallery,
+                start: 'top 68%',
+                end: 'bottom 72%',
+                scrub: 0.7
             }
         });
-        return el;
     }
 
-    function renderFilters(collectionType, items) {
-        const state = collectionState[collectionType];
-        if (!state || !state.filters) {
+    function refreshScrollTriggers() {
+        if (!hasScrollTrigger) {
             return;
         }
-        state.filters.innerHTML = '';
-        const genres = Array.from(new Set(items.flatMap(genreTokens).map(titleCase))).sort((a, b) => a.localeCompare(b));
-
-        function addGroup(title, labels, activeValue, onSelect) {
-            const group = document.createElement('div');
-            group.className = 'filter-group';
-
-            const groupLabel = document.createElement('span');
-            groupLabel.className = 'filter-label';
-            groupLabel.textContent = title;
-            group.appendChild(groupLabel);
-
-            labels.forEach((label) => {
-                const value = label === '全部' ? 'all' : label.toLowerCase();
-                const button = document.createElement('button');
-                button.type = 'button';
-                button.className = 'filter-chip';
-                button.textContent = label;
-                button.dataset.value = value;
-                button.setAttribute('aria-pressed', value === activeValue);
-                button.addEventListener('click', () => {
-                    onSelect(value);
-                    updateCollectionFilter(collectionType);
-                });
-                group.appendChild(button);
-            });
-
-            state.filters.appendChild(group);
-        }
-
-        addGroup('类型', ['全部', ...genres], state.activeGenre, (value) => {
-            state.activeGenre = value;
-        });
+        window.clearTimeout(refreshTimer);
+        refreshTimer = window.setTimeout(() => ScrollTrigger.refresh(), 140);
     }
 
-    function updateFilterButtonStates(state) {
-        if (!state || !state.filters) {
-            return;
-        }
-        state.filters.querySelectorAll('.filter-group').forEach((group) => {
-            group.querySelectorAll('.filter-chip').forEach((button) => {
-                button.setAttribute('aria-pressed', button.dataset.value === state.activeGenre);
-            });
-        });
-    }
-
-    function restartEnterAnimation(element, index) {
-        element.classList.remove('is-entering');
-        element.style.animationDelay = `${index * 0.05}s`;
-        void element.offsetWidth;
-        element.classList.add('is-entering');
-    }
-
-    function updateCollectionFilter(collectionType) {
-        const state = collectionState[collectionType];
-        if (!state) {
-            return;
-        }
-        let visibleIndex = 0;
-        state.items.forEach(({ element, item }) => {
-            const genres = genreTokens(item).map((genre) => titleCase(genre).toLowerCase());
-            const matchesGenre = state.activeGenre === 'all' || genres.includes(state.activeGenre);
-            if (matchesGenre) {
-                element.hidden = false;
-                restartEnterAnimation(element, visibleIndex);
-                visibleIndex += 1;
-            } else {
-                element.hidden = true;
-                element.classList.remove('is-entering');
-            }
-        });
-        updateFilterButtonStates(state);
-    }
-
-    function renderCollection(collectionType, items, gallery) {
-        const state = collectionState[collectionType];
-        if (!gallery || !state) {
-            return;
-        }
-        state.items = [];
-        gallery.innerHTML = '';
-        renderFilters(collectionType, items);
-        shuffle([...items]).forEach((item, index) => {
-            const element = createGalleryItem(item, index);
-            gallery.appendChild(element);
-            state.items.push({ item, element });
-        });
-        updateCollectionFilter(collectionType);
-    }
-
-    // Render Galleries
-    function renderGalleries() {
-        if (typeof siteData === 'undefined') {
-            console.error('Data not loaded');
-            return;
-        }
-
-        // Separate data
-        const cds = siteData.filter(item => item.type === 'cd');
-        const vinyls = siteData.filter(item => item.type === 'vinyl');
-        const concerts = siteData.filter(item => item.type === 'concert');
-
-        // Concerts are already sorted by date in data.js
-        const sortedConcerts = [...concerts];
-
-        renderCollection('cd', cds, cdGallery);
-        renderCollection('vinyl', vinyls, vinylGallery);
-
-        // Render Concerts
-        sortedConcerts.forEach((item, index) => {
-            const element = createGalleryItem(item, index);
-            element.style.gridRow = String(index + 1);
-            concertGallery.appendChild(element);
-        });
-    }
-
-    // Modal Logic
     function isModalOpen() {
         return !modal.hasAttribute('hidden');
     }
 
-    function openModal(item) {
-        lastFocusedBeforeModal = document.activeElement;
-        modal.removeAttribute('hidden');
-        modal.setAttribute('aria-hidden', 'false');
-
+    function setModalContent(item) {
         modalImage.src = item.image;
         modalImage.alt = item.title;
         modalTitle.textContent = item.title;
         modalMeta.innerHTML = '';
 
-        const metaItems = item.type === 'cd' || item.type === 'vinyl'
-            ? genreTokens(item).slice(0, 3).map(titleCase)
-            : [];
+        const metaItems = item.type === 'concert'
+            ? [formatDate(item.date), item.venue, item.hall].filter(Boolean)
+            : [
+                mediaLabel(item.type),
+                ...genreTokens(item).slice(0, 3).map(titleCase),
+                item.count ? `${item.count} Disc${item.count === '1' ? '' : 's'}` : ''
+            ].filter(Boolean);
 
-        metaItems.filter(Boolean).forEach((text) => {
-            modalMeta.appendChild(createMetaPill(text));
-        });
-
-        if (item.description) {
-            modalDescription.innerHTML = renderMarkdownToSafeHtml(item.description);
-        } else {
-            modalDescription.innerHTML = '<p>No description available.</p>';
-        }
-
-        modal.style.display = 'block';
-        document.body.style.overflow = 'hidden';
-        closeButton.focus();
+        metaItems.forEach((text) => modalMeta.appendChild(createMetaPill(text)));
+        modalDescription.innerHTML = renderMarkdownToSafeHtml(item.description);
+        modalCounter.textContent = `${String(activeModalIndex + 1).padStart(2, '0')} / ${String(activeModalList.length).padStart(2, '0')}`;
+        updateModalNav();
     }
 
-    function closeModal() {
-        modal.style.display = 'none';
+    function updateModalNav() {
+        const canNavigate = activeModalList.length > 1;
+        modalPrev.hidden = !canNavigate;
+        modalNext.hidden = !canNavigate;
+    }
+
+    function sourceImageRect(sourceElement) {
+        if (!sourceElement) {
+            return null;
+        }
+        const image = sourceElement.querySelector('img');
+        return image ? image.getBoundingClientRect() : sourceElement.getBoundingClientRect();
+    }
+
+    function openModal(item, sourceElement) {
+        if (modalIsAnimating) {
+            return;
+        }
+
+        lastFocusedBeforeModal = document.activeElement;
+        activeSourceElement = sourceElement;
+        activeModalList = item.type === 'concert' ? concertRecords : visibleCollectionRecords;
+        activeModalIndex = Math.max(0, activeModalList.findIndex((record) => record.uid === item.uid));
+        setModalContent(activeModalList[activeModalIndex] || item);
+
+        modal.removeAttribute('hidden');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('modal-open');
+
+        if (!hasGSAP || prefersReducedMotion()) {
+            closeButton.focus();
+            return;
+        }
+
+        modalIsAnimating = true;
+        const sourceRect = sourceImageRect(sourceElement);
+        const destinationRect = modalImage.getBoundingClientRect();
+        const canTransformImage = sourceRect && destinationRect.width && destinationRect.height;
+        const imageStart = canTransformImage ? {
+            x: sourceRect.left + sourceRect.width / 2 - (destinationRect.left + destinationRect.width / 2),
+            y: sourceRect.top + sourceRect.height / 2 - (destinationRect.top + destinationRect.height / 2),
+            scaleX: sourceRect.width / destinationRect.width,
+            scaleY: sourceRect.height / destinationRect.height
+        } : {
+            y: 28,
+            scale: 0.96
+        };
+        const textTargets = [modalTitle, modalMeta, ...Array.from(modalDescription.children)];
+
+        gsap.killTweensOf([modal, modalContent, modalImage, ...textTargets]);
+        gsap.set(modal, { autoAlpha: 0 });
+        gsap.set(modalContent, { autoAlpha: 1 });
+        gsap.set('.modal-info', { autoAlpha: 1, y: 0 });
+        gsap.set(modalImage, { ...imageStart, transformOrigin: 'center center' });
+        gsap.set(textTargets, { autoAlpha: 0, y: 18 });
+        gsap.set('.modal-toolbar', { autoAlpha: 0, y: -10 });
+
+        gsap.timeline({
+            defaults: { ease: 'power3.inOut' },
+            onComplete: () => {
+                modalIsAnimating = false;
+                closeButton.focus();
+            }
+        })
+            .to(modal, { autoAlpha: 1, duration: 0.24 })
+            .to(modalImage, {
+                x: 0,
+                y: 0,
+                scale: 1,
+                duration: 0.72,
+                clearProps: 'transform'
+            }, '<')
+            .to('.modal-toolbar', { autoAlpha: 1, y: 0, duration: 0.36 }, '<0.18')
+            .to(textTargets, {
+                autoAlpha: 1,
+                y: 0,
+                duration: 0.46,
+                stagger: 0.025
+            }, '-=0.34');
+    }
+
+    function finishClose() {
         modal.setAttribute('hidden', '');
-        document.body.style.overflow = 'auto';
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('modal-open');
         modalImage.src = '';
         modalImage.alt = '';
-        modal.setAttribute('aria-hidden', 'true');
         modalMeta.innerHTML = '';
         modalDescription.innerHTML = '';
         if (lastFocusedBeforeModal && typeof lastFocusedBeforeModal.focus === 'function') {
             lastFocusedBeforeModal.focus();
         }
         lastFocusedBeforeModal = null;
+        activeSourceElement = null;
+        modalIsAnimating = false;
+    }
+
+    function closeModal() {
+        if (modalIsAnimating || !isModalOpen()) {
+            return;
+        }
+
+        if (!hasGSAP || prefersReducedMotion()) {
+            finishClose();
+            return;
+        }
+
+        modalIsAnimating = true;
+        const destinationRect = modalImage.getBoundingClientRect();
+        const sourceRect = sourceImageRect(activeSourceElement);
+        const canReturnImage = sourceRect
+            && destinationRect.width
+            && activeSourceElement
+            && document.body.contains(activeSourceElement)
+            && !activeSourceElement.classList.contains('is-filtered-out');
+
+        const imageEnd = canReturnImage ? {
+            x: sourceRect.left + sourceRect.width / 2 - (destinationRect.left + destinationRect.width / 2),
+            y: sourceRect.top + sourceRect.height / 2 - (destinationRect.top + destinationRect.height / 2),
+            scaleX: sourceRect.width / destinationRect.width,
+            scaleY: sourceRect.height / destinationRect.height
+        } : {
+            y: 22,
+            scale: 0.97
+        };
+
+        gsap.timeline({
+            defaults: { ease: 'power3.inOut' },
+            onComplete: finishClose
+        })
+            .to(['.modal-toolbar', '.modal-info'], {
+                autoAlpha: 0,
+                y: 10,
+                duration: 0.22
+            })
+            .to(modalImage, { ...imageEnd, duration: 0.58 }, '<')
+            .to(modal, { autoAlpha: 0, duration: 0.24 }, '-=0.16');
+    }
+
+    function navigateModal(direction) {
+        if (activeModalList.length < 2 || modalIsAnimating) {
+            return;
+        }
+
+        activeModalIndex = (activeModalIndex + direction + activeModalList.length) % activeModalList.length;
+        const nextItem = activeModalList[activeModalIndex];
+        activeSourceElement = nextItem.element || null;
+
+        if (!hasGSAP || prefersReducedMotion()) {
+            setModalContent(nextItem);
+            return;
+        }
+
+        modalIsAnimating = true;
+        const outgoing = [modalImage, modalTitle, modalMeta, modalDescription];
+        const exitX = direction > 0 ? -24 : 24;
+        const enterX = direction > 0 ? 28 : -28;
+
+        gsap.timeline({
+            defaults: { ease: 'power2.inOut' },
+            onComplete: () => {
+                modalIsAnimating = false;
+            }
+        })
+            .to(outgoing, {
+                autoAlpha: 0,
+                x: exitX,
+                duration: 0.2,
+                stagger: 0.02,
+                onComplete: () => {
+                    setModalContent(nextItem);
+                    gsap.set(outgoing, { x: enterX });
+                }
+            })
+            .to(outgoing, {
+                autoAlpha: 1,
+                x: 0,
+                duration: 0.34,
+                stagger: 0.025,
+                ease: 'power3.out',
+                clearProps: 'opacity,visibility,transform'
+            });
     }
 
     closeButton.addEventListener('click', closeModal);
+    modalPrev.addEventListener('click', () => navigateModal(-1));
+    modalNext.addEventListener('click', () => navigateModal(1));
+
+    searchInput.addEventListener('input', () => {
+        collectionState.query = searchInput.value.trim().toLowerCase();
+        applyCollectionFilters();
+    });
+
+    clearSearch.addEventListener('click', () => {
+        searchInput.value = '';
+        collectionState.query = '';
+        applyCollectionFilters();
+        searchInput.focus();
+    });
+
+    genreFilter.addEventListener('change', () => {
+        collectionState.genre = genreFilter.value;
+        applyCollectionFilters();
+    });
+
+    modal.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            closeModal();
+        }
+    });
 
     modal.addEventListener('keydown', (event) => {
-        if (event.key !== 'Tab' || !isModalOpen()) {
+        if (!isModalOpen()) {
             return;
         }
+        if (event.key === 'ArrowLeft') {
+            event.preventDefault();
+            navigateModal(-1);
+            return;
+        }
+        if (event.key === 'ArrowRight') {
+            event.preventDefault();
+            navigateModal(1);
+            return;
+        }
+        if (event.key !== 'Tab') {
+            return;
+        }
+
         const focusableSelector =
-            'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+            'button:not([disabled]):not([hidden]), [href], input:not([disabled]), [tabindex]:not([tabindex="-1"])';
         const focusables = Array.from(modal.querySelectorAll(focusableSelector)).filter(
-            (el) => el.offsetWidth > 0 || el.offsetHeight > 0 || el === closeButton
+            (element) => element.offsetWidth > 0 || element.offsetHeight > 0
         );
-        if (focusables.length === 0) {
+        if (!focusables.length) {
             return;
         }
         const first = focusables[0];
@@ -333,18 +771,35 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    window.addEventListener('click', (event) => {
-        if (event.target === modal) {
-            closeModal();
-        }
-    });
-
     document.addEventListener('keydown', (event) => {
         if (event.key === 'Escape' && isModalOpen()) {
             closeModal();
         }
     });
 
-    // Initialize
-    renderGalleries();
+    function init() {
+        if (typeof siteData === 'undefined') {
+            console.error('Data not loaded');
+            return;
+        }
+
+        const allItems = siteData.map((item, index) => ({
+            ...item,
+            uid: `${item.type}-${index}`,
+            searchText: searchText(item)
+        }));
+        collectionRecords = shuffle(
+            allItems.filter((item) => item.type === 'cd' || item.type === 'vinyl')
+        );
+        concertRecords = allItems.filter((item) => item.type === 'concert');
+
+        updateArchiveStats(allItems);
+        renderCollection();
+        renderConcerts();
+        animateIntro();
+        initScrollAnimations();
+        refreshScrollTriggers();
+    }
+
+    init();
 });

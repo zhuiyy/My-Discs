@@ -12,47 +12,77 @@
     <meta property="og:image" content="https://zhuiyy.github.io/My-Discs/CDs/%E7%B2%BE%E5%8D%8E/cover.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=20260705-vinyl">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=20260726-minimal-index">
     <script src="https://cdn.jsdelivr.net/npm/marked@12.0.0/marked.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.7/dist/purify.min.js"></script>
 </head>
 <body>
-    <div class="background-animation"></div>
-    
-    <header>
-        <h1>My Discs & Memories</h1>
-        <p class="subtitle">A curated collection of music and moments</p>
+    <header class="site-header">
+        <div class="brand-lockup">
+            <p class="site-label">Personal listening archive</p>
+            <h1>My Discs</h1>
+        </div>
+        <div id="archive-stats" class="archive-stats" aria-label="收藏统计"></div>
     </header>
 
     <main>
-        <section class="gallery-section">
-            <h2 class="section-title">CD Collection</h2>
-            <div id="cd-filters" class="filter-bar" aria-label="按风格筛选 CD"></div>
-            <div id="cd-gallery" class="gallery">
-                <!-- CD Items will be injected here -->
+        <section id="collection" class="collection-section">
+            <div class="section-heading collection-heading">
+                <h2 class="collection-title">Collection</h2>
+                <p id="result-summary" class="result-summary" aria-live="polite"></p>
+            </div>
+
+            <div class="collection-toolbar" aria-label="收藏筛选">
+                <div class="toolbar-group format-control">
+                    <span class="toolbar-label">Format</span>
+                    <div id="type-filters" class="segmented-control" aria-label="按介质筛选"></div>
+                </div>
+                <label class="toolbar-group genre-control" for="genre-filter">
+                    <span class="toolbar-label">Genre</span>
+                    <select id="genre-filter" aria-label="按风格筛选"></select>
+                </label>
+                <label class="toolbar-group search-control" for="collection-search">
+                    <span class="toolbar-label">Find</span>
+                    <span class="search-field">
+                        <input id="collection-search" type="search" placeholder="Title, artist, composer" autocomplete="off">
+                        <button id="clear-search" class="clear-search" type="button" aria-label="清空搜索" hidden>&times;</button>
+                    </span>
+                </label>
+            </div>
+
+            <div class="collection-content">
+                <div id="collection-gallery" class="collection-gallery"></div>
+                <p id="empty-state" class="empty-state" hidden>No records match this view.</p>
             </div>
         </section>
 
-        <section class="gallery-section">
-            <h2 class="section-title">Vinyl Collection</h2>
-            <div id="vinyl-filters" class="filter-bar" aria-label="按风格筛选黑胶"></div>
-            <div id="vinyl-gallery" class="gallery">
-                <!-- Vinyl Items will be injected here -->
-            </div>
-        </section>
-
-        <section class="gallery-section">
-            <h2 class="section-title">Concert Memories</h2>
-            <div id="concert-gallery" class="concert-timeline">
-                <!-- Concert Items will be injected here -->
+        <section class="concert-section">
+            <div class="concert-inner">
+                <div class="section-heading concert-heading">
+                    <p class="section-index">02 / LIVE</p>
+                    <h2 class="section-title">In the Hall</h2>
+                    <p id="concert-count" class="result-summary"></p>
+                </div>
+                <div id="concert-gallery" class="concert-list">
+                    <div class="timeline-track" aria-hidden="true">
+                        <span class="timeline-progress"></span>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
 
     <div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-hidden="true" hidden>
         <div class="modal-content">
-            <button type="button" class="close-button" aria-label="关闭">&times;</button>
+            <div class="modal-toolbar">
+                <p class="modal-counter" id="modal-counter"></p>
+                <div class="modal-actions">
+                    <button type="button" id="modal-prev" class="modal-nav modal-prev" aria-label="上一个条目">&larr;</button>
+                    <button type="button" id="modal-next" class="modal-nav modal-next" aria-label="下一个条目">&rarr;</button>
+                    <button type="button" class="close-button" aria-label="关闭">&times;</button>
+                </div>
+            </div>
             <div class="modal-body">
                 <div class="modal-image-container">
                     <img id="modal-image" src="" alt="">
@@ -66,7 +96,10 @@
         </div>
     </div>
 
-    <script src="data.js?v=20260705-vinyl"></script>
-    <script src="script.js?v=20260705-vinyl"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Flip.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+    <script src="data.js?v=20260726-minimal-index"></script>
+    <script src="script.js?v=20260726-minimal-index"></script>
 </body>
 </html>

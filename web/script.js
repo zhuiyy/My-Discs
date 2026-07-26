@@ -62,9 +62,13 @@ document.addEventListener('DOMContentLoaded', () => {
     let modalIsAnimating = false;
     let refreshTimer = null;
     let searchTimer = null;
+    let searchIsComposing = false;
+    let activeFilterAnimation = null;
     let modalCleanupTimer = null;
     let borrowedImage = null;
     let borrowedImageHome = null;
+
+    const searchDebounceMs = 220;
 
     const collectionState = {
         type: 'all',
@@ -356,6 +360,10 @@ document.addEventListener('DOMContentLoaded', () => {
     function applyCollectionFilters(animate = true) {
         const allCardElements = collectionRecords.map((item) => item.element);
         if (hasGSAP) {
+            if (activeFilterAnimation) {
+                activeFilterAnimation.kill();
+                activeFilterAnimation = null;
+            }
             gsap.killTweensOf(allCardElements);
         }
         const flipState = hasFlip && animate && !prefersReducedMotion()
@@ -382,7 +390,7 @@ document.addEventListener('DOMContentLoaded', () => {
         resultSummary.textContent = `${String(visibleCollectionRecords.length).padStart(2, '0')} / ${String(collectionRecords.length).padStart(2, '0')} objects`;
 
         if (flipState) {
-            Flip.from(flipState, {
+            activeFilterAnimation = Flip.from(flipState, {
                 absoluteOnLeave: true,
                 simple: true,
                 scale: false,
@@ -409,7 +417,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     });
                 },
                 onComplete: () => {
+                    activeFilterAnimation = null;
                     refreshScrollTriggers();
+                },
+                onInterrupt: () => {
+                    activeFilterAnimation = null;
                 }
             });
         } else if (hasGSAP) {
@@ -420,6 +432,26 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             refreshScrollTriggers();
         }
+    }
+
+    function commitSearch(animate = true) {
+        window.clearTimeout(searchTimer);
+        searchTimer = null;
+
+        const nextQuery = searchInput.value.trim().toLowerCase();
+        clearSearch.hidden = !nextQuery;
+        if (nextQuery === collectionState.query) {
+            return;
+        }
+
+        collectionState.query = nextQuery;
+        applyCollectionFilters(animate);
+    }
+
+    function scheduleSearch() {
+        window.clearTimeout(searchTimer);
+        clearSearch.hidden = !searchInput.value.trim();
+        searchTimer = window.setTimeout(() => commitSearch(), searchDebounceMs);
     }
 
     function renderCollection() {
@@ -857,19 +889,26 @@ document.addEventListener('DOMContentLoaded', () => {
     modalPrev.addEventListener('click', () => navigateModal(-1));
     modalNext.addEventListener('click', () => navigateModal(1));
 
-    searchInput.addEventListener('input', () => {
+    searchInput.addEventListener('compositionstart', () => {
+        searchIsComposing = true;
         window.clearTimeout(searchTimer);
-        searchTimer = window.setTimeout(() => {
-            collectionState.query = searchInput.value.trim().toLowerCase();
-            applyCollectionFilters();
-        }, 90);
+    });
+
+    searchInput.addEventListener('compositionend', () => {
+        searchIsComposing = false;
+        scheduleSearch();
+    });
+
+    searchInput.addEventListener('input', () => {
+        if (!searchIsComposing) {
+            scheduleSearch();
+        }
     });
 
     clearSearch.addEventListener('click', () => {
         window.clearTimeout(searchTimer);
         searchInput.value = '';
-        collectionState.query = '';
-        applyCollectionFilters();
+        commitSearch();
         searchInput.focus();
     });
 

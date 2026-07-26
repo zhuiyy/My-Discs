@@ -596,6 +596,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function setModalContent(item, sourceElement = null) {
+        const titleLength = Array.from(String(item.title || '').trim()).length;
+        const hasCjkTitle = /[\u3400-\u9fff]/.test(item.title || '');
+        const isLongConcertTitle = item.type === 'concert'
+            && titleLength > (hasCjkTitle ? 24 : 44);
+
+        modal.classList.toggle('concert-detail', item.type === 'concert');
+        modal.classList.toggle('long-title', isLongConcertTitle);
         modalMedia.className = `modal-media ${item.type}-media`;
         modalMedia.classList.toggle('cd-case', item.type === 'cd');
         modalCaseSpine.hidden = item.type !== 'cd';
@@ -758,6 +765,7 @@ document.addEventListener('DOMContentLoaded', () => {
             modalImage.alt = '';
             modalMeta.innerHTML = '';
             modalDescription.innerHTML = '';
+            modal.classList.remove('concert-detail', 'long-title');
             if (hasGSAP) {
                 gsap.set([modalBackdrop, modalMedia, modalInfo, modalToolbar], {
                     clearProps: 'opacity,visibility,transform,willChange'

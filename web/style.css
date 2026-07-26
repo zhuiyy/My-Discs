@@ -782,6 +782,21 @@ h1 {
     overflow-wrap: anywhere;
 }
 
+.modal.concert-detail #modal-title {
+    padding-bottom: 24px;
+    font-size: clamp(2.15rem, 3.2vw, 3.8rem);
+    line-height: 1.02;
+}
+
+.modal.concert-detail.long-title #modal-title {
+    font-size: clamp(1.85rem, 2.7vw, 3.1rem);
+    line-height: 1.04;
+}
+
+.modal.concert-detail .modal-meta {
+    margin: 18px 0 42px;
+}
+
 .modal-meta {
     display: flex;
     flex-wrap: wrap;
@@ -1135,6 +1150,16 @@ h1 {
 
     #modal-title {
         font-size: 3.2rem;
+    }
+
+    .modal.concert-detail #modal-title {
+        font-size: 2.2rem;
+        line-height: 1.04;
+    }
+
+    .modal.concert-detail.long-title #modal-title {
+        font-size: 1.95rem;
+        line-height: 1.06;
     }
 
     .modal-actions {

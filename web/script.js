@@ -10,7 +10,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const archiveStats = document.getElementById('archive-stats');
     const concertCount = document.getElementById('concert-count');
     const modal = document.getElementById('modal');
+    const modalBackdrop = modal.querySelector('.modal-backdrop');
     const modalContent = modal.querySelector('.modal-content');
+    const modalToolbar = modal.querySelector('.modal-toolbar');
+    const modalInfo = modal.querySelector('.modal-info');
+    const modalMedia = document.getElementById('modal-media');
+    const modalCaseSpine = document.getElementById('modal-case-spine');
+    const modalArtwork = document.getElementById('modal-artwork');
     const modalImage = document.getElementById('modal-image');
     const modalTitle = document.getElementById('modal-title');
     const modalMeta = document.getElementById('modal-meta');
@@ -36,7 +42,14 @@ document.addEventListener('DOMContentLoaded', () => {
         if (plugins.length) {
             gsap.registerPlugin(...plugins);
         }
+        gsap.config({ autoSleep: 90, force3D: 'auto', nullTargetWarn: false });
         gsap.defaults({ duration: 0.5, ease: 'power3.out' });
+        if (hasScrollTrigger) {
+            ScrollTrigger.config({
+                limitCallbacks: true,
+                ignoreMobileResize: true
+            });
+        }
     }
 
     let collectionRecords = [];
@@ -48,6 +61,10 @@ document.addEventListener('DOMContentLoaded', () => {
     let activeSourceElement = null;
     let modalIsAnimating = false;
     let refreshTimer = null;
+    let searchTimer = null;
+    let modalCleanupTimer = null;
+    let borrowedImage = null;
+    let borrowedImageHome = null;
 
     const collectionState = {
         type: 'all',
@@ -172,6 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cover.className = 'cover-frame';
 
         if (item.type === 'cd') {
+            cover.classList.add('cd-case');
             const spine = document.createElement('span');
             spine.className = 'case-spine';
             spine.setAttribute('aria-hidden', 'true');
@@ -185,6 +203,7 @@ document.addEventListener('DOMContentLoaded', () => {
         image.src = item.image;
         image.alt = item.title;
         image.loading = index < 10 ? 'eager' : 'lazy';
+        image.decoding = 'async';
         artwork.appendChild(image);
         cover.appendChild(artwork);
 
@@ -235,6 +254,7 @@ document.addEventListener('DOMContentLoaded', () => {
         image.src = item.image;
         image.alt = item.title;
         image.loading = index < 3 ? 'eager' : 'lazy';
+        image.decoding = 'async';
         poster.appendChild(image);
 
         const copy = document.createElement('div');
@@ -363,21 +383,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (flipState) {
             Flip.from(flipState, {
-                absolute: true,
+                absoluteOnLeave: true,
                 simple: true,
                 scale: false,
-                duration: 0.68,
-                ease: 'power3.inOut',
-                stagger: 0.008,
+                duration: 0.54,
+                ease: 'power2.inOut',
+                stagger: 0.004,
                 onEnter: (elements) => {
                     gsap.fromTo(elements, {
                         autoAlpha: 0,
-                        y: 18
+                        y: 12
                     }, {
                         autoAlpha: 1,
                         y: 0,
-                        duration: 0.42,
-                        stagger: 0.025,
+                        duration: 0.32,
+                        stagger: 0.012,
                         clearProps: 'opacity,visibility,transform'
                     });
                 },
@@ -387,15 +407,19 @@ document.addEventListener('DOMContentLoaded', () => {
                         duration: 0.18,
                         stagger: 0.01
                     });
+                },
+                onComplete: () => {
+                    refreshScrollTriggers();
                 }
             });
         } else if (hasGSAP) {
             gsap.set(visibleCollectionRecords.map((item) => item.element), {
                 clearProps: 'opacity,visibility,transform'
             });
+            refreshScrollTriggers();
+        } else {
+            refreshScrollTriggers();
         }
-
-        refreshScrollTriggers();
     }
 
     function renderCollection() {
@@ -459,7 +483,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 scrollTrigger: {
                     trigger: entry,
                     start: 'top 82%',
-                    toggleActions: 'play none none reverse'
+                    once: true
                 },
                 defaults: { duration: 0.72, ease: 'power3.out' }
             });
@@ -503,9 +527,47 @@ document.addEventListener('DOMContentLoaded', () => {
         return !modal.hasAttribute('hidden');
     }
 
-    function setModalContent(item) {
+    function restoreBorrowedImage() {
+        if (!borrowedImage || !borrowedImageHome) {
+            return;
+        }
+
+        const { parent, nextSibling } = borrowedImageHome;
+        if (nextSibling && nextSibling.parentNode === parent) {
+            parent.insertBefore(borrowedImage, nextSibling);
+        } else {
+            parent.appendChild(borrowedImage);
+        }
+        borrowedImage = null;
+        borrowedImageHome = null;
+        modalImage.hidden = false;
+    }
+
+    function setModalImage(item, sourceElement) {
+        restoreBorrowedImage();
+        const sourceImage = sourceElement?.querySelector('.cover-frame img, .concert-poster img');
+
+        if (sourceImage) {
+            borrowedImage = sourceImage;
+            borrowedImageHome = {
+                parent: sourceImage.parentNode,
+                nextSibling: sourceImage.nextSibling
+            };
+            modalImage.hidden = true;
+            modalArtwork.appendChild(sourceImage);
+            return;
+        }
+
+        modalImage.hidden = false;
         modalImage.src = item.image;
         modalImage.alt = item.title;
+    }
+
+    function setModalContent(item, sourceElement = null) {
+        modalMedia.className = `modal-media ${item.type}-media`;
+        modalMedia.classList.toggle('cd-case', item.type === 'cd');
+        modalCaseSpine.hidden = item.type !== 'cd';
+        setModalImage(item, sourceElement);
         modalTitle.textContent = item.title;
         modalMeta.innerHTML = '';
 
@@ -529,12 +591,38 @@ document.addEventListener('DOMContentLoaded', () => {
         modalNext.hidden = !canNavigate;
     }
 
-    function sourceImageRect(sourceElement) {
+    function sourceMediaRect(sourceElement) {
         if (!sourceElement) {
             return null;
         }
-        const image = sourceElement.querySelector('img');
-        return image ? image.getBoundingClientRect() : sourceElement.getBoundingClientRect();
+        const media = sourceElement.querySelector('.cover-frame, .concert-poster');
+        return media ? media.getBoundingClientRect() : sourceElement.getBoundingClientRect();
+    }
+
+    function setPageAnimationsEnabled(enabled) {
+        if (!hasScrollTrigger) {
+            return;
+        }
+        ScrollTrigger.getAll().forEach((trigger) => {
+            if (enabled) {
+                trigger.enable(false, false);
+            } else {
+                trigger.disable(false, false);
+            }
+        });
+    }
+
+    function lockPageScroll() {
+        const scrollbarWidth = Math.max(0, window.innerWidth - document.documentElement.clientWidth);
+        document.body.style.setProperty('--scrollbar-compensation', `${scrollbarWidth}px`);
+        document.body.classList.add('modal-open');
+        setPageAnimationsEnabled(false);
+    }
+
+    function unlockPageScroll() {
+        document.body.classList.remove('modal-open');
+        document.body.style.removeProperty('--scrollbar-compensation');
+        setPageAnimationsEnabled(true);
     }
 
     function openModal(item, sourceElement) {
@@ -546,11 +634,11 @@ document.addEventListener('DOMContentLoaded', () => {
         activeSourceElement = sourceElement;
         activeModalList = item.type === 'concert' ? concertRecords : visibleCollectionRecords;
         activeModalIndex = Math.max(0, activeModalList.findIndex((record) => record.uid === item.uid));
-        setModalContent(activeModalList[activeModalIndex] || item);
+        setModalContent(activeModalList[activeModalIndex] || item, sourceElement);
 
         modal.removeAttribute('hidden');
         modal.setAttribute('aria-hidden', 'false');
-        document.body.classList.add('modal-open');
+        lockPageScroll();
 
         if (!hasGSAP || prefersReducedMotion()) {
             closeButton.focus();
@@ -558,66 +646,92 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         modalIsAnimating = true;
-        const sourceRect = sourceImageRect(sourceElement);
-        const destinationRect = modalImage.getBoundingClientRect();
-        const canTransformImage = sourceRect && destinationRect.width && destinationRect.height;
-        const imageStart = canTransformImage ? {
+        const sourceRect = sourceMediaRect(sourceElement);
+        const destinationRect = modalMedia.getBoundingClientRect();
+        const canTransformMedia = sourceRect && destinationRect.width && destinationRect.height;
+        const mediaStart = canTransformMedia ? {
             x: sourceRect.left + sourceRect.width / 2 - (destinationRect.left + destinationRect.width / 2),
             y: sourceRect.top + sourceRect.height / 2 - (destinationRect.top + destinationRect.height / 2),
-            scaleX: sourceRect.width / destinationRect.width,
-            scaleY: sourceRect.height / destinationRect.height
+            scale: sourceRect.width / destinationRect.width
         } : {
             y: 28,
             scale: 0.96
         };
-        const textTargets = [modalTitle, modalMeta, ...Array.from(modalDescription.children)];
 
-        gsap.killTweensOf([modal, modalContent, modalImage, ...textTargets]);
-        gsap.set(modal, { autoAlpha: 0 });
+        gsap.killTweensOf([
+            modal,
+            modalBackdrop,
+            modalContent,
+            modalMedia,
+            modalInfo,
+            modalToolbar
+        ]);
+        gsap.set(modal, { autoAlpha: 1 });
+        gsap.set(modalBackdrop, { autoAlpha: 0 });
         gsap.set(modalContent, { autoAlpha: 1 });
-        gsap.set('.modal-info', { autoAlpha: 1, y: 0 });
-        gsap.set(modalImage, { ...imageStart, transformOrigin: 'center center' });
-        gsap.set(textTargets, { autoAlpha: 0, y: 18 });
-        gsap.set('.modal-toolbar', { autoAlpha: 0, y: -10 });
+        gsap.set([modalInfo, modalToolbar], { autoAlpha: 0 });
+        gsap.set(modalMedia, {
+            ...mediaStart,
+            autoAlpha: 1,
+            transformOrigin: 'center center',
+            willChange: 'transform'
+        });
 
         gsap.timeline({
-            defaults: { ease: 'power3.inOut' },
             onComplete: () => {
                 modalIsAnimating = false;
                 closeButton.focus();
             }
         })
-            .to(modal, { autoAlpha: 1, duration: 0.24 })
-            .to(modalImage, {
+            .to(modalBackdrop, {
+                autoAlpha: 1,
+                duration: 0.38,
+                ease: 'sine.inOut'
+            })
+            .to(modalMedia, {
                 x: 0,
                 y: 0,
                 scale: 1,
-                duration: 0.72,
-                clearProps: 'transform'
-            }, '<')
-            .to('.modal-toolbar', { autoAlpha: 1, y: 0, duration: 0.36 }, '<0.18')
-            .to(textTargets, {
+                duration: 0.56,
+                ease: 'power3.inOut',
+                clearProps: 'transform',
+                onComplete: () => gsap.set(modalMedia, { clearProps: 'willChange' })
+            })
+            .to([modalInfo, modalToolbar], {
                 autoAlpha: 1,
-                y: 0,
-                duration: 0.46,
-                stagger: 0.025
-            }, '-=0.34');
+                duration: 0.22,
+                ease: 'power1.out',
+                clearProps: 'opacity,visibility'
+            }, '+=0.02');
     }
 
     function finishClose() {
         modal.setAttribute('hidden', '');
         modal.setAttribute('aria-hidden', 'true');
-        document.body.classList.remove('modal-open');
-        modalImage.src = '';
-        modalImage.alt = '';
-        modalMeta.innerHTML = '';
-        modalDescription.innerHTML = '';
+        restoreBorrowedImage();
+        unlockPageScroll();
         if (lastFocusedBeforeModal && typeof lastFocusedBeforeModal.focus === 'function') {
             lastFocusedBeforeModal.focus();
         }
         lastFocusedBeforeModal = null;
         activeSourceElement = null;
         modalIsAnimating = false;
+
+        window.clearTimeout(modalCleanupTimer);
+        modalCleanupTimer = window.setTimeout(() => {
+            if (isModalOpen()) {
+                return;
+            }
+            modalImage.src = '';
+            modalImage.alt = '';
+            modalMeta.innerHTML = '';
+            modalDescription.innerHTML = '';
+            if (hasGSAP) {
+                gsap.set([modalBackdrop, modalMedia, modalInfo, modalToolbar], {
+                    clearProps: 'opacity,visibility,transform,willChange'
+                });
+            }
+        }, 120);
     }
 
     function closeModal() {
@@ -631,35 +745,67 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         modalIsAnimating = true;
-        const destinationRect = modalImage.getBoundingClientRect();
-        const sourceRect = sourceImageRect(activeSourceElement);
-        const canReturnImage = sourceRect
+        const destinationRect = modalMedia.getBoundingClientRect();
+        const sourceRect = sourceMediaRect(activeSourceElement);
+        const sourceIsOnscreen = sourceRect
+            && sourceRect.right > 0
+            && sourceRect.left < window.innerWidth
+            && sourceRect.bottom > 0
+            && sourceRect.top < window.innerHeight;
+        const canReturnMedia = sourceRect
+            && sourceIsOnscreen
             && destinationRect.width
             && activeSourceElement
             && document.body.contains(activeSourceElement)
             && !activeSourceElement.classList.contains('is-filtered-out');
 
-        const imageEnd = canReturnImage ? {
+        const mediaEnd = canReturnMedia ? {
             x: sourceRect.left + sourceRect.width / 2 - (destinationRect.left + destinationRect.width / 2),
             y: sourceRect.top + sourceRect.height / 2 - (destinationRect.top + destinationRect.height / 2),
-            scaleX: sourceRect.width / destinationRect.width,
-            scaleY: sourceRect.height / destinationRect.height
-        } : {
-            y: 22,
-            scale: 0.97
-        };
+            scale: sourceRect.width / destinationRect.width
+        } : null;
 
-        gsap.timeline({
+        gsap.set(modalMedia, { willChange: 'transform' });
+        const closeTimeline = gsap.timeline({
             defaults: { ease: 'power3.inOut' },
             onComplete: finishClose
-        })
-            .to(['.modal-toolbar', '.modal-info'], {
-                autoAlpha: 0,
-                y: 10,
-                duration: 0.22
+        });
+
+        closeTimeline.to([modalToolbar, modalInfo], {
+            autoAlpha: 0,
+            duration: 0.16,
+            ease: 'power1.out'
+        });
+
+        if (canReturnMedia) {
+            closeTimeline.to(modalMedia, {
+                ...mediaEnd,
+                duration: 0.5,
+                ease: 'power3.inOut',
+                onComplete: () => {
+                    gsap.set(modalMedia, { autoAlpha: 0 });
+                    restoreBorrowedImage();
+                }
             })
-            .to(modalImage, { ...imageEnd, duration: 0.58 }, '<')
-            .to(modal, { autoAlpha: 0, duration: 0.24 }, '-=0.16');
+                .to(modalBackdrop, {
+                    autoAlpha: 0,
+                    duration: 0.42,
+                    ease: 'sine.inOut'
+                });
+        } else {
+            closeTimeline
+                .to(modalMedia, {
+                    autoAlpha: 0,
+                    y: 18,
+                    scale: 0.985,
+                    duration: 0.3
+                })
+                .to(modalBackdrop, {
+                    autoAlpha: 0,
+                    duration: 0.42,
+                    ease: 'sine.inOut'
+                });
+        }
     }
 
     function navigateModal(direction) {
@@ -672,12 +818,12 @@ document.addEventListener('DOMContentLoaded', () => {
         activeSourceElement = nextItem.element || null;
 
         if (!hasGSAP || prefersReducedMotion()) {
-            setModalContent(nextItem);
+            setModalContent(nextItem, activeSourceElement);
             return;
         }
 
         modalIsAnimating = true;
-        const outgoing = [modalImage, modalTitle, modalMeta, modalDescription];
+        const outgoing = [modalMedia, modalTitle, modalMeta, modalDescription];
         const exitX = direction > 0 ? -24 : 24;
         const enterX = direction > 0 ? 28 : -28;
 
@@ -693,7 +839,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 duration: 0.2,
                 stagger: 0.02,
                 onComplete: () => {
-                    setModalContent(nextItem);
+                    setModalContent(nextItem, activeSourceElement);
                     gsap.set(outgoing, { x: enterX });
                 }
             })
@@ -712,11 +858,15 @@ document.addEventListener('DOMContentLoaded', () => {
     modalNext.addEventListener('click', () => navigateModal(1));
 
     searchInput.addEventListener('input', () => {
-        collectionState.query = searchInput.value.trim().toLowerCase();
-        applyCollectionFilters();
+        window.clearTimeout(searchTimer);
+        searchTimer = window.setTimeout(() => {
+            collectionState.query = searchInput.value.trim().toLowerCase();
+            applyCollectionFilters();
+        }, 90);
     });
 
     clearSearch.addEventListener('click', () => {
+        window.clearTimeout(searchTimer);
         searchInput.value = '';
         collectionState.query = '';
         applyCollectionFilters();

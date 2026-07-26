@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=20260726-minimal-index">
+    <link rel="stylesheet" href="style.css?v=20260726-soft-backdrop-2">
     <script src="https://cdn.jsdelivr.net/npm/marked@12.0.0/marked.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.7/dist/purify.min.js"></script>
 </head>
@@ -60,7 +60,7 @@
         <section class="concert-section">
             <div class="concert-inner">
                 <div class="section-heading concert-heading">
-                    <p class="section-index">02 / LIVE</p>
+                    <p class="section-index">LIVE ARCHIVE</p>
                     <h2 class="section-title">In the Hall</h2>
                     <p id="concert-count" class="result-summary"></p>
                 </div>
@@ -74,6 +74,7 @@
     </main>
 
     <div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-hidden="true" hidden>
+        <div class="modal-backdrop" aria-hidden="true"></div>
         <div class="modal-content">
             <div class="modal-toolbar">
                 <p class="modal-counter" id="modal-counter"></p>
@@ -85,7 +86,12 @@
             </div>
             <div class="modal-body">
                 <div class="modal-image-container">
-                    <img id="modal-image" src="" alt="">
+                    <div id="modal-media" class="modal-media">
+                        <span id="modal-case-spine" class="case-spine" aria-hidden="true" hidden></span>
+                        <div id="modal-artwork" class="cover-artwork">
+                            <img id="modal-image" src="" alt="" decoding="async">
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-info">
                     <h2 id="modal-title"></h2>
@@ -99,7 +105,7 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Flip.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
-    <script src="data.js?v=20260726-minimal-index"></script>
-    <script src="script.js?v=20260726-minimal-index"></script>
+    <script src="data.js?v=20260726-soft-backdrop-2"></script>
+    <script src="script.js?v=20260726-soft-backdrop-2"></script>
 </body>
 </html>

@@ -30,167 +30,290 @@ PAGE_HTML = """<!doctype html>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>My Discs 本地录入</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <style>
     :root {
       color-scheme: light;
-      --bg: #f6f4ef;
-      --panel: #ffffff;
-      --text: #1f2933;
-      --muted: #667085;
-      --line: #d8d2c7;
-      --accent: #2f6f73;
-      --accent-dark: #225155;
+      --paper: #f3f3ef;
+      --surface: #ffffff;
+      --ink: #111111;
+      --muted: #6f706b;
+      --line: #cdcec8;
+      --line-strong: #8b8d86;
+      --blue: #2f55d4;
+      --red: #d24b35;
+      --acid: #d8ee4a;
       --danger: #b42318;
       --ok: #067647;
     }
-    * { box-sizing: border-box; }
-    body {
+    * {
+      box-sizing: border-box;
       margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      padding: 0;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      min-height: 100vh;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "DM Sans", -apple-system, BlinkMacSystemFont, sans-serif;
       line-height: 1.5;
     }
     main {
-      width: min(980px, calc(100% - 32px));
+      width: min(1180px, calc(100% - 64px));
       margin: 0 auto;
-      padding: 32px 0 48px;
+      padding: 30px 0 80px;
+    }
+    .editor-header {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 40px;
+      align-items: end;
+      padding-bottom: 26px;
+      border-bottom: 1px solid var(--ink);
+    }
+    .eyebrow,
+    legend,
+    .field-label,
+    .editor-meta span,
+    .section-index {
+      font-size: 0.69rem;
+      font-weight: 600;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+    .eyebrow {
+      margin-bottom: 6px;
+      color: var(--blue);
     }
     h1 {
-      margin: 0 0 6px;
-      font-size: 28px;
+      font-family: "Instrument Serif", Georgia, serif;
+      font-size: clamp(4rem, 7vw, 6.4rem);
+      font-weight: 400;
+      line-height: 0.8;
       letter-spacing: 0;
     }
+    .editor-meta {
+      display: flex;
+      gap: 9px;
+      align-items: baseline;
+      padding-bottom: 2px;
+    }
+    .editor-meta span { color: var(--muted); }
+    .editor-meta strong {
+      font-family: "Instrument Serif", Georgia, serif;
+      font-size: 1.45rem;
+      font-weight: 400;
+    }
+    .editor-intro {
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      align-items: baseline;
+      padding: 34px 0 18px;
+    }
     .subhead {
-      margin: 0 0 24px;
+      max-width: 680px;
       color: var(--muted);
-      font-size: 15px;
+      font-size: 0.82rem;
+    }
+    .section-index {
+      flex: 0 0 auto;
+      color: var(--red);
     }
     form {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 22px;
-      box-shadow: 0 12px 30px rgba(31, 41, 51, 0.07);
+      border-top: 1px solid var(--ink);
     }
     fieldset {
       border: 0;
-      margin: 0 0 22px;
-      padding: 0;
+      margin: 0;
+      padding: 30px 0 36px;
+      border-bottom: 1px solid var(--line);
     }
     legend {
-      margin-bottom: 12px;
-      font-weight: 700;
-      font-size: 16px;
+      width: 100%;
+      margin-bottom: 24px;
+      color: var(--ink);
     }
     .type-row {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
+      display: inline-flex;
+      min-height: 42px;
+      border: 1px solid var(--line-strong);
     }
     .type-row label {
-      display: inline-flex;
+      position: relative;
+      display: flex;
       align-items: center;
-      gap: 8px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 10px 14px;
+      justify-content: center;
+      min-width: 104px;
+      border-right: 1px solid var(--line);
+      padding: 0 18px;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 600;
       cursor: pointer;
-      background: #fbfaf8;
+      transition: background 0.18s ease, color 0.18s ease;
+    }
+    .type-row label:last-child { border-right: 0; }
+    .type-row label:has(input:checked) {
+      background: var(--ink);
+      color: var(--surface);
+    }
+    .type-row input {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      opacity: 0;
     }
     .grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
+      gap: 25px 24px;
     }
     .field {
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 8px;
+      min-width: 0;
     }
     .field.full { grid-column: 1 / -1; }
     label span,
     .label {
-      font-size: 13px;
-      font-weight: 700;
-      color: #344054;
+      color: var(--muted);
+      font-size: 0.69rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
+    button,
+    input,
+    textarea { font: inherit; }
     input[type="text"],
     input[type="date"],
-    input[type="file"],
+    input[type="file"] {
+      width: 100%;
+      min-height: 42px;
+      border: 0;
+      border-bottom: 1px solid var(--line);
+      border-radius: 0;
+      padding: 8px 0;
+      outline: none;
+      color: var(--ink);
+      background: transparent;
+    }
+    input[type="file"]::file-selector-button {
+      height: 30px;
+      margin-right: 14px;
+      border: 1px solid var(--line-strong);
+      border-radius: 0;
+      padding: 0 11px;
+      background: transparent;
+      color: var(--ink);
+      font: inherit;
+      font-size: 0.72rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    input[type="text"]:focus,
+    input[type="date"]:focus,
+    input[type="file"]:focus {
+      border-color: var(--blue);
+    }
     textarea {
       width: 100%;
-      border: 1px solid var(--line);
-      border-radius: 7px;
-      padding: 10px 11px;
-      color: var(--text);
-      font: inherit;
-      background: #fff;
-    }
-    textarea {
-      min-height: 94px;
+      min-height: 102px;
       resize: vertical;
-    }
-    textarea.tall { min-height: 150px; }
-    .track-builder {
       border: 1px solid var(--line);
-      border-radius: 8px;
-      background: #fbfaf8;
-      padding: 12px;
+      border-radius: 0;
+      padding: 12px 13px;
+      outline: none;
+      color: var(--ink);
+      background: rgba(255, 255, 255, 0.62);
+    }
+    textarea:focus {
+      border-color: var(--blue);
+      background: var(--surface);
+    }
+    textarea.tall { min-height: 168px; }
+    .track-builder {
       margin-top: 8px;
+      border-top: 1px solid var(--ink);
+      border-bottom: 1px solid var(--line);
+      padding: 18px 0 20px;
     }
     .track-builder-title {
-      margin: 0 0 10px;
-      font-size: 13px;
-      font-weight: 700;
-      color: #344054;
+      margin-bottom: 15px;
+      color: var(--blue);
+      font-size: 0.69rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
     }
     .builder-grid {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 10px;
+      gap: 10px 14px;
     }
     .builder-grid .wide {
       grid-column: span 2;
     }
     .builder-grid input {
       min-height: 38px;
-      padding: 8px 9px;
-      font-size: 14px;
+      border: 0;
+      border-bottom: 1px solid var(--line);
+      border-radius: 0;
+      padding: 7px 0;
+      outline: none;
+      background: transparent;
+      font-size: 0.8rem;
+    }
+    .builder-grid input:focus {
+      border-color: var(--blue);
     }
     .secondary-button {
       border: 1px solid var(--line);
-      background: #fff;
-      color: var(--accent);
-      padding: 9px 12px;
+      background: transparent;
+      color: var(--ink);
     }
     .secondary-button:hover {
-      border-color: var(--accent);
-      background: #eef7f7;
-      color: var(--accent-dark);
+      border-color: var(--blue);
+      background: transparent;
+      color: var(--blue);
     }
     .hint {
       color: var(--muted);
-      font-size: 12px;
+      font-size: 0.7rem;
+      line-height: 1.55;
     }
     .cover-row {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) 160px;
-      gap: 16px;
+      grid-template-columns: minmax(0, 1fr) 188px;
+      gap: 36px;
       align-items: start;
     }
     .preview {
-      width: 160px;
+      position: relative;
+      width: 188px;
       aspect-ratio: 1;
       border: 1px solid var(--line);
-      border-radius: 8px;
       display: grid;
       place-items: center;
       overflow: hidden;
-      background: #f0ede7;
+      background: #e3e3de;
       color: var(--muted);
-      font-size: 13px;
+      font-family: "Instrument Serif", Georgia, serif;
+      font-size: 1rem;
       text-align: center;
+    }
+    .preview::after {
+      content: "";
+      position: absolute;
+      inset: 7px;
+      border: 1px solid rgba(47, 85, 212, 0.35);
+      pointer-events: none;
     }
     .preview img {
       width: 100%;
@@ -203,58 +326,132 @@ PAGE_HTML = """<!doctype html>
       gap: 12px;
       align-items: center;
       flex-wrap: wrap;
-      margin-top: 4px;
+      margin-top: 16px;
     }
     button {
-      border: 0;
-      border-radius: 7px;
-      background: var(--accent);
-      color: #fff;
-      padding: 11px 18px;
-      font: inherit;
-      font-weight: 700;
+      min-height: 40px;
+      border: 1px solid var(--ink);
+      border-radius: 0;
+      background: var(--ink);
+      color: var(--surface);
+      padding: 0 16px;
+      font-size: 0.75rem;
+      font-weight: 600;
       cursor: pointer;
+      transition: border-color 0.18s ease, background 0.18s ease, color 0.18s ease;
     }
-    button:hover { background: var(--accent-dark); }
+    button:hover {
+      border-color: var(--blue);
+      background: var(--blue);
+    }
     button:disabled {
       cursor: wait;
       opacity: 0.65;
     }
+    button:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible,
+    .type-row label:has(input:focus-visible) {
+      outline: 2px solid var(--blue);
+      outline-offset: 3px;
+    }
+    .submit-actions {
+      position: sticky;
+      z-index: 5;
+      bottom: 0;
+      justify-content: space-between;
+      margin-top: 0;
+      border-top: 1px solid var(--ink);
+      padding: 18px 0;
+      background: rgba(243, 243, 239, 0.94);
+      backdrop-filter: blur(12px);
+    }
+    #submit-button {
+      min-width: 196px;
+    }
     .status {
-      margin-top: 16px;
-      border-radius: 8px;
-      padding: 12px 14px;
       display: none;
+      margin-top: 18px;
+      border-left: 3px solid;
+      padding: 12px 15px;
+      background: var(--surface);
+      font-size: 0.78rem;
       white-space: pre-wrap;
     }
     .status.ok {
       display: block;
-      border: 1px solid rgba(6, 118, 71, 0.25);
-      background: #ecfdf3;
+      border-color: var(--ok);
       color: var(--ok);
     }
     .status.error {
       display: block;
-      border: 1px solid rgba(180, 35, 24, 0.25);
-      background: #fef3f2;
+      border-color: var(--danger);
       color: var(--danger);
     }
     .hidden { display: none; }
+    ::placeholder { color: #969791; }
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #8d8e88; }
     @media (max-width: 720px) {
-      main { width: min(100% - 20px, 980px); padding-top: 20px; }
-      form { padding: 16px; }
+      main {
+        width: calc(100% - 32px);
+        padding-top: 26px;
+      }
+      .editor-header {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      h1 { font-size: 4.4rem; }
+      .editor-intro { align-items: flex-start; }
       .grid,
       .builder-grid,
       .cover-row { grid-template-columns: 1fr; }
       .builder-grid .wide { grid-column: auto; }
-      .preview { width: 100%; max-width: 220px; }
+      .type-row {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        width: 100%;
+      }
+      .type-row label {
+        min-width: 0;
+        padding: 0 8px;
+      }
+      .preview {
+        width: min(100%, 220px);
+      }
+      .submit-actions {
+        align-items: stretch;
+        flex-direction: column;
+      }
+      #submit-button { width: 100%; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
     }
   </style>
 </head>
 <body>
   <main>
-    <h1>My Discs 本地录入</h1>
-    <p class="subhead">提交后会写入现有 YAML/封面目录，并重新生成 web/data.js。</p>
+    <header class="editor-header">
+      <div>
+        <p class="eyebrow">Local archive editor</p>
+        <h1>My Discs</h1>
+      </div>
+      <p class="editor-meta"><span>Write mode</span><strong>YAML / DATA.JS</strong></p>
+    </header>
+    <div class="editor-intro">
+      <p class="subhead">提交后写入现有 YAML 与封面目录，并同步生成 web/data.js。</p>
+      <p class="section-index">01 / Entry</p>
+    </div>
 
     <form id="entry-form">
       <input type="hidden" name="csrf_token" value="__CSRF_TOKEN__">
@@ -389,7 +586,7 @@ PAGE_HTML = """<!doctype html>
         </fieldset>
       </section>
 
-      <div class="actions">
+      <div class="actions submit-actions">
         <button id="submit-button" type="button">保存并生成 data.js</button>
         <span class="hint">保存后可打开 /web/index.html 查看。</span>
       </div>

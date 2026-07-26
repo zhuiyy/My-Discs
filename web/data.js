@@ -675,6 +675,33 @@ const siteData = [
   },
   {
     "type": "cd",
+    "title": "Shostakovich The Cello Concertos",
+    "image": "../CDs/Shostakovich The Cello Concertos/cover.jpg",
+    "description": "### 曲目\nCello Concerto No. 1, Op. 107 - Shostakovich\n\nCello Concerto No. 2, Op. 126 - Shostakovich\n### 演奏家\nGautier Capuçon (Cello)\n\nValery Gergiev\n\nMariinsky Orchestra\n### 作曲家\nShostakovich\n### 风格\nclassic\n### 数量\n1\n### 来源\nRaccoon Records 浣熊唱片 上海 长宁\n### 附\n了解了以下术语: Op就是Opus; TT = Total Time.\n瓦莱里·捷杰耶夫喜欢用牙签指挥, 但这张看配图应该是真指挥棒.",
+    "tracks": [
+      "Cello Concerto No. 1, Op. 107 - Shostakovich",
+      "Cello Concerto No. 2, Op. 126 - Shostakovich"
+    ],
+    "artists": [
+      "Gautier Capuçon (Cello)",
+      "Valery Gergiev",
+      "Mariinsky Orchestra"
+    ],
+    "vocalists": [],
+    "original_artists": [],
+    "composers": [
+      "Shostakovich"
+    ],
+    "producers": [],
+    "genres": [
+      "classic"
+    ],
+    "count": "1",
+    "source": "Raccoon Records 浣熊唱片 上海 长宁",
+    "notes": "了解了以下术语: Op就是Opus; TT = Total Time.\n瓦莱里·捷杰耶夫喜欢用牙签指挥, 但这张看配图应该是真指挥棒."
+  },
+  {
+    "type": "cd",
     "title": "The Dark Side of the Moon (Experience Edition)",
     "image": "../CDs/THE DARK SIDE OF THE MOON (Experience edition)/cover.jpg",
     "description": "### 曲目\nSpeak to Me - Pink Floyd\n\nBreathe (In the Air) - Pink Floyd\n\nOn the Run - Pink Floyd\n\nTime - Pink Floyd\n\nThe Great Gig in the Sky - Pink Floyd\n\nMoney - Pink Floyd\n\nUs and Them - Pink Floyd\n\nAny Colour You Like - Pink Floyd\n\nBrain Damage - Pink Floyd\n\nEclipse - Pink Floyd\n\nLive at The Empire Pool, Wembley, London 1974 - Pink Floyd\n### 演奏家\nPink Floyd\n### 作曲家\nPink Floyd\n### 风格\nprogressive rock\n### 数量\n1\n### 来源\n泰和黑胶音乐 大连中山广场\n### 附\n无.",

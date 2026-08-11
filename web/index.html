@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Musical Journey</title>
-    <meta name="description" content="CD、黑胶收藏与音乐会记录：封面画廊与简介。">
+    <meta name="description" content="CD、黑胶收藏、音乐会记录与近期聆听分享。">
     <meta property="og:title" content="My Discs & Memories">
-    <meta property="og:description" content="CD、黑胶收藏与音乐会记录。">
+    <meta property="og:description" content="CD、黑胶收藏、音乐会记录与近期聆听分享。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://zhuiyy.github.io/My-Discs/web/index.html">
     <meta property="og:image" content="https://zhuiyy.github.io/My-Discs/CDs/%E7%B2%BE%E5%8D%8E/cover.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=20260726-concert-title-3">
+    <link rel="stylesheet" href="style.css?v=20260811-inline-listening-5">
     <script src="https://cdn.jsdelivr.net/npm/marked@12.0.0/marked.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.7/dist/purify.min.js"></script>
 </head>
@@ -27,6 +27,71 @@
     </header>
 
     <main>
+        <section id="listening" class="listening-section" aria-labelledby="listening-title">
+            <div class="listening-shell">
+                <div class="listening-intro">
+                    <p class="listening-index">Listening selections</p>
+                    <h2 id="listening-title"><span>Listening,</span><em>lately</em></h2>
+                </div>
+
+                <div class="listening-console">
+                    <div class="listening-status" aria-live="polite">
+                        <span class="listening-status-dot" aria-hidden="true"></span>
+                        <span id="listening-status-label">Ready to listen</span>
+                        <span class="listening-status-rule" aria-hidden="true"></span>
+                        <span id="listening-status-detail">One selection at a time</span>
+                    </div>
+
+                    <div class="listening-track-heading">
+                        <p id="listening-kicker">Selected excerpt</p>
+                        <h3 id="listening-track-title">曲目准备中</h3>
+                        <p id="listening-track-note">点击开始后, 将随机播放一段; 曲终静默二十秒, 再自动选择下一段.</p>
+                    </div>
+
+                    <dl class="listening-details">
+                        <div>
+                            <dt>Composer</dt>
+                            <dd id="listening-composer">—</dd>
+                        </div>
+                        <div>
+                            <dt>Performance</dt>
+                            <dd id="listening-performance">—</dd>
+                        </div>
+                        <div>
+                            <dt>Source</dt>
+                            <dd id="listening-recording">—</dd>
+                        </div>
+                    </dl>
+
+                    <div class="listening-transport">
+                        <button id="listening-button" class="listening-button" type="button">
+                            <span class="listening-button-icon" aria-hidden="true"><i></i></span>
+                            <span>
+                                <small id="listening-button-overline">Begin</small>
+                                <strong id="listening-button-label">开始聆听</strong>
+                            </span>
+                        </button>
+
+                        <div class="listening-timeline" aria-label="播放进度">
+                            <div id="listening-waveform" class="listening-waveform" aria-hidden="true"></div>
+                            <div class="listening-time-row">
+                                <time id="listening-elapsed">00:00</time>
+                                <span id="listening-timeline-label">Excerpt</span>
+                                <time id="listening-duration">00:00</time>
+                            </div>
+                        </div>
+
+                        <button id="listening-sound" class="listening-sound" type="button" aria-label="静音" aria-pressed="false">
+                            <span>Sound</span>
+                            <i aria-hidden="true"></i>
+                        </button>
+                    </div>
+
+                    <p id="listening-note" class="listening-note">Press stop, and a precious musical memory slips away.</p>
+                </div>
+            </div>
+        </section>
+
         <section id="collection" class="collection-section">
             <div class="section-heading collection-heading">
                 <h2 class="collection-title">Collection</h2>
@@ -102,10 +167,28 @@
         </div>
     </div>
 
+    <aside id="listening-dock" class="listening-dock" aria-label="正在聆听">
+        <div class="dock-state">
+            <span class="dock-dot" aria-hidden="true"></span>
+            <span id="dock-state-label">Now playing</span>
+        </div>
+        <div class="dock-track">
+            <strong id="dock-track-title">—</strong>
+            <span id="dock-track-meta">—</span>
+        </div>
+        <div class="dock-progress" aria-hidden="true"><i id="dock-progress-fill"></i></div>
+        <span id="dock-time" class="dock-time">00:00</span>
+        <button id="dock-button" class="dock-button" type="button" aria-label="结束聆听"><i aria-hidden="true"></i></button>
+    </aside>
+
+    <audio id="listening-audio" preload="metadata"></audio>
+
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Flip.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
     <script src="data.js?v=20260726-soft-backdrop-2"></script>
     <script src="script.js?v=20260726-concert-title-3"></script>
+    <script src="listening-data.js?v=20260811-3"></script>
+    <script src="listening.js?v=20260811-inline-2"></script>
 </body>
 </html>

@@ -25,9 +25,12 @@
 | `web/index.html` | 主站页面 |
 | `web/style.css` | 主站样式 |
 | `web/script.js` | 主站交互：画廊、筛选、弹窗 |
+| `web/listening-data.js` / `web/listening.js` | 随机聆听曲目数据与播放逻辑 |
+| `web/audio/*.mp3` | 网页播放用的压缩音频 |
 | `web/generate_data.py` | 数据生成器，无第三方依赖 |
 | `web/data.js` | 生成产物，提交前必须与数据源同步 |
 | `tools/admin_server.py` | 本地录入表单工具，不接入公开网站 |
+| `tools/normalize_audio.py` / `tools/encode_mp3.py` | 音频响度平衡与 MP3 编码 |
 | `.github/workflows/verify-data.yml` | CI：重新生成 `web/data.js` 并检查 drift |
 
 ## 数据生成流程
@@ -175,7 +178,16 @@ image: "cover.jpg"
 - 主页面用 CDN 加载 `marked` 和 `DOMPurify`，把生成器拼出的 Markdown 描述渲染到弹窗里。
 - CD 与黑胶卡片每次页面加载会随机打乱；音乐会保持按日期倒序。
 - 弹窗有基本的键盘可访问性：`Enter/Space` 打开，`Escape` 关闭，`Tab` 限制在弹窗内。
+- “Listening, lately” 内嵌在收藏页：随机完整播放一段，静默 20 秒后再随机播放；曲目数据在 `web/listening-data.js`。
+- 试听曲目不一定来自下方实体收藏；只有用户明确说明时才关联具体唱片版本。曲目介绍使用英文标点。
+- 封面悬停只显示边缘高光，不要改变图片透明度或滤镜，避免细线封面出现摩尔纹。
 - `tools/admin_server.py` 是本地维护工具，只负责方便录入数据；不要在公开网站中链接或展示它。录入工具里的结构化曲目生成器应与上面的曲目格式保持一致。
+
+## 网页音频
+
+- 只提交 MP3，不提交 WAV；当前规格为 44.1 kHz 立体声、256 kbps。
+- 新音频先用 `tools/normalize_audio.py` 平衡到 `-23.5 dBFS`（峰值上限 `-1.5 dBFS`），再用 `tools/encode_mp3.py` 编码。编码脚本需要 `lameenc`。
+- 文件放入 `web/audio/`，使用清晰的英文小写连字符文件名；随后更新 `web/listening-data.js` 及 `web/index.html` 的缓存参数。
 
 ## 本地查看与验证
 

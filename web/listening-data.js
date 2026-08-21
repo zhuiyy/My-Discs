@@ -10,7 +10,7 @@ window.listeningTracks = [
         pianist: 'Paul Rivinius (piano)',
         recording: 'French Cello Sonatas II · CAvi · 2014',
         note: '原作为小提琴与钢琴奏鸣曲; 这里分享的是大提琴与钢琴改编版本第三乐章的选段.',
-        src: 'audio/franck-cello-sonata-fwv8-iii-steckel-rivinius.wav'
+        src: 'audio/franck-cello-sonata-fwv8-iii-steckel-rivinius.mp3'
     },
     {
         id: 'shostakovich-cello-concerto-1-steckel-berglund',
@@ -22,6 +22,17 @@ window.listeningTracks = [
         conductor: 'Tabita Berglund',
         recording: 'Live at hr-Sendesaal Frankfurt · 21 Nov 2025',
         note: '2025 年 11 月于法兰克福 hr-Sendesaal 现场录制的选段.',
-        src: 'audio/shostakovich-cello-concerto-1-steckel-berglund.wav'
+        src: 'audio/shostakovich-cello-concerto-1-steckel-berglund.mp3'
+    },
+    {
+        id: 'beethoven-symphony-9-iv-karajan-berliner-philharmoniker',
+        title: 'Symphony No. 9 in D minor, Op. 125 "Choral"',
+        movement: 'IV. Presto — Allegro assai (selected excerpt)',
+        composer: 'Ludwig van Beethoven',
+        ensemble: 'Berliner Philharmoniker',
+        conductor: 'Herbert von Karajan',
+        recording: 'Beethoven: The 9 Symphonies',
+        note: '属于这颗美丽星球的主题曲.',
+        src: 'audio/beethoven-symphony-9-iv-karajan-berliner-philharmoniker.mp3'
     }
 ];

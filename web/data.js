@@ -962,7 +962,7 @@ const siteData = [
     "title": "Spirit Fall--The 3 Jazz Masters",
     "date": "2026-08-23",
     "image": "../concerts/2026-08-23/cover.jpg",
-    "description": "- <Spirit Fall> (with improvisation) - John Patitucci, Chris Potter, Brian Blade\n- *John Patitucci & Chris Potter & Brian Blade*\n- 上海东方艺术中心, 歌剧厅",
+    "description": "- \\<Spirit Fall\\> (with improvisation) - John Patitucci, Chris Potter, Brian Blade\n- *John Patitucci & Chris Potter & Brian Blade*\n- 上海东方艺术中心, 歌剧厅",
     "venue": "上海东方艺术中心",
     "hall": "歌剧厅",
     "performers": [
@@ -971,7 +971,7 @@ const siteData = [
       "Brian Blade"
     ],
     "program": [
-      "<Spirit Fall> (with improvisation) - John Patitucci, Chris Potter, Brian Blade"
+      "\\<Spirit Fall\\> (with improvisation) - John Patitucci, Chris Potter, Brian Blade"
     ]
   },
   {

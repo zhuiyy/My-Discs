@@ -545,7 +545,7 @@ PAGE_HTML = """<!doctype html>
             </div>
             <div class="field">
               <label for="date"><span>日期 *</span></label>
-              <input id="date" name="date" type="date">
+              <input id="date" name="date" type="text" inputmode="numeric" placeholder="yyyy/mm/dd" pattern="\\d{4}[-/]\\d{2}[-/]\\d{2}" autocomplete="off">
             </div>
             <div class="field">
               <label for="venue"><span>场馆</span></label>
@@ -971,7 +971,8 @@ def create_entry(fields, files):
         yaml_text = build_cd_yaml(fields)
     else:
         title = (fields.get('concert_title') or '').strip()
-        date_value = (fields.get('date') or '').strip()
+        date_value = (fields.get('date') or '').strip().replace('/', '-')
+        fields['date'] = date_value
         if not title:
             raise AdminError('音乐会标题不能为空。')
         if not re.fullmatch(r'\d{4}-\d{2}-\d{2}', date_value):

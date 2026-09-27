@@ -652,6 +652,10 @@ PAGE_HTML = """<!doctype html>
       return /^No\\./i.test(number) ? number : 'No. ' + number;
     }
 
+    function normalizeModeWords(value) {
+      return cleanValue(value).replace(/\\b(major|minor)\\b/gi, (word) => word.toLowerCase());
+    }
+
     function quoteNickname(value) {
       const nickname = cleanValue(value).replace(/^["“”]+|["“”]+$/g, '');
       return nickname ? '"' + nickname + '"' : '';
@@ -661,7 +665,7 @@ PAGE_HTML = """<!doctype html>
       const value = (part) => cleanValue(builder.querySelector('[data-part="' + part + '"]').value);
       const title = value('title');
       const number = normalizeNumber(value('number'));
-      const key = value('key');
+      const key = normalizeModeWords(value('key'));
       const catalog = value('catalog');
       const nickname = quoteNickname(value('nickname'));
       const movement = value('movement');
@@ -827,6 +831,10 @@ def split_lines(value):
     return [line.strip() for line in (value or '').splitlines() if line.strip()]
 
 
+def normalize_mode_words(value):
+    return re.sub(r'\b(major|minor)\b', lambda match: match.group(0).lower(), value, flags=re.IGNORECASE)
+
+
 def scalar(value):
     return json.dumps(str(value), ensure_ascii=False)
 
@@ -910,7 +918,7 @@ def write_file(path, content, mode='w'):
 def build_cd_yaml(fields):
     lines = []
     append_scalar(lines, 'title', fields.get('cd_title'), required=True)
-    append_list(lines, 'tracks', fields.get('tracks'))
+    append_list(lines, 'tracks', normalize_mode_words(fields.get('tracks') or ''))
     append_list(lines, 'artists', fields.get('artists'))
     append_list(lines, 'composers', fields.get('composers'))
     append_list(lines, 'genres', fields.get('genres'))
@@ -927,7 +935,7 @@ def build_concert_yaml(fields, cover_name):
     append_scalar(lines, 'venue', fields.get('venue'))
     append_scalar(lines, 'hall', fields.get('hall'))
     append_list(lines, 'performers', fields.get('performers'))
-    append_list(lines, 'program', fields.get('program'))
+    append_list(lines, 'program', normalize_mode_words(fields.get('program') or ''))
     append_scalar(lines, 'image', cover_name, required=True)
     return '\n'.join(lines) + '\n'
 

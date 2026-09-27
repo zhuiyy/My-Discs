@@ -939,6 +939,30 @@ const siteData = [
   },
   {
     "type": "concert",
+    "title": "\"跨域阿尔卑斯山\"--吕思清小提琴独奏音乐会",
+    "date": "2026-09-27",
+    "image": "../concerts/2026-09-27/cover.jpg",
+    "description": "- Violin Sonata in B-flat major, K. 378 - Mozart\n- Violin Sonata No. 8 in G major, Op. 30, No. 3 - Beethoven\n- *—INTERMISSION—*\n- Violin Sonata in A major, FWV 8 - Franck\n- Sicilienne in E-flat major - Paradis\n- Schön Rosmarin - Kreisler\n- Liebesfreud - Kreisler\n- Intermezzo from Cavalleria rusticana (arr. Franko) - Mascagni\n- Salut d'Amour, Op. 12 - Elgar\n- *吕思清 & 金文彬*\n- 国家大剧院, 音乐厅",
+    "venue": "国家大剧院",
+    "hall": "音乐厅",
+    "performers": [
+      "吕思清",
+      "金文彬"
+    ],
+    "program": [
+      "Violin Sonata in B-flat major, K. 378 - Mozart",
+      "Violin Sonata No. 8 in G major, Op. 30, No. 3 - Beethoven",
+      "*—INTERMISSION—*",
+      "Violin Sonata in A major, FWV 8 - Franck",
+      "Sicilienne in E-flat major - Paradis",
+      "Schön Rosmarin - Kreisler",
+      "Liebesfreud - Kreisler",
+      "Intermezzo from Cavalleria rusticana (arr. Franko) - Mascagni",
+      "Salut d'Amour, Op. 12 - Elgar"
+    ]
+  },
+  {
+    "type": "concert",
     "title": "\"大地之歌\"--国家大剧院管弦乐团2026-2027乐季开幕音乐会",
     "date": "2026-09-26",
     "image": "../concerts/2026-09-26/cover.jpg",
@@ -1181,7 +1205,7 @@ const siteData = [
     "title": "刘晓禹钢琴独奏音乐会",
     "date": "2024-12-15",
     "image": "../concerts/2024-12-15/cover.jpg",
-    "description": "- The Seasons, Op. 37a (excerpt) - Tchaikovsky\n- ~~A Midsummer Night's Dream: Scherzo (arr. Rachmaninoff) - Mendelssohn~~\n- Swan Lake: Dance of the Four Swans (arr. Wild for piano) - Tchaikovsky\n- Piano Sonata No. 4 in F-sharp major, Op. 30 - Scriabin\n- *—INTERMISSION—*\n- The Seasons, Op. 37a (excerpt) - Tchaikovsky\n- Piano Sonata No. 7 in B-flat major, Op. 83 - Prokofiev\n- *刘晓禹 (Bruce Liu)*\n- 国家大剧院, 音乐厅",
+    "description": "- The Seasons, Op. 37a (excerpt) - Tchaikovsky\n- ~~A Midsummer Night's Dream: Scherzo (arr. Rachmaninoff) - Mendelssohn~~\n- Swan Lake: Dance of the Four Swans (arr. Wild) - Tchaikovsky\n- Piano Sonata No. 4 in F-sharp major, Op. 30 - Scriabin\n- *—INTERMISSION—*\n- The Seasons, Op. 37a (excerpt) - Tchaikovsky\n- Piano Sonata No. 7 in B-flat major, Op. 83 - Prokofiev\n- *刘晓禹 (Bruce Liu)*\n- 国家大剧院, 音乐厅",
     "venue": "国家大剧院",
     "hall": "音乐厅",
     "performers": [
@@ -1190,7 +1214,7 @@ const siteData = [
     "program": [
       "The Seasons, Op. 37a (excerpt) - Tchaikovsky",
       "~~A Midsummer Night's Dream: Scherzo (arr. Rachmaninoff) - Mendelssohn~~",
-      "Swan Lake: Dance of the Four Swans (arr. Wild for piano) - Tchaikovsky",
+      "Swan Lake: Dance of the Four Swans (arr. Wild) - Tchaikovsky",
       "Piano Sonata No. 4 in F-sharp major, Op. 30 - Scriabin",
       "*—INTERMISSION—*",
       "The Seasons, Op. 37a (excerpt) - Tchaikovsky",
